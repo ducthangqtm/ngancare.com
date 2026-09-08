@@ -9,6 +9,7 @@ import { INITIAL_SERVICES } from '@/lib/seed-data';
 export default function AdminServicesPage() {
   const [services, setServices] = useState<Service[]>(INITIAL_SERVICES);
   const [isAdding, setIsAdding] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   // Form states
   const [name, setName] = useState('');
@@ -18,6 +19,22 @@ export default function AdminServicesPage() {
   const [duration, setDuration] = useState<string>('75');
   const [description, setDescription] = useState('');
   const [featuresInput, setFeaturesInput] = useState('');
+
+  // Fetch live services from D1 database
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await fetch('/api/admin/services');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          setServices(data.data);
+        }
+      } catch (e) {
+        // Fallback to initial services
+      }
+    };
+    fetchServices();
+  }, []);
 
   const generateSlug = (val: string) => {
     return val
@@ -31,15 +48,43 @@ export default function AdminServicesPage() {
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    setSlug(generateSlug(e.target.value));
+    if (!editingId) {
+      setSlug(generateSlug(e.target.value));
+    }
   };
 
-  const handleAddService = async (e: React.FormEvent) => {
+  const handleStartAdd = () => {
+    setEditingId(null);
+    setName('');
+    setSlug('');
+    setCategory('thong_tac');
+    setPrice('350000');
+    setDuration('75');
+    setDescription('');
+    setFeaturesInput('');
+    setIsAdding(true);
+  };
+
+  const handleStartEdit = (item: Service) => {
+    setEditingId(item.id);
+    setName(item.name);
+    setSlug(item.slug);
+    setCategory(item.category);
+    setPrice(item.price !== null && item.price !== undefined ? item.price.toString() : '');
+    setDuration(item.duration !== null && item.duration !== undefined ? item.duration.toString() : '');
+    setDescription(item.description || '');
+    setFeaturesInput(item.features && Array.isArray(item.features) ? item.features.join('\n') : '');
+    setIsAdding(true);
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleSaveService = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !slug.trim()) return;
 
-    const newSrv: Service = {
-      id: (category === 'san_pham' ? 'sp-' : 'srv-') + Date.now(),
+    const serviceData = {
       name: name.trim(),
       slug: slug.trim(),
       category,
@@ -54,16 +99,37 @@ export default function AdminServicesPage() {
       is_active: 1,
     };
 
-    try {
-      await fetch('/api/admin/services', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newSrv),
-      });
-    } catch (e) {}
+    if (editingId) {
+      // Cập nhật dịch vụ đã có
+      try {
+        await fetch('/api/admin/services', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: editingId, ...serviceData }),
+        });
+      } catch (e) {}
 
-    setServices([newSrv, ...services]);
+      setServices(services.map((s) => (s.id === editingId ? ({ ...s, ...serviceData } as Service) : s)));
+    } else {
+      // Thêm mới dịch vụ
+      const newSrv: Service = {
+        id: (category === 'san_pham' ? 'sp-' : 'srv-') + Date.now(),
+        ...serviceData,
+      };
+
+      try {
+        await fetch('/api/admin/services', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newSrv),
+        });
+      } catch (e) {}
+
+      setServices([newSrv, ...services]);
+    }
+
     setIsAdding(false);
+    setEditingId(null);
     setName('');
     setSlug('');
     setDescription('');
@@ -104,7 +170,14 @@ export default function AdminServicesPage() {
           </div>
 
           <button
-            onClick={() => setIsAdding(!isAdding)}
+            onClick={() => {
+              if (isAdding) {
+                setIsAdding(false);
+                setEditingId(null);
+              } else {
+                handleStartAdd();
+              }
+            }}
             className="px-4 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition-all"
           >
             {isAdding ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
@@ -112,15 +185,36 @@ export default function AdminServicesPage() {
           </button>
         </div>
 
-        {/* Form to add */}
+        {/* Form thêm / chỉnh sửa */}
         {isAdding && (
-          <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gold-300 shadow-md mb-8">
-            <h3 className="text-lg font-bold text-charcoal-900 mb-4 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-gold-600" />
-              <span>Thêm Mới Dịch Vụ Hoặc Sản Phẩm</span>
-            </h3>
+          <div className="bg-white p-6 sm:p-8 rounded-2xl border-2 border-gold-400 shadow-md mb-8 transition-all">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
+                {editingId ? (
+                  <>
+                    <Edit2 className="w-5 h-5 text-gold-600" />
+                    <span>Chỉnh Sửa Dịch Vụ / Sản Phẩm</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-5 h-5 text-gold-600" />
+                    <span>Thêm Mới Dịch Vụ Hoặc Sản Phẩm</span>
+                  </>
+                )}
+              </h3>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsAdding(false);
+                  setEditingId(null);
+                }}
+                className="text-gray-400 hover:text-gray-600 p-1 rounded-lg"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
-            <form onSubmit={handleAddService} className="space-y-4 text-xs sm:text-sm">
+            <form onSubmit={handleSaveService} className="space-y-4 text-xs sm:text-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block font-bold text-charcoal-900 mb-1">Tên Dịch Vụ / Sản Phẩm *</label>
@@ -213,23 +307,26 @@ export default function AdminServicesPage() {
               <div className="pt-2 flex justify-end gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsAdding(false)}
+                  onClick={() => {
+                    setIsAdding(false);
+                    setEditingId(null);
+                  }}
                   className="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100"
                 >
                   Hủy Bỏ
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 rounded-xl bg-gold-500 hover:bg-gold-600 text-white font-bold"
+                  className="px-6 py-2 rounded-xl bg-gold-500 hover:bg-gold-600 text-white font-bold shadow-sm transition-all"
                 >
-                  Lưu Dịch Vụ Mới
+                  {editingId ? 'Cập Nhật Thay Đổi' : 'Lưu Dịch Vụ Mới'}
                 </button>
               </div>
             </form>
           </div>
         )}
 
-        {/* Services List Table */}
+        {/* Bảng danh sách dịch vụ & sản phẩm */}
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
@@ -287,13 +384,22 @@ export default function AdminServicesPage() {
                     </td>
 
                     <td className="py-4 px-4 text-right">
-                      <button
-                        onClick={() => handleDelete(item.id)}
-                        className="p-1.5 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                        title="Xóa mục này"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center justify-end gap-1.5">
+                        <button
+                          onClick={() => handleStartEdit(item)}
+                          className="p-1.5 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                          title="Chỉnh sửa dịch vụ này"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(item.id)}
+                          className="p-1.5 text-red-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Xóa mục này"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
