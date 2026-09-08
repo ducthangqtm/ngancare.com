@@ -225,16 +225,16 @@ export default function AdminBookingsPage() {
     switch (status) {
       case 'pending':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">
-            <Clock className="w-3 h-3" />
-            <span>Chờ Xác Nhận</span>
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300" title="Chưa khóa giờ trên website">
+            <Clock className="w-3 h-3 text-amber-600" />
+            <span>Chờ Xác Nhận (Chưa Khóa)</span>
           </span>
         );
       case 'confirmed':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-300">
-            <CheckCircle2 className="w-3 h-3" />
-            <span>Đã Xác Nhận</span>
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-300" title="Đã khóa khung giờ này trên website">
+            <CheckCircle2 className="w-3 h-3 text-blue-600" />
+            <span>Đã Xác Nhận (Đã Khóa Giờ)</span>
           </span>
         );
       case 'completed':
@@ -246,9 +246,9 @@ export default function AdminBookingsPage() {
         );
       case 'cancelled':
         return (
-          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-700 border border-gray-300">
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-700 border border-gray-300" title="Đã giải phóng khung giờ trên website">
             <XCircle className="w-3 h-3" />
-            <span>Đã Hủy</span>
+            <span>Đã Hủy (Đã Mở Lại Giờ)</span>
           </span>
         );
       default:
@@ -341,6 +341,14 @@ export default function AdminBookingsPage() {
               </div>
             </div>
 
+            {/* Mechanism explanation alert */}
+            <div className="bg-amber-50/80 border border-amber-200 p-3.5 rounded-2xl flex items-start sm:items-center gap-3 text-xs text-amber-900 shadow-xs">
+              <Sparkles className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+              <p>
+                <strong>Nguyên tắc khóa lịch:</strong> Khách đặt mới ở trạng thái <em>“Chờ xác nhận”</em> sẽ <strong>chưa khóa giờ</strong> trên website. Sau khi Điều Dưỡng liên hệ mẹ bé và bấm nút <strong>“Xác Nhận & Khóa Giờ”</strong>, hệ thống mới chính thức khóa mốc giờ đó trên website để đảm bảo tính linh hoạt và không bị khóa nhầm.
+              </p>
+            </div>
+
             {/* Table of Bookings */}
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
               <div className="overflow-x-auto">
@@ -410,19 +418,32 @@ export default function AdminBookingsPage() {
                           <td className="py-4 px-4">{getStatusBadge(b.status)}</td>
 
                           <td className="py-4 px-4 text-right">
-                            <select
-                              disabled={updatingId === b.id}
-                              value={b.status}
-                              onChange={(e) =>
-                                handleUpdateStatus(b.id, e.target.value as BookingStatus)
-                              }
-                              className="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-semibold focus:outline-none focus:border-gold-500 bg-white"
-                            >
-                              <option value="pending">Chờ xác nhận</option>
-                              <option value="confirmed">Đã xác nhận</option>
-                              <option value="completed">Đã hoàn thành</option>
-                              <option value="cancelled">Hủy lịch</option>
-                            </select>
+                            <div className="flex items-center justify-end gap-2">
+                              {b.status === 'pending' && (
+                                <button
+                                  disabled={updatingId === b.id}
+                                  onClick={() => handleUpdateStatus(b.id, 'confirmed')}
+                                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white text-xs font-bold shadow-xs active:scale-95 transition-all whitespace-nowrap"
+                                  title="Bấm xác nhận sau khi đã gọi trao đổi với mẹ bé (hệ thống sẽ tự động khóa giờ này trên web)"
+                                >
+                                  <CheckCircle2 className="w-3.5 h-3.5" />
+                                  <span>Xác Nhận & Khóa Giờ</span>
+                                </button>
+                              )}
+                              <select
+                                disabled={updatingId === b.id}
+                                value={b.status}
+                                onChange={(e) =>
+                                  handleUpdateStatus(b.id, e.target.value as BookingStatus)
+                                }
+                                className="px-2.5 py-1.5 rounded-lg border border-gray-200 text-xs font-semibold focus:outline-none focus:border-gold-500 bg-white"
+                              >
+                                <option value="pending">Chờ xác nhận (Chưa khóa)</option>
+                                <option value="confirmed">Đã xác nhận (Đã khóa giờ)</option>
+                                <option value="completed">Đã hoàn thành</option>
+                                <option value="cancelled">Hủy lịch (Mở lại giờ)</option>
+                              </select>
+                            </div>
                           </td>
                         </tr>
                       ))
@@ -643,10 +664,23 @@ export default function AdminBookingsPage() {
                             <span className="text-sm font-black tracking-tight">{slot}</span>
 
                             {bookingOnSlot ? (
-                              <span className="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full line-clamp-1 flex items-center gap-0.5">
-                                <UserCheck className="w-2.5 h-2.5" />
-                                <span>{bookingOnSlot.customer_name.split(' ').slice(-1)[0]}</span>
-                              </span>
+                              bookingOnSlot.status === 'confirmed' ? (
+                                <span
+                                  className="text-[10px] font-bold text-rose-700 bg-rose-100 border border-rose-200 px-1.5 py-0.5 rounded-full line-clamp-1 flex items-center gap-0.5"
+                                  title={`Đã xác nhận cho: ${bookingOnSlot.customer_name} (ĐÃ KHÓA GIỜ)`}
+                                >
+                                  <Lock className="w-2.5 h-2.5 text-rose-600" />
+                                  <span>{bookingOnSlot.customer_name.split(' ').slice(-1)[0]} (Khóa)</span>
+                                </span>
+                              ) : (
+                                <span
+                                  className="text-[10px] font-bold text-amber-800 bg-amber-100 border border-amber-300 px-1.5 py-0.5 rounded-full line-clamp-1 flex items-center gap-0.5"
+                                  title={`Khách đặt chờ duyệt: ${bookingOnSlot.customer_name} (CHƯA KHÓA GIỜ)`}
+                                >
+                                  <Clock className="w-2.5 h-2.5 text-amber-600" />
+                                  <span>{bookingOnSlot.customer_name.split(' ').slice(-1)[0]} (Chờ)</span>
+                                </span>
+                              )
                             ) : isBusy ? (
                               <span className="text-[10px] font-bold text-rose-600 flex items-center gap-0.5">
                                 <Lock className="w-2.5 h-2.5" />

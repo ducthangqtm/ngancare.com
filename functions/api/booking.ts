@@ -96,8 +96,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             `📅 *Ngày hẹn:* ${booking_date}\n` +
             `⏰ *Khung giờ:* ${booking_time}\n` +
             (notes ? `📝 *Ghi chú:* ${notes}\n` : '') +
+            `📌 *Trạng thái:* ⏳ Chờ xác nhận (Chưa khóa giờ)\n` +
+            `💡 *Lưu ý:* Vui lòng gọi mẹ bé & bấm *Xác Nhận* trong Admin để chính thức khóa giờ này trên web!\n` +
             `\n⏱️ *Thời gian đặt:* ${nowStr}\n` +
-            `👉 [Xem danh sách lịch hẹn trong Admin](https://ngancare.com/admin/bookings)`;
+            `👉 [Vào duyệt & khóa giờ ngay](https://ngancare.com/admin/bookings)`;
 
           await fetch(`https://api.telegram.org/bot${teleToken}/sendMessage`, {
             method: 'POST',

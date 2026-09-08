@@ -45,7 +45,11 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         .bind(date)
         .all();
 
-      const busySlots = (busyResults || []).map((r: any) => r.time_slot);
+      const manualBusySlots = (busyResults || []).map((r: any) => r.time_slot);
+      const confirmedBookingSlots = (bookingResults || [])
+        .filter((b: any) => b.status === 'confirmed')
+        .map((b: any) => b.booking_time);
+      const busySlots = Array.from(new Set([...manualBusySlots, ...confirmedBookingSlots]));
 
       return new Response(
         JSON.stringify({
