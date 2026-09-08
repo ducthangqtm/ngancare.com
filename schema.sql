@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS services (
     description TEXT,
     features TEXT, -- Chuỗi JSON mô tả danh sách lợi ích
     image_url TEXT,
+    affiliate_url TEXT, -- Link Affiliate Shopee, TikTok Shop, Lazada, hoặc đối tác
     is_active INTEGER DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

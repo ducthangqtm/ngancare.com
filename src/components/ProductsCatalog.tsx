@@ -1,10 +1,30 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { MessageCircle, Check, Sparkles, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Check, Sparkles, ShieldCheck, ShoppingCart, ExternalLink } from 'lucide-react';
+import { Service } from '@/lib/types';
 import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function ProductsCatalog() {
-  const products = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
+  const [products, setProducts] = useState<Service[]>(
+    INITIAL_SERVICES.filter((s) => s.category === 'san_pham')
+  );
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('/api/services?category=san_pham');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          setProducts(data.data);
+        }
+      } catch (e) {
+        // Fallback to initial seed
+      }
+    };
+    fetchProducts();
+  }, []);
 
   return (
     <section id="san-pham" className="py-16 sm:py-20 bg-cream-200/40 relative">
@@ -63,7 +83,7 @@ export default function ProductsCatalog() {
                   </p>
 
                   <ul className="space-y-1.5 text-xs text-charcoal-800">
-                    {prod.features.slice(0, 2).map((feat, idx) => (
+                    {prod.features && prod.features.slice(0, 2).map((feat, idx) => (
                       <li key={idx} className="flex items-start gap-1.5">
                         <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
                         <span className="line-clamp-1">{feat}</span>
@@ -73,19 +93,46 @@ export default function ProductsCatalog() {
                 </div>
               </div>
 
-              {/* Zalo Quick Order CTA */}
-              <div className="p-5 pt-0">
-                <a
-                  href={`https://zalo.me/0339627769?text=${encodeURIComponent(
-                    'Chào Điều dưỡng Thúy Ngân, tôi muốn được tư vấn đặt mua: ' + prod.name
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-blue-200 hover:border-blue-600 transition-all shadow-sm active:scale-95"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Tư Vấn Nhanh Qua Zalo</span>
-                </a>
+              {/* Action Buttons: Affiliate Shopee/TikTok & Zalo */}
+              <div className="p-5 pt-0 space-y-2">
+                {prod.affiliate_url ? (
+                  <>
+                    <a
+                      href={prod.affiliate_url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95"
+                    >
+                      <ShoppingCart className="w-4 h-4" />
+                      <span>Mua Trên Shopee / Sàn TMĐT</span>
+                      <ExternalLink className="w-3 h-3 ml-0.5 opacity-80" />
+                    </a>
+
+                    <a
+                      href={`https://zalo.me/0339627769?text=${encodeURIComponent(
+                        'Chào Điều dưỡng Thúy Ngân, tôi muốn được tư vấn đặt mua: ' + prod.name
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-[11px] flex items-center justify-center gap-1.5 border border-blue-200 transition-all active:scale-95"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>Hoặc Tư Vấn Trực Tiếp Qua Zalo</span>
+                    </a>
+                  </>
+                ) : (
+                  <a
+                    href={`https://zalo.me/0339627769?text=${encodeURIComponent(
+                      'Chào Điều dưỡng Thúy Ngân, tôi muốn được tư vấn đặt mua: ' + prod.name
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 px-4 rounded-xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-xs flex items-center justify-center gap-2 border border-blue-200 hover:border-blue-600 transition-all shadow-sm active:scale-95"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span>Tư Vấn & Đặt Mua Qua Zalo</span>
+                  </a>
+                )}
               </div>
             </div>
           ))}

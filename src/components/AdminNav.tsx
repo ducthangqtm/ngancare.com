@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Calendar, Package, FileText, LogOut, LayoutDashboard, Globe } from 'lucide-react';
+import { Calendar, Stethoscope, ShoppingBag, FileText, LogOut, LayoutDashboard, Globe } from 'lucide-react';
 
 export default function AdminNav() {
   const pathname = usePathname();
@@ -12,6 +12,7 @@ export default function AdminNav() {
   const handleLogout = () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('ngancare_admin_token');
+      localStorage.removeItem('ngancare_admin_user');
     }
     router.push('/admin/login');
   };
@@ -19,7 +20,8 @@ export default function AdminNav() {
   const links = [
     { name: 'Tổng Quan', href: '/admin', icon: LayoutDashboard },
     { name: 'Lịch Hẹn Đặt', href: '/admin/bookings', icon: Calendar },
-    { name: 'Dịch Vụ & Sản Phẩm', href: '/admin/services', icon: Package },
+    { name: 'Dịch Vụ Y Tế', href: '/admin/services', icon: Stethoscope },
+    { name: 'Sản Phẩm & Affiliate', href: '/admin/products', icon: ShoppingBag },
     { name: 'Bài Viết Blog', href: '/admin/posts', icon: FileText },
   ];
 

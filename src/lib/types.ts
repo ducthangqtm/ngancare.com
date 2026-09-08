@@ -10,6 +10,7 @@ export interface Service {
   description: string;
   features: string[]; // parsed from JSON
   image_url: string;
+  affiliate_url?: string;
   is_active: number;
   created_at?: string;
 }

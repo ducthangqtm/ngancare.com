@@ -88,6 +88,7 @@ export const INITIAL_SERVICES: Service[] = [
       'Hỗ trợ tiêu mỡ thừa vùng bụng, thanh nhiệt giải độc',
     ],
     image_url: '/images/banner.jpg',
+    affiliate_url: 'https://shopee.vn',
     is_active: 1,
   },
   {
@@ -105,6 +106,7 @@ export const INITIAL_SERVICES: Service[] = [
       'Mờ thâm rạn, tái tạo da sáng hồng tự nhiên',
     ],
     image_url: '/images/banner.jpg',
+    affiliate_url: 'https://shopee.vn',
     is_active: 1,
   },
   {
@@ -122,6 +124,7 @@ export const INITIAL_SERVICES: Service[] = [
       'Làm dịu nhanh vết muỗi đốt và côn trùng cắn',
     ],
     image_url: '/images/banner.jpg',
+    affiliate_url: 'https://shopee.vn',
     is_active: 1,
   },
   {
@@ -139,6 +142,7 @@ export const INITIAL_SERVICES: Service[] = [
       'Giảm đau nhức mỏi cơ khớp sau cuộc chuyển dạ',
     ],
     image_url: '/images/banner.jpg',
+    affiliate_url: 'https://shopee.vn',
     is_active: 1,
   },
 ];

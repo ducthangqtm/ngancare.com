@@ -33,7 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
     const body = (await request.json()) as any;
-    const { name, slug, category, price, duration, description, features, image_url, is_active } = body;
+    const { name, slug, category, price, duration, description, features, image_url, affiliate_url, is_active } = body;
 
     if (!name || !slug || !category) {
       return new Response(
@@ -46,27 +46,50 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const featuresJson = JSON.stringify(Array.isArray(features) ? features : []);
 
     if (env && env.DB) {
-      await env.DB.prepare(`
-        INSERT INTO services (id, name, slug, category, price, duration, description, features, image_url, is_active, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-      `)
-        .bind(
-          id,
-          name,
-          slug,
-          category,
-          price !== undefined ? price : null,
-          duration !== undefined ? duration : null,
-          description || '',
-          featuresJson,
-          image_url || '/images/banner.jpg',
-          is_active !== undefined ? is_active : 1
-        )
-        .run();
+      try {
+        // Try insert with affiliate_url
+        await env.DB.prepare(`
+          INSERT INTO services (id, name, slug, category, price, duration, description, features, image_url, affiliate_url, is_active, created_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        `)
+          .bind(
+            id,
+            name,
+            slug,
+            category,
+            price !== undefined ? price : null,
+            duration !== undefined ? duration : null,
+            description || '',
+            featuresJson,
+            image_url || '/images/banner.jpg',
+            affiliate_url || '',
+            is_active !== undefined ? is_active : 1
+          )
+          .run();
+      } catch (colErr) {
+        // Fallback without affiliate_url if column not added yet
+        await env.DB.prepare(`
+          INSERT INTO services (id, name, slug, category, price, duration, description, features, image_url, is_active, created_at)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        `)
+          .bind(
+            id,
+            name,
+            slug,
+            category,
+            price !== undefined ? price : null,
+            duration !== undefined ? duration : null,
+            description || '',
+            featuresJson,
+            image_url || '/images/banner.jpg',
+            is_active !== undefined ? is_active : 1
+          )
+          .run();
+      }
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: 'Thêm dịch vụ / sản phẩm thành công!', data: { id, name } }),
+      JSON.stringify({ success: true, message: 'Thêm thành công!', data: { id, name } }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (err: any) {
@@ -81,10 +104,10 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
     const body = (await request.json()) as any;
-    const { id, name, slug, category, price, duration, description, features, image_url, is_active } = body;
+    const { id, name, slug, category, price, duration, description, features, image_url, affiliate_url, is_active } = body;
 
     if (!id) {
-      return new Response(JSON.stringify({ success: false, error: 'Thiếu ID dịch vụ cần cập nhật.' }), {
+      return new Response(JSON.stringify({ success: false, error: 'Thiếu ID cần cập nhật.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -93,24 +116,48 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
     const featuresJson = JSON.stringify(Array.isArray(features) ? features : []);
 
     if (env && env.DB) {
-      await env.DB.prepare(`
-        UPDATE services 
-        SET name = ?, slug = ?, category = ?, price = ?, duration = ?, description = ?, features = ?, image_url = ?, is_active = ?
-        WHERE id = ?
-      `)
-        .bind(
-          name,
-          slug,
-          category,
-          price !== undefined ? price : null,
-          duration !== undefined ? duration : null,
-          description || '',
-          featuresJson,
-          image_url || '/images/banner.jpg',
-          is_active !== undefined ? is_active : 1,
-          id
-        )
-        .run();
+      try {
+        // Try update with affiliate_url
+        await env.DB.prepare(`
+          UPDATE services 
+          SET name = ?, slug = ?, category = ?, price = ?, duration = ?, description = ?, features = ?, image_url = ?, affiliate_url = ?, is_active = ?
+          WHERE id = ?
+        `)
+          .bind(
+            name,
+            slug,
+            category,
+            price !== undefined ? price : null,
+            duration !== undefined ? duration : null,
+            description || '',
+            featuresJson,
+            image_url || '/images/banner.jpg',
+            affiliate_url !== undefined ? affiliate_url : '',
+            is_active !== undefined ? is_active : 1,
+            id
+          )
+          .run();
+      } catch (colErr) {
+        // Fallback without affiliate_url if column not added yet
+        await env.DB.prepare(`
+          UPDATE services 
+          SET name = ?, slug = ?, category = ?, price = ?, duration = ?, description = ?, features = ?, image_url = ?, is_active = ?
+          WHERE id = ?
+        `)
+          .bind(
+            name,
+            slug,
+            category,
+            price !== undefined ? price : null,
+            duration !== undefined ? duration : null,
+            description || '',
+            featuresJson,
+            image_url || '/images/banner.jpg',
+            is_active !== undefined ? is_active : 1,
+            id
+          )
+          .run();
+      }
     }
 
     return new Response(
@@ -132,7 +179,7 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
     const id = url.searchParams.get('id');
 
     if (!id) {
-      return new Response(JSON.stringify({ success: false, error: 'Thiếu ID dịch vụ cần xóa.' }), {
+      return new Response(JSON.stringify({ success: false, error: 'Thiếu ID cần xóa.' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -143,7 +190,7 @@ export const onRequestDelete: PagesFunction<Env> = async (context) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: 'Đã xóa dịch vụ/sản phẩm thành công.' }),
+      JSON.stringify({ success: true, message: 'Đã xóa thành công.' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (err: any) {

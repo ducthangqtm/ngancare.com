@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, slug, category, price, duration, description, features, image_url, is_active } = body;
+    const { name, slug, category, price, duration, description, features, image_url, affiliate_url, is_active } = body;
 
     if (!name || !slug || !category) {
       return NextResponse.json(
@@ -35,6 +35,7 @@ export async function POST(request: Request) {
       description: description || '',
       features: Array.isArray(features) ? features : [],
       image_url: image_url || '/images/banner.jpg',
+      affiliate_url: affiliate_url || '',
       is_active: is_active !== undefined ? is_active : 1,
       created_at: new Date().toISOString(),
     };

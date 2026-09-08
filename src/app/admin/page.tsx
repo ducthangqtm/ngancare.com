@@ -1,15 +1,19 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import AdminNav from '@/components/AdminNav';
-import { Calendar, Package, FileText, CheckCircle2, Clock, Users, ArrowRight } from 'lucide-react';
+import { Calendar, Stethoscope, ShoppingBag, FileText, ArrowRight } from 'lucide-react';
 import { INITIAL_BOOKINGS, INITIAL_SERVICES, INITIAL_POSTS } from '@/lib/seed-data';
 
 export default function AdminDashboardPage() {
-  const [bookingsCount, setBookingsCount] = useState(INITIAL_BOOKINGS.length);
-  const [servicesCount, setServicesCount] = useState(INITIAL_SERVICES.length);
-  const [postsCount, setPostsCount] = useState(INITIAL_POSTS.length);
+  const servicesOnly = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
+  const productsOnly = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
+
+  const [bookingsCount] = useState(INITIAL_BOOKINGS.length);
+  const [servicesCount] = useState(servicesOnly.length);
+  const [productsCount] = useState(productsOnly.length);
+  const [postsCount] = useState(INITIAL_POSTS.length);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
@@ -31,69 +35,80 @@ export default function AdminDashboardPage() {
           </Link>
         </div>
 
-        {/* Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
+        {/* Metric Cards (4 Cards) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tổng Lịch Hẹn</p>
-              <h3 className="text-3xl font-black text-charcoal-900 mt-1">{bookingsCount}</h3>
-              <p className="text-[11px] text-amber-600 font-medium mt-1">1 lịch hẹn đang chờ xử lý</p>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Lịch Hẹn Đặt</p>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{bookingsCount}</h3>
+              <p className="text-[11px] text-amber-600 font-medium mt-1">1 lịch hẹn đang chờ</p>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
-              <Calendar className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
+              <Calendar className="w-5 h-5" />
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
+          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Dịch Vụ & Sản Phẩm</p>
-              <h3 className="text-3xl font-black text-charcoal-900 mt-1">{servicesCount}</h3>
-              <p className="text-[11px] text-emerald-600 font-medium mt-1">Tất cả đang hoạt động</p>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Dịch Vụ Y Tế</p>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{servicesCount}</h3>
+              <p className="text-[11px] text-emerald-600 font-medium mt-1">Gói chăm sóc tại nhà</p>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
-              <Package className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+              <Stethoscope className="w-5 h-5" />
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
+          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Sản Phẩm & Affiliate</p>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{productsCount}</h3>
+              <p className="text-[11px] text-orange-600 font-medium mt-1">Shopee / TikTok Shop</p>
+            </div>
+            <div className="w-11 h-11 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
+              <ShoppingBag className="w-5 h-5" />
+            </div>
+          </div>
+
+          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Bài Viết Blog Y Khoa</p>
-              <h3 className="text-3xl font-black text-charcoal-900 mt-1">{postsCount}</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{postsCount}</h3>
               <p className="text-[11px] text-blue-600 font-medium mt-1">Chuẩn SEO YMYL Google</p>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
-              <FileText className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">
+              <FileText className="w-5 h-5" />
             </div>
           </div>
         </div>
 
         {/* Quick Management Shortcuts */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <Link
             href="/admin/bookings"
-            className="p-6 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
+            className="p-5 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
           >
             <div className="w-10 h-10 rounded-xl bg-gold-100 text-gold-600 flex items-center justify-center mb-3">
               <Calendar className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
-              <span>Xem & Cập Nhật Lịch Hẹn</span>
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
+              <span>Xem Lịch Hẹn</span>
               <ArrowRight className="w-4 h-4" />
             </h3>
             <p className="text-xs text-gray-500 mt-1">
-              Xem chi tiết địa chỉ, số điện thoại, ghi chú của mẹ và chuyển trạng thái xác nhận.
+              Xem chi tiết địa chỉ, số điện thoại của mẹ và chuyển trạng thái xác nhận.
             </p>
           </Link>
 
           <Link
             href="/admin/services"
-            className="p-6 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
+            className="p-5 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gold-100 text-gold-600 flex items-center justify-center mb-3">
-              <Package className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3">
+              <Stethoscope className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
-              <span>Quản Lý Dịch Vụ & Sản Phẩm</span>
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
+              <span>Dịch Vụ Y Tế</span>
               <ArrowRight className="w-4 h-4" />
             </h3>
             <p className="text-xs text-gray-500 mt-1">
@@ -102,18 +117,34 @@ export default function AdminDashboardPage() {
           </Link>
 
           <Link
-            href="/admin/posts"
-            className="p-6 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
+            href="/admin/products"
+            className="p-5 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gold-100 text-gold-600 flex items-center justify-center mb-3">
-              <FileText className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-3">
+              <ShoppingBag className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
-              <span>Soạn Thảo Bài Viết Blog</span>
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
+              <span>Sản Phẩm & Affiliate</span>
               <ArrowRight className="w-4 h-4" />
             </h3>
             <p className="text-xs text-gray-500 mt-1">
-              Viết bài chia sẻ kiến thức chuẩn YMYL, tự động sinh slug và nhập Meta SEO Title / Description.
+              Quản lý sản phẩm thiên nhiên và gắn link tiếp thị Shopee / TikTok Shop nhận hoa hồng.
+            </p>
+          </Link>
+
+          <Link
+            href="/admin/posts"
+            className="p-5 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-3">
+              <FileText className="w-5 h-5" />
+            </div>
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
+              <span>Bài Viết Blog</span>
+              <ArrowRight className="w-4 h-4" />
+            </h3>
+            <p className="text-xs text-gray-500 mt-1">
+              Soạn bài chia sẻ chuẩn YMYL, tự động sinh slug và nhập Meta SEO Title / Description.
             </p>
           </Link>
         </div>
