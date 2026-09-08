@@ -22,9 +22,18 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
   const [errorMessage, setErrorMessage] = useState('');
 
   // Service list for dropdown
-  const [serviceOptions, setServiceOptions] = useState(
-    INITIAL_SERVICES.filter((s) => s.category !== 'san_pham')
-  );
+  const [serviceOptions, setServiceOptions] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const cached = localStorage.getItem('ngancare_cached_services');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+    }
+    return INITIAL_SERVICES.filter((s) => s.category !== 'san_pham' && s.is_active === 1);
+  });
 
   React.useEffect(() => {
     const fetchServices = async () => {
@@ -36,6 +45,9 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
             (s: any) => s.category !== 'san_pham' && s.is_active === 1
           );
           setServiceOptions(medicalServices);
+          try {
+            localStorage.setItem('ngancare_cached_services', JSON.stringify(medicalServices));
+          } catch (e) {}
         }
       } catch (e) {
         // Fallback

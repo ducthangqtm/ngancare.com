@@ -11,9 +11,18 @@ interface CoreServicesProps {
 
 export default function CoreServices({ onSelectService }: CoreServicesProps) {
   // Flagship services (excluding pure physical products which have their own catalog)
-  const [services, setServices] = useState<Service[]>(
-    INITIAL_SERVICES.filter((s) => s.category !== 'san_pham')
-  );
+  const [services, setServices] = useState<Service[]>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const cached = localStorage.getItem('ngancare_cached_services');
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+    }
+    return INITIAL_SERVICES.filter((s) => s.category !== 'san_pham' && s.is_active === 1);
+  });
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -25,6 +34,9 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
             (s: Service) => s.category !== 'san_pham' && s.is_active === 1
           );
           setServices(medicalServices);
+          try {
+            localStorage.setItem('ngancare_cached_services', JSON.stringify(medicalServices));
+          } catch (e) {}
         }
       } catch (e) {
         // Fallback to initial seed
@@ -51,8 +63,8 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
           </p>
         </div>
 
-        {/* Services Grid (4 Flagship Healthcare Services) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        {/* Services Grid (Flagship Healthcare Services) */}
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${services.length === 3 ? 'lg:grid-cols-3 max-w-6xl mx-auto' : 'lg:grid-cols-4'} gap-6 items-stretch`}>
           {services.map((service, index) => {
             const isPopular = index === 0; // Most requested: Thông tắc tia sữa
             return (
