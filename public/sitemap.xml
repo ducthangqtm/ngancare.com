@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Trang Chủ -->
+  <url>
+    <loc>https://ngancare.com/</loc>
+    <lastmod>2026-03-09T00:00:00+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ngancare.com/images/banner.jpg</image:loc>
+      <image:title>Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội</image:title>
+      <image:caption>Dịch vụ thông tắc tia sữa và tắm bé sơ sinh tại nhà Hà Nội</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Chuyên mục Blog Cẩm Nang Mẹ & Bé -->
+  <url>
+    <loc>https://ngancare.com/blog</loc>
+    <lastmod>2026-03-09T00:00:00+07:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bài viết 1: Phác đồ thông tắc tia sữa chuẩn Y khoa -->
+  <url>
+    <loc>https://ngancare.com/blog/tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa</loc>
+    <lastmod>2026-03-09T00:00:00+07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ngancare.com/images/banner.jpg</image:loc>
+      <image:title>Tắc Tia Sữa Uống Gì, Làm Gì? Phác Đồ Xử Trí Chuẩn Y Khoa Không Đau</image:title>
+    </image:image>
+  </url>
+
+  <!-- Bài viết 2: Hướng dẫn tắm bé sơ sinh chưa rụng rốn -->
+  <url>
+    <loc>https://ngancare.com/blog/huong-dan-tam-be-so-sinh-chua-rung-ron-an-toan</loc>
+    <lastmod>2026-03-09T00:00:00+07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ngancare.com/images/banner.jpg</image:loc>
+      <image:title>Hướng Dẫn Tắm Bé Sơ Sinh Chưa Rụng Rốn An Toàn Chuẩn Điều Dưỡng</image:title>
+    </image:image>
+  </url>
+
+  <!-- Bài viết 3: Cẩm nang phục hồi mẹ sau sinh -->
+  <url>
+    <loc>https://ngancare.com/blog/cam-nang-phuc-hoi-co-the-cho-me-sau-sinh</loc>
+    <lastmod>2026-03-09T00:00:00+07:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ngancare.com/images/banner.jpg</image:loc>
+      <image:title>Cẩm Nang Phục Hồi Thể Trạng & Giảm Eo Thảo Dược Cho Mẹ Sau Sinh</image:title>
+    </image:image>
+  </url>
+
+</urlset>

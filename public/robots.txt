@@ -1,0 +1,9 @@
+# Robots.txt for Ngân Care (https://ngancare.com)
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location for search engines
+Sitemap: https://ngancare.com/sitemap.xml

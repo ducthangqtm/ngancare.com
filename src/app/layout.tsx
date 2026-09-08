@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: '%s | Ngân Care',
   },
   description:
-    'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội do Điều Dưỡng Nguyễn Thúy Ngân trực tiếp thực hiện. Có mặt sau 30-45 phút.',
+    'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội do Điều Dưỡng Nguyễn Thúy Ngân trực tiếp thực hiện. Có mặt sau 15 - 30 phút khu vực Long Biên & Gia Lâm.',
   keywords: [
     'thông tắc tia sữa hà nội',
     'thông tia sữa không đau',
@@ -28,6 +28,8 @@ export const metadata: Metadata = {
     'chăm sóc mẹ sau sinh hà nội',
     'ngân care',
     'điều dưỡng thúy ngân',
+    'thông tắc tia sữa long biên',
+    'thông tắc tia sữa gia lâm',
     'massage mẹ bầu',
     'cấp cứu tắc tia sữa 24 7',
   ],
@@ -38,15 +40,30 @@ export const metadata: Metadata = {
     telephone: true,
     address: true,
   },
+  alternates: {
+    canonical: 'https://ngancare.com',
+  },
+  manifest: '/manifest.json',
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội',
     description:
-      'Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương. Có mặt sau 30-45 phút nội thành Hà Nội.',
+      'Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương. Có mặt sau 15 - 30 phút Long Biên & Gia Lâm.',
     url: 'https://ngancare.com',
     siteName: 'Ngân Care',
     images: [
@@ -59,6 +76,13 @@ export const metadata: Metadata = {
     ],
     locale: 'vi_VN',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội | ĐD. Thúy Ngân',
+    description:
+      'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội.',
+    images: ['https://ngancare.com/images/banner.jpg'],
   },
 };
 

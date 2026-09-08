@@ -1,0 +1,21 @@
+{
+  "name": "Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa",
+  "short_name": "Ngân Care",
+  "description": "Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCF9F2",
+  "theme_color": "#D4AF37",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

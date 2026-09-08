@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +11,51 @@ export async function generateStaticParams() {
   return INITIAL_POSTS.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = INITIAL_POSTS.find((p) => p.slug === params.slug);
+  if (!post) {
+    return { title: 'Bài Viết | Ngân Care' };
+  }
+
+  const imageUrl = post.cover_image.startsWith('http')
+    ? post.cover_image
+    : `https://ngancare.com${post.cover_image}`;
+
+  return {
+    title: `${post.title} | Ngân Care`,
+    description: post.excerpt,
+    alternates: {
+      canonical: `https://ngancare.com/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: `https://ngancare.com/blog/${post.slug}`,
+      type: 'article',
+      publishedTime: post.created_at,
+      authors: [post.author || 'Điều Dưỡng Nguyễn Thúy Ngân'],
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [imageUrl],
+    },
+  };
 }
 
 export default function BlogPostDetail({ params }: { params: { slug: string } }) {
