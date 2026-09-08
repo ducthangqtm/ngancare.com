@@ -3,6 +3,48 @@ interface Env {
   DB: D1Database;
 }
 
+const ALL_SLOTS = [
+  '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+  '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30',
+  '18:00', '18:30', '19:00', '19:30', '20:00'
+];
+
+function expandBookingTimeToSlots(rawTime: string): string[] {
+  if (!rawTime) return [];
+  const trimmed = rawTime.trim();
+  if (ALL_SLOTS.includes(trimmed)) return [trimmed];
+
+  const times = trimmed.match(/\b\d{1,2}[:hH]\d{2}\b/g);
+  if (times && times.length >= 2) {
+    const norm = (t: string) => {
+      const p = t.replace(/[hH]/, ':').split(':');
+      return `${p[0].padStart(2, '0')}:${(p[1] || '00').padStart(2, '0')}`;
+    };
+    const start = norm(times[0]);
+    const end = norm(times[1]);
+    const inRange = ALL_SLOTS.filter((s) => s >= start && s <= end);
+    if (inRange.length > 0) return inRange;
+  }
+
+  if (times && times.length === 1) {
+    const p = times[0].replace(/[hH]/, ':').split(':');
+    const norm = `${p[0].padStart(2, '0')}:${(p[1] || '00').padStart(2, '0')}`;
+    if (ALL_SLOTS.includes(norm)) return [norm];
+  }
+
+  const matched = ALL_SLOTS.filter((s) => trimmed.includes(s));
+  if (matched.length > 0) return matched;
+
+  return [trimmed];
+}
+
+const NO_CACHE_HEADERS = {
+  'Content-Type': 'application/json',
+  'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0',
+  'Pragma': 'no-cache',
+  'Expires': '0',
+};
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
@@ -12,7 +54,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     if (!date) {
       return new Response(
         JSON.stringify({ success: false, error: 'Thiếu tham số ngày (date=YYYY-MM-DD).' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: NO_CACHE_HEADERS }
       );
     }
 
@@ -33,33 +75,46 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
       // Get slots locked by admin
       const { results: busyResults } = await env.DB.prepare(
-        'SELECT * FROM busy_slots WHERE date = ?'
+        'SELECT * FROM busy_slots WHERE TRIM(date) = ?'
       )
-        .bind(date)
+        .bind(date.trim())
         .all();
 
       // Get bookings for this date to display to admin
       const { results: bookingResults } = await env.DB.prepare(
-        'SELECT id, customer_name, customer_phone, service_id, booking_time, status FROM bookings WHERE booking_date = ?'
+        'SELECT id, customer_name, customer_phone, service_id, booking_time, status FROM bookings WHERE TRIM(booking_date) = ?'
       )
-        .bind(date)
+        .bind(date.trim())
         .all();
 
-      const manualBusySlots = (busyResults || []).map((r: any) => r.time_slot);
-      const confirmedBookingSlots = (bookingResults || [])
-        .filter((b: any) => b.status === 'confirmed')
-        .map((b: any) => b.booking_time);
+      const manualBusySlots: string[] = [];
+      let isAllDayBusy = false;
+      for (const r of (busyResults || [])) {
+        if (r.time_slot === 'ALL_DAY') {
+          isAllDayBusy = true;
+        } else {
+          manualBusySlots.push(...expandBookingTimeToSlots(r.time_slot));
+        }
+      }
+
+      const confirmedBookingSlots: string[] = [];
+      for (const b of (bookingResults || [])) {
+        if (b.status === 'confirmed' && b.booking_time) {
+          confirmedBookingSlots.push(...expandBookingTimeToSlots(b.booking_time));
+        }
+      }
+
       const busySlots = Array.from(new Set([...manualBusySlots, ...confirmedBookingSlots]));
 
       return new Response(
         JSON.stringify({
           success: true,
           date,
-          isAllDayBusy: busySlots.includes('ALL_DAY'),
+          isAllDayBusy,
           busySlots,
           bookings: bookingResults || [],
         }),
-        { status: 200, headers: { 'Content-Type': 'application/json' } }
+        { status: 200, headers: NO_CACHE_HEADERS }
       );
     }
 
@@ -71,7 +126,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         busySlots: [],
         bookings: [],
       }),
-      { status: 200, headers: { 'Content-Type': 'application/json' } }
+      { status: 200, headers: NO_CACHE_HEADERS }
     );
   } catch (err: any) {
     return new Response(

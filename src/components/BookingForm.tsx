@@ -73,7 +73,9 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
     const fetchSlots = async () => {
       setSlotsLoading(true);
       try {
-        const res = await fetch(`/api/slots?date=${bookingDate}`);
+        const res = await fetch(`/api/slots?date=${bookingDate}&_t=${Date.now()}`, {
+          cache: 'no-store',
+        });
         const data = await res.json();
         if (data.success) {
           setBusySlots(data.busySlots || []);
@@ -87,6 +89,31 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
     };
     fetchSlots();
   }, [bookingDate]);
+
+  const isSlotBusy = (slot: string) => {
+    if (!busySlots || busySlots.length === 0) return false;
+    if (busySlots.includes(slot)) return true;
+    for (const b of busySlots) {
+      if (!b) continue;
+      if (b === slot) return true;
+      const times = b.match(/\b\d{1,2}[:hH]\d{2}\b/g);
+      if (times && times.length >= 2) {
+        const norm = (t: string) => {
+          const p = t.replace(/[hH]/, ':').split(':');
+          return `${p[0].padStart(2, '0')}:${(p[1] || '00').padStart(2, '0')}`;
+        };
+        const start = norm(times[0]);
+        const end = norm(times[1]);
+        if (slot >= start && slot <= end) return true;
+      } else if (times && times.length === 1) {
+        const p = times[0].replace(/[hH]/, ':').split(':');
+        const norm = `${p[0].padStart(2, '0')}:${(p[1] || '00').padStart(2, '0')}`;
+        if (slot === norm) return true;
+      }
+      if (b.includes(slot)) return true;
+    }
+    return false;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,6 +133,11 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
     const finalTime = isCustomTime ? customTimeInput.trim() : bookingTime;
     if (!finalTime) {
       setErrorMessage('Vui lòng chọn khung giờ hoặc điền giờ hẹn mong muốn.');
+      return;
+    }
+
+    if (!isCustomTime && isSlotBusy(finalTime)) {
+      setErrorMessage(`Khung giờ ${finalTime} ngày ${bookingDate} hiện đã kín lịch. Vui lòng chọn khung giờ khác hoặc liên hệ hotline.`);
       return;
     }
 
@@ -354,7 +386,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                           </span>
                           <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-1.5">
                             {sec.slots.map((slot) => {
-                              const isBusy = busySlots.includes(slot);
+                              const isBusy = isSlotBusy(slot);
                               const isSelected = !isCustomTime && bookingTime === slot;
 
                               return (
@@ -363,19 +395,24 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                                   type="button"
                                   disabled={isBusy}
                                   onClick={() => {
+                                    if (isBusy) return;
                                     setIsCustomTime(false);
                                     setBookingTime(slot);
                                   }}
                                   className={`py-2 px-1 rounded-xl text-center text-xs font-bold transition-all ${
                                     isBusy
-                                      ? 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed line-through opacity-60'
+                                      ? 'bg-rose-50/80 text-rose-400 border border-rose-200 cursor-not-allowed line-through opacity-75'
                                       : isSelected
                                       ? 'bg-gold-500 text-white shadow-gold-soft border border-gold-500 scale-105'
                                       : 'bg-white hover:bg-gold-50 text-charcoal-900 border border-gray-200 hover:border-gold-300 shadow-xs'
                                   }`}
                                 >
                                   <span>{slot}</span>
-                                  {isBusy && <span className="block text-[8px] no-underline font-normal text-gray-400">Kín</span>}
+                                  {isBusy && (
+                                    <span className="block text-[8px] no-underline font-extrabold text-rose-600">
+                                      🔒 Kín
+                                    </span>
+                                  )}
                                 </button>
                               );
                             })}
