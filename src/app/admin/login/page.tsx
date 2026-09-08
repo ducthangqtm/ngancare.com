@@ -8,8 +8,8 @@ import Link from 'next/link';
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('ngancare2026!');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -34,7 +34,7 @@ export default function AdminLoginPage() {
         }
         router.push('/admin/bookings');
       } else {
-        setError(data.error || 'Đăng nhập không thành công.');
+        setError(data.error || 'Tên đăng nhập hoặc mật khẩu không đúng.');
       }
     } catch (err: any) {
       setError('Lỗi kết nối máy chủ xác thực.');
@@ -82,7 +82,8 @@ export default function AdminLoginPage() {
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 border border-gray-700 text-white text-sm focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500"
+                placeholder="Nhập tên đăng nhập..."
+                className="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 border border-gray-700 text-white text-sm focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 placeholder-gray-500"
               />
             </div>
 
@@ -96,7 +97,8 @@ export default function AdminLoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 border border-gray-700 text-white text-sm focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500"
+                placeholder="Nhập mật khẩu..."
+                className="w-full px-4 py-2.5 rounded-xl bg-charcoal-800 border border-gray-700 text-white text-sm focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 placeholder-gray-500"
               />
             </div>
 
@@ -118,12 +120,6 @@ export default function AdminLoginPage() {
                   </>
                 )}
               </button>
-            </div>
-
-            <div className="p-3 bg-charcoal-800/80 rounded-xl border border-gray-800 text-[11px] text-gray-400 space-y-1">
-              <p className="font-semibold text-gold-400">Tài khoản mặc định:</p>
-              <p>Username: <code className="text-white">admin</code></p>
-              <p>Password: <code className="text-white">ngancare2026!</code></p>
             </div>
 
           </form>

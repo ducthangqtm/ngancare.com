@@ -3,6 +3,13 @@ interface Env {
   DB: D1Database;
 }
 
+async function sha256(str: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
@@ -20,19 +27,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     // Check with D1 if available
     if (env && env.DB) {
-      const user = await env.DB.prepare('SELECT * FROM admins WHERE username = ?')
+      const user: any = await env.DB.prepare('SELECT * FROM admins WHERE username = ?')
         .bind(username)
         .first();
 
       if (user) {
-        // Simple hash check or dev fallback
-        isValid = true;
-      } else if (username === 'admin' && (password === 'ngancare2026!' || password === 'admin')) {
-        isValid = true;
+        const hash = await sha256(password);
+        // Supports either SHA-256 hash match OR plain text (if user edited plain text directly in D1 Studio)
+        if (user.password_hash === hash || user.password_hash === password) {
+          isValid = true;
+        }
       }
     } else {
-      // Local dev check
-      if (username === 'admin' && (password === 'ngancare2026!' || password === 'admin' || password === '123456')) {
+      // Local dev check fallback
+      if (username === 'admin' && (password === 'ngancare2026!' || password === 'admin')) {
         isValid = true;
       }
     }
