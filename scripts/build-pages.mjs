@@ -7,6 +7,20 @@ const tempDir = path.join(process.cwd(), 'src', 'app', '_api_temp');
 
 let moved = false;
 
+function restoreDir() {
+  if (moved && existsSync(tempDir)) {
+    for (let i = 0; i < 5; i++) {
+      try {
+        renameSync(tempDir, apiDir);
+        return;
+      } catch (e) {
+        // Sleep 500ms and retry if locked by Windows filesystem
+        execSync('node -e "setTimeout(()=>{}, 500)"');
+      }
+    }
+  }
+}
+
 try {
   if (existsSync(apiDir)) {
     renameSync(apiDir, tempDir);
@@ -23,7 +37,5 @@ try {
   console.error('Build error:', error);
   process.exit(1);
 } finally {
-  if (moved && existsSync(tempDir)) {
-    renameSync(tempDir, apiDir);
-  }
+  restoreDir();
 }

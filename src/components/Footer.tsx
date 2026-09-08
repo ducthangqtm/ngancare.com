@@ -161,7 +161,7 @@ export default function Footer() {
             © {new Date().getFullYear()} <strong>Ngân Care (ngancare.com)</strong>. Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/admin" className="hover:text-gold-400 transition-colors">
+            <Link href="/admin/login" className="hover:text-gold-400 transition-colors">
               Khu Vực Quản Trị (Admin)
             </Link>
             <span>•</span>
