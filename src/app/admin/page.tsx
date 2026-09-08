@@ -1,19 +1,62 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AdminNav from '@/components/AdminNav';
 import { Calendar, Stethoscope, ShoppingBag, FileText, ArrowRight } from 'lucide-react';
 import { INITIAL_BOOKINGS, INITIAL_SERVICES, INITIAL_POSTS } from '@/lib/seed-data';
+import { Service, Booking, BlogPost } from '@/lib/types';
 
 export default function AdminDashboardPage() {
-  const servicesOnly = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
-  const productsOnly = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
+  const initialServices = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
+  const initialProducts = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
 
-  const [bookingsCount] = useState(INITIAL_BOOKINGS.length);
-  const [servicesCount] = useState(servicesOnly.length);
-  const [productsCount] = useState(productsOnly.length);
-  const [postsCount] = useState(INITIAL_POSTS.length);
+  const [bookingsCount, setBookingsCount] = useState(INITIAL_BOOKINGS.length);
+  const [pendingCount, setPendingCount] = useState(
+    INITIAL_BOOKINGS.filter((b) => b.status === 'pending').length
+  );
+  const [servicesCount, setServicesCount] = useState(initialServices.length);
+  const [productsCount, setProductsCount] = useState(initialProducts.length);
+  const [postsCount, setPostsCount] = useState(INITIAL_POSTS.length);
+
+  // Fetch real-time live counts from D1 database
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      // 1. Fetch Bookings
+      try {
+        const res = await fetch('/api/admin/bookings');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setBookingsCount(data.data.length);
+          const pending = data.data.filter((b: Booking) => b.status === 'pending').length;
+          setPendingCount(pending);
+        }
+      } catch (e) {}
+
+      // 2. Fetch Services & Products
+      try {
+        const res = await fetch('/api/admin/services');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          const srvs = data.data.filter((s: Service) => s.category !== 'san_pham');
+          const prods = data.data.filter((s: Service) => s.category === 'san_pham');
+          setServicesCount(srvs.length);
+          setProductsCount(prods.length);
+        }
+      } catch (e) {}
+
+      // 3. Fetch Posts
+      try {
+        const res = await fetch('/api/admin/posts');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setPostsCount(data.data.length);
+        }
+      } catch (e) {}
+    };
+
+    fetchDashboardData();
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
@@ -24,7 +67,7 @@ export default function AdminDashboardPage() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900">Tổng Quan Bảng Điều Khiển</h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              Chào mừng trở lại! Dưới đây là tình hình hoạt động của Ngân Care.
+              Chào mừng trở lại! Dưới đây là dữ liệu hoạt động theo thời gian thực từ cơ sở dữ liệu Ngân Care.
             </p>
           </div>
           <Link
@@ -41,7 +84,9 @@ export default function AdminDashboardPage() {
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Lịch Hẹn Đặt</p>
               <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{bookingsCount}</h3>
-              <p className="text-[11px] text-amber-600 font-medium mt-1">1 lịch hẹn đang chờ</p>
+              <p className="text-[11px] text-amber-600 font-medium mt-1">
+                {pendingCount > 0 ? `${pendingCount} lịch hẹn đang chờ` : 'Không có lịch chờ'}
+              </p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
               <Calendar className="w-5 h-5" />

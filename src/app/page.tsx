@@ -8,6 +8,7 @@ import Process4Steps from '@/components/Process4Steps';
 import Commitments3No from '@/components/Commitments3No';
 import CoverageHanoi from '@/components/CoverageHanoi';
 import ProductsCatalog from '@/components/ProductsCatalog';
+import HomeBlogSection from '@/components/HomeBlogSection';
 import BookingForm from '@/components/BookingForm';
 import FAQ from '@/components/FAQ';
 
@@ -45,10 +46,13 @@ export default function HomePage() {
       {/* 7. Natural Products Catalog */}
       <ProductsCatalog />
 
-      {/* 8. Online Booking Form */}
+      {/* 8. Medical Blog Knowledge Section on Homepage */}
+      <HomeBlogSection />
+
+      {/* 9. Online Booking Form */}
       <BookingForm initialServiceId={selectedServiceId} />
 
-      {/* 9. Interactive Medical FAQ Accordion */}
+      {/* 10. Interactive Medical FAQ Accordion */}
       <FAQ />
     </>
   );

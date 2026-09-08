@@ -4,11 +4,26 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Calendar, Eye, User, ArrowRight, Search, Sparkles } from 'lucide-react';
+import { BlogPost } from '@/lib/types';
 import { INITIAL_POSTS } from '@/lib/seed-data';
 
 export default function BlogListPage() {
+  const [posts, setPosts] = useState<BlogPost[]>(INITIAL_POSTS);
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
   const [searchTerm, setSearchTerm] = useState('');
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch('/api/posts');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          setPosts(data.data);
+        }
+      } catch (e) {}
+    };
+    fetchPosts();
+  }, []);
 
   const categories = [
     'Tất cả',
@@ -17,7 +32,7 @@ export default function BlogListPage() {
     'Chăm Sóc Sau Sinh',
   ];
 
-  const filteredPosts = INITIAL_POSTS.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     const matchCat =
       selectedCategory === 'Tất cả' || post.category === selectedCategory;
     const matchSearch =
