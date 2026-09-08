@@ -31,13 +31,11 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
       try {
         const res = await fetch('/api/services');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           const medicalServices = data.data.filter(
             (s: any) => s.category !== 'san_pham' && s.is_active === 1
           );
-          if (medicalServices.length > 0) {
-            setServiceOptions(medicalServices);
-          }
+          setServiceOptions(medicalServices);
         }
       } catch (e) {
         // Fallback

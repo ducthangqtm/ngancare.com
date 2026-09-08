@@ -26,11 +26,10 @@ export default function AdminProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/admin/services');
+        const res = await fetch('/api/admin/products');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
-          const prods = data.data.filter((s: Service) => s.category === 'san_pham');
-          setProducts(prods);
+        if (data.success && Array.isArray(data.data)) {
+          setProducts(data.data);
         }
       } catch (e) {
         // Fallback to initial
@@ -106,7 +105,7 @@ export default function AdminProductsPage() {
     if (editingId) {
       // Update
       try {
-        await fetch('/api/admin/services', {
+        await fetch('/api/admin/products', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: editingId, ...productData }),
@@ -122,7 +121,7 @@ export default function AdminProductsPage() {
       };
 
       try {
-        await fetch('/api/admin/services', {
+        await fetch('/api/admin/products', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newProd),
@@ -144,7 +143,7 @@ export default function AdminProductsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Bạn có chắc muốn xóa sản phẩm này?')) return;
     try {
-      await fetch(`/api/admin/services?id=${id}`, { method: 'DELETE' });
+      await fetch(`/api/admin/products?id=${id}`, { method: 'DELETE' });
     } catch (e) {}
     setProducts(products.filter((p) => p.id !== id));
   };
@@ -152,7 +151,7 @@ export default function AdminProductsPage() {
   const handleToggleActive = async (id: string, currentStatus: number) => {
     const updated = currentStatus === 1 ? 0 : 1;
     try {
-      await fetch('/api/admin/services', {
+      await fetch('/api/admin/products', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, is_active: updated }),

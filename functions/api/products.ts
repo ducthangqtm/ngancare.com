@@ -1,31 +1,40 @@
-// Cloudflare Pages Function: GET /api/services
+// Cloudflare Pages Function: GET /api/products
 interface Env {
   DB: D1Database;
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   try {
-    const { request, env } = context;
-    const url = new URL(request.url);
-    const category = url.searchParams.get('category');
+    const { env } = context;
 
     if (env && env.DB) {
-      let query = "SELECT * FROM services WHERE is_active = 1 AND category != 'san_pham'";
-      const params: any[] = [];
+      // Ensure products table exists
+      try {
+        await env.DB.prepare(`
+          CREATE TABLE IF NOT EXISTS products (
+            id TEXT PRIMARY KEY,
+            name TEXT NOT NULL,
+            slug TEXT UNIQUE NOT NULL,
+            price REAL,
+            description TEXT,
+            features TEXT,
+            image_url TEXT,
+            affiliate_url TEXT,
+            is_active INTEGER DEFAULT 1,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          )
+        `).run();
+      } catch (e) {}
 
-      if (category && category !== 'all') {
-        query += ' AND category = ?';
-        params.push(category);
-      }
-
-      query += ' ORDER BY created_at ASC';
-
-      const stmt = env.DB.prepare(query);
-      const { results } = params.length > 0 ? await stmt.bind(...params).all() : await stmt.all();
+      const { results } = await env.DB.prepare(
+        'SELECT * FROM products WHERE is_active = 1 ORDER BY created_at ASC'
+      ).all();
 
       const mapped = results.map((r: any) => ({
         ...r,
+        category: 'san_pham',
         features: typeof r.features === 'string' ? JSON.parse(r.features || '[]') : r.features || [],
+        affiliate_url: r.affiliate_url || '',
       }));
 
       return new Response(JSON.stringify({ success: true, data: mapped }), {

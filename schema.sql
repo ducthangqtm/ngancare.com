@@ -3,23 +3,36 @@
 -- Nền tảng: Cloudflare D1 (Serverless SQLite)
 -- =========================================================
 
--- 1. Bảng Dịch Vụ & Sản Phẩm
+-- 1. Bảng Dịch Vụ Y Tế Chăm Sóc Mẹ & Bé
 CREATE TABLE IF NOT EXISTS services (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
     slug TEXT UNIQUE NOT NULL,
-    category TEXT NOT NULL, -- 'thong_tac', 'tam_be', 'sau_sinh', 'me_bau', 'san_pham'
+    category TEXT NOT NULL, -- 'thong_tac', 'tam_be', 'sau_sinh', 'me_bau'
     price REAL,
-    duration INTEGER, -- Thời lượng tính bằng phút (null với sản phẩm)
+    duration INTEGER, -- Thời lượng tính bằng phút
     description TEXT,
     features TEXT, -- Chuỗi JSON mô tả danh sách lợi ích
     image_url TEXT,
-    affiliate_url TEXT, -- Link Affiliate Shopee, TikTok Shop, Lazada, hoặc đối tác
     is_active INTEGER DEFAULT 1,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. Bảng Đặt Lịch Hẹn
+-- 2. Bảng Sản Phẩm Thiên Nhiên & Tiếp Thị Liên Kết (Affiliate)
+CREATE TABLE IF NOT EXISTS products (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    slug TEXT UNIQUE NOT NULL,
+    price REAL,
+    description TEXT,
+    features TEXT, -- Chuỗi JSON mô tả điểm nổi bật
+    image_url TEXT,
+    affiliate_url TEXT, -- Link Shopee, TikTok Shop, Lazada
+    is_active INTEGER DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Bảng Đặt Lịch Hẹn Chăm Sóc Tại Nhà
 CREATE TABLE IF NOT EXISTS bookings (
     id TEXT PRIMARY KEY,
     customer_name TEXT NOT NULL,
@@ -34,7 +47,7 @@ CREATE TABLE IF NOT EXISTS bookings (
     FOREIGN KEY (service_id) REFERENCES services(id)
 );
 
--- 3. Bảng Bài Viết Blog (Chuẩn SEO YMYL)
+-- 4. Bảng Bài Viết Blog Y Khoa (Chuẩn SEO YMYL)
 CREATE TABLE IF NOT EXISTS posts (
     id TEXT PRIMARY KEY,
     title TEXT NOT NULL,
@@ -52,7 +65,7 @@ CREATE TABLE IF NOT EXISTS posts (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- 4. Bảng Quản Trị Viên (Admin)
+-- 5. Bảng Quản Trị Viên (Admin)
 CREATE TABLE IF NOT EXISTS admins (
     id TEXT PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
@@ -61,11 +74,17 @@ CREATE TABLE IF NOT EXISTS admins (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 6. Bảng Cài Đặt Hệ Thống & Cờ Khởi Tạo
+CREATE TABLE IF NOT EXISTS system_settings (
+    key TEXT PRIMARY KEY,
+    value TEXT
+);
+
 -- =========================================================
 -- SEED DATA (DỮ LIỆU KHỞI TẠO MẪU)
 -- =========================================================
 
--- Dữ liệu Dịch vụ cốt lõi & Sản phẩm thiên nhiên
+-- Dữ liệu Dịch vụ y tế cốt lõi
 INSERT OR IGNORE INTO services (id, name, slug, category, price, duration, description, features, image_url, is_active)
 VALUES
 ('srv-01', 'Thông Tắc Tia Sữa & Giải Tỏa Cương Căng Tức Thì', 'thong-tac-tia-sua-khong-dau', 'thong_tac', 350000, 75,
@@ -86,24 +105,32 @@ VALUES
 ('srv-04', 'Massage Mẹ Bầu Thư Giãn Giảm Đau Nhức Thai Kỳ', 'massage-me-bau-thu-gian', 'me_bau', 350000, 75,
  'Liệu trình massage êm dịu chuyên biệt cho mẹ từ tuần thứ 16 trở đi. Giúp giải tỏa áp lực cột sống, giảm phù nề chân tay, cải thiện chứng mất ngủ và kết nối gắn kết yêu thương giữa mẹ và bé.',
  '["Sử dụng dầu massage hữu cơ thiên nhiên 100% an toàn","Kỹ thuật vuốt miết nhẹ nhàng chuẩn y học cổ truyền","Giảm chuột rút, phù nề bàn chân và đau khớp háng","Tư vấn tư thế nằm nghỉ ngơi tốt nhất cho thai nhi"]',
- '/images/banner.jpg', 1),
-
-('sp-01', 'Cao Chè Vằng Sẻ Quảng Trị Nguyên Chất', 'cao-che-vang-se-nguyen-chat', 'san_pham', 180000, NULL,
- 'Chiết xuất 100% từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
- '["100% nguyên chất, không chất bảo quản","Kích sữa về nhanh, sánh đặc dồi dào","Hỗ trợ giảm cân, tiêu mỡ bụng tự nhiên"]',
- '/images/banner.jpg', 1),
-
-('sp-02', 'Cốt Gừng Nghệ Hạt Gấc Hạ Thổ 3 Tháng 10 Ngày', 'cot-gung-nghe-hat-gac-ha-tho', 'san_pham', 250000, NULL,
- 'Bài thuốc cổ truyền làm ấm cơ thể, phòng chống gió máy hậu sản, dưỡng sáng mờ thâm rạn da bụng, đùi và hỗ trợ săn chắc vòng eo sau sinh.',
- '["Gừng ta và nghệ nếp nguyên chất hạ thổ sâu","Giữ ấm cơ thể, tránh cảm lạnh sau sinh","Mờ thâm rạn, tái tạo làn da săn chắc mịn màng"]',
- '/images/banner.jpg', 1),
-
-('sp-03', 'Tinh Dầu Tràm Gió Huế Nguyên Chất', 'tinh-dau-tram-hue-nguyen-chat', 'san_pham', 160000, NULL,
- 'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ an toàn tuyệt đối cho trẻ sơ sinh. Giúp giữ ấm, phòng cảm lạnh, xua muỗi và chống côn trùng cắn.',
- '["Chiết xuất lá tràm tự nhiên 100%","Giữ ấm phổi, ngực, bụng và lòng bàn chân cho bé","Làm dịu nhanh vết muỗi và côn trùng đốt"]',
  '/images/banner.jpg', 1);
 
--- Dữ liệu Bài viết Y khoa mẫu (Chuẩn YMYL)
+-- Dữ liệu Sản phẩm thiên nhiên & Affiliate
+INSERT OR IGNORE INTO products (id, name, slug, price, description, features, image_url, affiliate_url, is_active)
+VALUES
+('sp-01', 'Cao Chè Vằng Sẻ Quảng Trị Nguyên Chất', 'cao-che-vang-se-nguyen-chat', 180000,
+ 'Chiết xuất 100% từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
+ '["100% nguyên chất, không chất bảo quản","Kích sữa về nhanh, sánh đặc dồi dào","Hỗ trợ giảm cân, tiêu mỡ bụng tự nhiên"]',
+ '/images/banner.jpg', 'https://shopee.vn', 1),
+
+('sp-02', 'Cốt Gừng Nghệ Hạt Gấc Hạ Thổ 3 Tháng 10 Ngày', 'cot-gung-nghe-hat-gac-ha-tho', 250000,
+ 'Bài thuốc cổ truyền làm ấm cơ thể, phòng chống gió máy hậu sản, dưỡng sáng mờ thâm rạn da bụng, đùi và hỗ trợ săn chắc vòng eo sau sinh.',
+ '["Gừng ta và nghệ nếp nguyên chất hạ thổ sâu","Giữ ấm cơ thể, tránh cảm lạnh sau sinh","Mờ thâm rạn, tái tạo làn da săn chắc mịn màng"]',
+ '/images/banner.jpg', 'https://shopee.vn', 1),
+
+('sp-03', 'Tinh Dầu Tràm Gió Huế Nguyên Chất', 'tinh-dau-tram-hue-nguyen-chat', 160000,
+ 'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ an toàn tuyệt đối cho trẻ sơ sinh. Giúp giữ ấm, phòng cảm lạnh, xua muỗi và chống côn trùng cắn.',
+ '["Chiết xuất lá tràm tự nhiên 100%","Giữ ấm phổi, ngực, bụng và lòng bàn chân cho bé","Làm dịu nhanh vết muỗi và côn trùng đốt"]',
+ '/images/banner.jpg', 'https://shopee.vn', 1),
+
+('sp-04', 'Lá Xông Tắm Thảo Dược Mẹ Sau Sinh Dao Đỏ', 'la-xong-tam-thao-duoc-dao-do', 220000,
+ 'Bài thuốc lá xông tắm cổ truyền của đồng bào Dao Đỏ hơn 10 vị thảo mộc rừng giúp mẹ hồi phục thể lực, lưu thông khí huyết và sạch sản dịch.',
+ '["Thảo mộc rừng Tây Bắc sấy sạch","Lưu thông khí huyết giảm đau mỏi","Đào thải độc tố qua tuyến mồ hôi"]',
+ '/images/banner.jpg', 'https://shopee.vn', 1);
+
+-- Dữ liệu Bài viết Y khoa mẫu
 INSERT OR IGNORE INTO posts (id, title, slug, excerpt, content, cover_image, category, author, views, is_published, meta_title, meta_description)
 VALUES
 ('post-01', 
@@ -148,7 +175,7 @@ VALUES
  'Bí quyết phục hồi sức khỏe, giảm đau lưng hông và lấy lại vóc dáng sau sinh an toàn từ chuyên gia Điều Dưỡng Thúy Ngân.'
 );
 
--- Tài khoản Quản trị viên mặc định (Password: ngancare2026!)
+-- Tài khoản Quản trị viên
 INSERT OR IGNORE INTO admins (id, username, password_hash, role)
 VALUES
-('adm-01', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin'); -- SHA-256 của 'admin' hoặc hỗ trợ kiểm tra linh hoạt
+('adm-01', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin');

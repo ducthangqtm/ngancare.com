@@ -14,9 +14,9 @@ export default function ProductsCatalog() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/services?category=san_pham');
+        const res = await fetch('/api/products');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setProducts(data.data);
         }
       } catch (e) {

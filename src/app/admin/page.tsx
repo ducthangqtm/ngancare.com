@@ -33,15 +33,21 @@ export default function AdminDashboardPage() {
         }
       } catch (e) {}
 
-      // 2. Fetch Services & Products
+      // 2. Fetch Services
       try {
         const res = await fetch('/api/admin/services');
         const data = await res.json();
         if (data.success && Array.isArray(data.data)) {
-          const srvs = data.data.filter((s: Service) => s.category !== 'san_pham');
-          const prods = data.data.filter((s: Service) => s.category === 'san_pham');
-          setServicesCount(srvs.length);
-          setProductsCount(prods.length);
+          setServicesCount(data.data.length);
+        }
+      } catch (e) {}
+
+      // 3. Fetch Products
+      try {
+        const res = await fetch('/api/admin/products');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setProductsCount(data.data.length);
         }
       } catch (e) {}
 

@@ -26,7 +26,7 @@ export default function AdminServicesPage() {
       try {
         const res = await fetch('/api/admin/services');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setServices(data.data.filter((s: Service) => s.category !== 'san_pham'));
         }
       } catch (e) {

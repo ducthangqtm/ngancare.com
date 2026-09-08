@@ -20,13 +20,11 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
       try {
         const res = await fetch('/api/services');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           const medicalServices = data.data.filter(
             (s: Service) => s.category !== 'san_pham' && s.is_active === 1
           );
-          if (medicalServices.length > 0) {
-            setServices(medicalServices);
-          }
+          setServices(medicalServices);
         }
       } catch (e) {
         // Fallback to initial seed
