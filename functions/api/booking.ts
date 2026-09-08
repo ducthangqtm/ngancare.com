@@ -65,7 +65,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         }
 
         let teleToken = '8700850904:AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4';
-        let teleChatId = '';
+        let teleChatId = '-5427119274';
 
         const tokenRow: any = await env.DB.prepare(
           "SELECT value FROM system_settings WHERE key = 'telegram_bot_token'"

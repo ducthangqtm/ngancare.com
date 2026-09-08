@@ -4,6 +4,7 @@ interface Env {
 }
 
 const DEFAULT_BOT_TOKEN = '8700850904:AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4';
+const DEFAULT_CHAT_ID = '-5427119274';
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   try {
@@ -12,7 +13,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const action = url.searchParams.get('action');
 
     let botToken = DEFAULT_BOT_TOKEN;
-    let chatId = '';
+    let chatId = DEFAULT_CHAT_ID;
 
     if (env && env.DB) {
       const tokenRow: any = await env.DB.prepare(
