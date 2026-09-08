@@ -10,6 +10,12 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const category = url.searchParams.get('category');
 
     if (env && env.DB) {
+      try {
+        await env.DB.prepare('ALTER TABLE services ADD COLUMN affiliate_url TEXT').run();
+      } catch (e) {
+        // Column already exists, ignore
+      }
+
       let query = 'SELECT * FROM services WHERE is_active = 1';
       const params: any[] = [];
 
@@ -26,6 +32,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       const mapped = results.map((r: any) => ({
         ...r,
         features: typeof r.features === 'string' ? JSON.parse(r.features || '[]') : r.features || [],
+        affiliate_url: r.affiliate_url || '',
       }));
 
       return new Response(JSON.stringify({ success: true, data: mapped }), {
