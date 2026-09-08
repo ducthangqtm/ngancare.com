@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import AdminNav from '@/components/AdminNav';
-import { Package, Plus, Trash2, Edit2, Check, X, Clock, DollarSign, Sparkles } from 'lucide-react';
+import { Package, Plus, Trash2, Edit2, Check, X, Clock, DollarSign, Sparkles, Loader2 } from 'lucide-react';
 import { Service, ServiceCategory } from '@/lib/types';
 import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function AdminServicesPage() {
-  const [services, setServices] = useState<Service[]>(INITIAL_SERVICES.filter((s) => s.category !== 'san_pham'));
+  const [services, setServices] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
 
@@ -31,6 +32,8 @@ export default function AdminServicesPage() {
         }
       } catch (e) {
         // Fallback to initial services
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchServices();
@@ -340,7 +343,23 @@ export default function AdminServicesPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {services.map((item) => (
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center text-gray-500">
+                      <div className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-5 h-5 text-gold-500 animate-spin" />
+                        <span>Đang đồng bộ dữ liệu dịch vụ...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : services.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center text-gray-400">
+                      Chưa có dịch vụ nào.
+                    </td>
+                  </tr>
+                ) : (
+                  services.map((item) => (
                   <tr key={item.id} className="hover:bg-cream-50/50 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-bold text-charcoal-900">{item.name}</p>
@@ -401,7 +420,7 @@ export default function AdminServicesPage() {
                       </div>
                     </td>
                   </tr>
-                ))}
+                )))}
               </tbody>
             </table>
           </div>

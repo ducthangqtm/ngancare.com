@@ -11,13 +11,11 @@ export default function AdminDashboardPage() {
   const initialServices = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
   const initialProducts = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
 
-  const [bookingsCount, setBookingsCount] = useState(INITIAL_BOOKINGS.length);
-  const [pendingCount, setPendingCount] = useState(
-    INITIAL_BOOKINGS.filter((b) => b.status === 'pending').length
-  );
-  const [servicesCount, setServicesCount] = useState(initialServices.length);
-  const [productsCount, setProductsCount] = useState(initialProducts.length);
-  const [postsCount, setPostsCount] = useState(INITIAL_POSTS.length);
+  const [bookingsCount, setBookingsCount] = useState<number | null>(null);
+  const [pendingCount, setPendingCount] = useState<number | null>(null);
+  const [servicesCount, setServicesCount] = useState<number | null>(null);
+  const [productsCount, setProductsCount] = useState<number | null>(null);
+  const [postsCount, setPostsCount] = useState<number | null>(null);
 
   // Fetch real-time live counts from D1 database
   useEffect(() => {
@@ -30,8 +28,14 @@ export default function AdminDashboardPage() {
           setBookingsCount(data.data.length);
           const pending = data.data.filter((b: Booking) => b.status === 'pending').length;
           setPendingCount(pending);
+        } else {
+          setBookingsCount(0);
+          setPendingCount(0);
         }
-      } catch (e) {}
+      } catch (e) {
+        setBookingsCount(0);
+        setPendingCount(0);
+      }
 
       // 2. Fetch Services
       try {
@@ -39,8 +43,12 @@ export default function AdminDashboardPage() {
         const data = await res.json();
         if (data.success && Array.isArray(data.data)) {
           setServicesCount(data.data.length);
+        } else {
+          setServicesCount(0);
         }
-      } catch (e) {}
+      } catch (e) {
+        setServicesCount(0);
+      }
 
       // 3. Fetch Products
       try {
@@ -48,17 +56,25 @@ export default function AdminDashboardPage() {
         const data = await res.json();
         if (data.success && Array.isArray(data.data)) {
           setProductsCount(data.data.length);
+        } else {
+          setProductsCount(0);
         }
-      } catch (e) {}
+      } catch (e) {
+        setProductsCount(0);
+      }
 
-      // 3. Fetch Posts
+      // 4. Fetch Posts
       try {
         const res = await fetch('/api/admin/posts');
         const data = await res.json();
         if (data.success && Array.isArray(data.data)) {
           setPostsCount(data.data.length);
+        } else {
+          setPostsCount(0);
         }
-      } catch (e) {}
+      } catch (e) {
+        setPostsCount(0);
+      }
     };
 
     fetchDashboardData();
@@ -76,6 +92,7 @@ export default function AdminDashboardPage() {
               Chào mừng trở lại! Dưới đây là dữ liệu hoạt động theo thời gian thực từ cơ sở dữ liệu Ngân Care.
             </p>
           </div>
+
           <Link
             href="/admin/bookings"
             className="px-4 py-2 rounded-xl bg-gold-500 hover:bg-gold-600 text-white font-bold text-xs sm:text-sm shadow-sm transition-all"
@@ -89,9 +106,23 @@ export default function AdminDashboardPage() {
           <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Lịch Hẹn Đặt</p>
-              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{bookingsCount}</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">
+                {bookingsCount !== null ? (
+                  bookingsCount
+                ) : (
+                  <span className="inline-block w-8 h-8 bg-gray-200 animate-pulse rounded-lg" />
+                )}
+              </h3>
               <p className="text-[11px] text-amber-600 font-medium mt-1">
-                {pendingCount > 0 ? `${pendingCount} lịch hẹn đang chờ` : 'Không có lịch chờ'}
+                {pendingCount !== null ? (
+                  pendingCount > 0 ? (
+                    `${pendingCount} lịch hẹn đang chờ`
+                  ) : (
+                    'Không có lịch chờ'
+                  )
+                ) : (
+                  'Đang tải...'
+                )}
               </p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center">
@@ -102,7 +133,13 @@ export default function AdminDashboardPage() {
           <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Dịch Vụ Y Tế</p>
-              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{servicesCount}</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">
+                {servicesCount !== null ? (
+                  servicesCount
+                ) : (
+                  <span className="inline-block w-8 h-8 bg-gray-200 animate-pulse rounded-lg" />
+                )}
+              </h3>
               <p className="text-[11px] text-emerald-600 font-medium mt-1">Gói chăm sóc tại nhà</p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
@@ -113,7 +150,13 @@ export default function AdminDashboardPage() {
           <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Sản Phẩm & Affiliate</p>
-              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{productsCount}</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">
+                {productsCount !== null ? (
+                  productsCount
+                ) : (
+                  <span className="inline-block w-8 h-8 bg-gray-200 animate-pulse rounded-lg" />
+                )}
+              </h3>
               <p className="text-[11px] text-orange-600 font-medium mt-1">Shopee / TikTok Shop</p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
@@ -124,7 +167,13 @@ export default function AdminDashboardPage() {
           <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Bài Viết Blog Y Khoa</p>
-              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">{postsCount}</h3>
+              <h3 className="text-2xl sm:text-3xl font-black text-charcoal-900 mt-1">
+                {postsCount !== null ? (
+                  postsCount
+                ) : (
+                  <span className="inline-block w-8 h-8 bg-gray-200 animate-pulse rounded-lg" />
+                )}
+              </h3>
               <p className="text-[11px] text-blue-600 font-medium mt-1">Chuẩn SEO YMYL Google</p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center">

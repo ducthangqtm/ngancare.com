@@ -7,7 +7,8 @@ import { Booking, BookingStatus } from '@/lib/types';
 import { INITIAL_BOOKINGS } from '@/lib/seed-data';
 
 export default function AdminBookingsPage() {
-  const [bookings, setBookings] = useState<Booking[]>(INITIAL_BOOKINGS);
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -18,11 +19,13 @@ export default function AdminBookingsPage() {
       try {
         const res = await fetch('/api/admin/bookings');
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setBookings(data.data);
         }
       } catch (e) {
-        // use fallback initial
+        // error
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchBookings();
@@ -107,7 +110,7 @@ export default function AdminBookingsPage() {
             </p>
           </div>
           <div className="text-xs text-gray-500">
-            Tổng cộng: <strong className="text-charcoal-900">{filtered.length}</strong> lịch hẹn
+            Tổng cộng: <strong className="text-charcoal-900">{isLoading ? '...' : filtered.length}</strong> lịch hẹn
           </div>
         </div>
 
@@ -155,7 +158,23 @@ export default function AdminBookingsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {filtered.map((b) => (
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center text-gray-500">
+                      <div className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-5 h-5 text-gold-500 animate-spin" />
+                        <span>Đang đồng bộ dữ liệu lịch hẹn từ hệ thống...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : filtered.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="py-12 text-center text-gray-400">
+                      Chưa có lịch hẹn nào.
+                    </td>
+                  </tr>
+                ) : (
+                  filtered.map((b) => (
                   <tr key={b.id} className="hover:bg-cream-50/60 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-bold text-charcoal-900">{b.customer_name}</p>
@@ -204,7 +223,7 @@ export default function AdminBookingsPage() {
                       </select>
                     </td>
                   </tr>
-                ))}
+                )))}
               </tbody>
             </table>
           </div>

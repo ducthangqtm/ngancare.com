@@ -2,14 +2,33 @@
 
 import React, { useState, useEffect } from 'react';
 import AdminNav from '@/components/AdminNav';
-import { FileText, Plus, Trash2, Edit3, Eye, Check, X, Sparkles, Globe } from 'lucide-react';
+import { FileText, Plus, Trash2, Edit3, Eye, Check, X, Sparkles, Globe, Loader2 } from 'lucide-react';
 import { BlogPost } from '@/lib/types';
 import { INITIAL_POSTS } from '@/lib/seed-data';
 
 export default function AdminPostsPage() {
-  const [posts, setPosts] = useState<BlogPost[]>(INITIAL_POSTS);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
+
+  // Fetch live posts
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch('/api/admin/posts');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setPosts(data.data);
+        }
+      } catch (e) {
+        // Fallback
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   // Form fields
   const [title, setTitle] = useState('');
@@ -334,7 +353,23 @@ export default function AdminPostsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {posts.map((p) => (
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={5} className="py-12 text-center text-gray-500">
+                      <div className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-5 h-5 text-gold-500 animate-spin" />
+                        <span>Đang đồng bộ dữ liệu bài viết...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : posts.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="py-12 text-center text-gray-400">
+                      Chưa có bài viết nào.
+                    </td>
+                  </tr>
+                ) : (
+                  posts.map((p) => (
                   <tr key={p.id} className="hover:bg-cream-50/50 transition-colors">
                     <td className="py-4 px-4 max-w-md">
                       <p className="font-bold text-charcoal-900 line-clamp-1">{p.title}</p>
@@ -382,7 +417,7 @@ export default function AdminPostsPage() {
                       </div>
                     </td>
                   </tr>
-                ))}
+                )))}
               </tbody>
             </table>
           </div>

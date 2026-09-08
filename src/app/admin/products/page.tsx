@@ -2,14 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import AdminNav from '@/components/AdminNav';
-import { ShoppingBag, Plus, Trash2, Edit2, X, ExternalLink, Sparkles, Image as ImageIcon, Link2 } from 'lucide-react';
+import { ShoppingBag, Plus, Trash2, Edit2, X, ExternalLink, Sparkles, Image as ImageIcon, Link2, Loader2 } from 'lucide-react';
 import { Service } from '@/lib/types';
 import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function AdminProductsPage() {
-  const [products, setProducts] = useState<Service[]>(
-    INITIAL_SERVICES.filter((s) => s.category === 'san_pham')
-  );
+  const [products, setProducts] = useState<Service[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
 
@@ -33,6 +32,8 @@ export default function AdminProductsPage() {
         }
       } catch (e) {
         // Fallback to initial
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchProducts();
@@ -349,7 +350,23 @@ export default function AdminProductsPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {products.map((item) => (
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={5} className="py-12 text-center text-gray-500">
+                      <div className="flex items-center justify-center gap-2">
+                        <Loader2 className="w-5 h-5 text-gold-500 animate-spin" />
+                        <span>Đang đồng bộ dữ liệu sản phẩm...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : products.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="py-12 text-center text-gray-400">
+                      Chưa có sản phẩm nào.
+                    </td>
+                  </tr>
+                ) : (
+                  products.map((item) => (
                   <tr key={item.id} className="hover:bg-cream-50/50 transition-colors">
                     <td className="py-4 px-4 max-w-xs">
                       <p className="font-bold text-charcoal-900">{item.name}</p>
@@ -409,7 +426,7 @@ export default function AdminProductsPage() {
                       </div>
                     </td>
                   </tr>
-                ))}
+                )))}
               </tbody>
             </table>
           </div>
