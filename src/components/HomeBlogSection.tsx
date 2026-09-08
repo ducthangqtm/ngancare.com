@@ -26,7 +26,7 @@ export default function HomeBlogSection() {
   }, []);
 
   return (
-    <section id="blog-kien-thuc" className="py-16 sm:py-20 bg-cream-100/40 relative">
+    <section id="blog-kien-thuc" className="py-16 sm:py-20 bg-cream-100/40 relative scroll-mt-16 sm:scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}

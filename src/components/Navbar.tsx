@@ -24,7 +24,7 @@ export default function Navbar() {
     { name: 'Quy Trình', href: '/#quy-trinh' },
     { name: 'Cam Kết', href: '/#cam-ket' },
     { name: 'Sản Phẩm', href: '/#san-pham' },
-    { name: 'Blog Kiến Thức', href: '/blog' },
+    { name: 'Blog Kiến Thức', href: '/#blog-kien-thuc' },
   ];
 
   return (
