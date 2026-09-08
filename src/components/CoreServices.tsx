@@ -1,5 +1,8 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { Sparkles, Check, Clock, Calendar, ArrowRight, Star } from 'lucide-react';
+import { Service } from '@/lib/types';
 import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 interface CoreServicesProps {
@@ -8,7 +11,29 @@ interface CoreServicesProps {
 
 export default function CoreServices({ onSelectService }: CoreServicesProps) {
   // Flagship services (excluding pure physical products which have their own catalog)
-  const services = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
+  const [services, setServices] = useState<Service[]>(
+    INITIAL_SERVICES.filter((s) => s.category !== 'san_pham')
+  );
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await fetch('/api/services');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          const medicalServices = data.data.filter(
+            (s: Service) => s.category !== 'san_pham' && s.is_active === 1
+          );
+          if (medicalServices.length > 0) {
+            setServices(medicalServices);
+          }
+        }
+      } catch (e) {
+        // Fallback to initial seed
+      }
+    };
+    fetchServices();
+  }, []);
 
   return (
     <section id="dich-vu" className="py-16 sm:py-20 bg-white relative">
@@ -30,7 +55,7 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          {services.slice(0, 3).map((service, index) => {
+          {services.map((service, index) => {
             const isPopular = index === 0; // Most requested: Thông tắc tia sữa
             return (
               <div
@@ -58,6 +83,8 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
                           ? 'Thông Tia Sữa'
                           : service.category === 'tam_be'
                           ? 'Tắm Bé Sơ Sinh'
+                          : service.category === 'me_bau'
+                          ? 'Massage Mẹ Bầu'
                           : 'Phục Hồi Sau Sinh'}
                       </span>
                       {service.duration && (
@@ -86,12 +113,13 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
 
                     {/* Features List */}
                     <ul className="space-y-2.5 text-xs sm:text-sm text-charcoal-900 mb-6">
-                      {service.features.map((feat, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                          <span className="leading-snug">{feat}</span>
-                        </li>
-                      ))}
+                      {service.features &&
+                        service.features.map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-2">
+                            <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                            <span className="leading-snug">{feat}</span>
+                          </li>
+                        ))}
                     </ul>
                   </div>
 

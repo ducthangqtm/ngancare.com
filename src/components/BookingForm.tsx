@@ -22,7 +22,29 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
   const [errorMessage, setErrorMessage] = useState('');
 
   // Service list for dropdown
-  const serviceOptions = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
+  const [serviceOptions, setServiceOptions] = useState(
+    INITIAL_SERVICES.filter((s) => s.category !== 'san_pham')
+  );
+
+  React.useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await fetch('/api/services');
+        const data = await res.json();
+        if (data.success && data.data && data.data.length > 0) {
+          const medicalServices = data.data.filter(
+            (s: any) => s.category !== 'san_pham' && s.is_active === 1
+          );
+          if (medicalServices.length > 0) {
+            setServiceOptions(medicalServices);
+          }
+        }
+      } catch (e) {
+        // Fallback
+      }
+    };
+    fetchServices();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
