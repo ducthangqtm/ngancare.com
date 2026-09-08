@@ -57,6 +57,7 @@ export default function HomeBlogSection() {
                     src={post.cover_image || '/images/banner.jpg'}
                     alt={post.title}
                     fill
+                    unoptimized
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-gold-500 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">

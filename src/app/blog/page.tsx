@@ -122,6 +122,7 @@ export default function BlogListPage() {
                       src={post.cover_image || '/images/banner.jpg'}
                       alt={post.title}
                       fill
+                      unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[11px] font-bold text-gold-700 shadow-sm">

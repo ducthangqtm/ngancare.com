@@ -101,6 +101,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
                 alt={post.title}
                 fill
                 priority
+                unoptimized
                 className="object-cover"
               />
             </div>
