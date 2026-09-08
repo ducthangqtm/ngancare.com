@@ -53,8 +53,8 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        {/* Services Grid (4 Flagship Healthcare Services) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {services.map((service, index) => {
             const isPopular = index === 0; // Most requested: Thông tắc tia sữa
             return (
