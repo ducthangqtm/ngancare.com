@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, User, Phone, FileText, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
 import { INITIAL_SERVICES } from '@/lib/seed-data';
+import { TIME_SLOT_SECTIONS } from '@/lib/time-slots';
 
 interface BookingFormProps {
   initialServiceId?: string;
@@ -13,10 +14,20 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [serviceId, setServiceId] = useState(initialServiceId || 'srv-01');
-  const [bookingDate, setBookingDate] = useState('');
-  const [bookingTime, setBookingTime] = useState('09:00');
-  const [notes, setNotes] = useState('');
 
+  // Date and Time selection
+  const todayStr = new Date().toISOString().split('T')[0];
+  const [bookingDate, setBookingDate] = useState<string>(todayStr);
+  const [bookingTime, setBookingTime] = useState<string>('09:00');
+  const [isCustomTime, setIsCustomTime] = useState(false);
+  const [customTimeInput, setCustomTimeInput] = useState('');
+
+  // Slots availability state
+  const [busySlots, setBusySlots] = useState<string[]>([]);
+  const [isAllDayBusy, setIsAllDayBusy] = useState(false);
+  const [slotsLoading, setSlotsLoading] = useState(false);
+
+  const [notes, setNotes] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -35,7 +46,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
     return INITIAL_SERVICES.filter((s) => s.category !== 'san_pham' && s.is_active === 1);
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchServices = async () => {
       try {
         const res = await fetch('/api/services');
@@ -56,6 +67,27 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
     fetchServices();
   }, []);
 
+  // Fetch slots availability whenever bookingDate changes
+  useEffect(() => {
+    if (!bookingDate) return;
+    const fetchSlots = async () => {
+      setSlotsLoading(true);
+      try {
+        const res = await fetch(`/api/slots?date=${bookingDate}`);
+        const data = await res.json();
+        if (data.success) {
+          setBusySlots(data.busySlots || []);
+          setIsAllDayBusy(data.isAllDayBusy || false);
+        }
+      } catch (e) {
+        // error
+      } finally {
+        setSlotsLoading(false);
+      }
+    };
+    fetchSlots();
+  }, [bookingDate]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
@@ -71,6 +103,17 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
       return;
     }
 
+    const finalTime = isCustomTime ? customTimeInput.trim() : bookingTime;
+    if (!finalTime) {
+      setErrorMessage('Vui lòng chọn khung giờ hoặc điền giờ hẹn mong muốn.');
+      return;
+    }
+
+    if (isAllDayBusy && finalTime !== 'Càng sớm càng tốt (Cấp cứu)') {
+      setErrorMessage(`Ngày ${bookingDate} Điều dưỡng Thúy Ngân hiện đã kín lịch. Vui lòng chọn ngày khác hoặc liên hệ hotline.`);
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -83,7 +126,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
           customer_address: customerAddress.trim(),
           service_id: serviceId,
           booking_date: bookingDate,
-          booking_time: bookingTime,
+          booking_time: finalTime,
           notes: notes.trim(),
         }),
       });
@@ -203,7 +246,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
               <div>
                 <label className="block text-xs font-bold text-charcoal-900 mb-1.5 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-gold-600" />
-                  <span>Địa Chỉ Tại Long Biên hoặc Gia Lâm (Số nhà, Ngõ, Tòa chung cư, Phường/Xã) *</span>
+                  <span>Địa Chỉ Phục Vụ Tại Nhà (Số nhà, Ngõ, Tòa chung cư, Phường/Xã) *</span>
                 </label>
                 <input
                   type="text"
@@ -235,43 +278,161 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {/* Booking Date */}
-                <div>
-                  <label className="block text-xs font-bold text-charcoal-900 mb-1.5 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-gold-600" />
-                    <span>Ngày Mong Muốn Đến *</span>
+              {/* Date and Time Selection Section */}
+              <div className="pt-2 border-t border-gold-200/60 space-y-4">
+                {/* 1. Date Picker */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <label className="text-xs font-bold text-charcoal-900 flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4 text-gold-600" />
+                    <span>1. Ngày Mong Muốn Đến *</span>
                   </label>
                   <input
                     type="date"
                     required
+                    min={todayStr}
                     value={bookingDate}
                     onChange={(e) => setBookingDate(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-200 outline-none text-sm text-charcoal-900 bg-cream-50/50"
+                    className="w-full sm:w-60 px-4 py-2 rounded-xl border border-gray-300 font-bold text-sm text-charcoal-900 bg-cream-50 focus:border-gold-500 outline-none"
                   />
                 </div>
 
-                {/* Booking Time */}
-                <div>
-                  <label className="block text-xs font-bold text-charcoal-900 mb-1.5 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-gold-600" />
-                    <span>Khung Giờ Đón Tiếp *</span>
-                  </label>
-                  <select
-                    value={bookingTime}
-                    onChange={(e) => setBookingTime(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-200 outline-none text-sm text-charcoal-900 bg-cream-50/50"
-                  >
-                    <option value="Càng sớm càng tốt (Cấp cứu)">Càng sớm càng tốt (Cấp cứu)</option>
-                    <option value="08:00 - 09:30">08:00 - 09:30</option>
-                    <option value="09:30 - 11:00">09:30 - 11:00</option>
-                    <option value="11:00 - 12:30">11:00 - 12:30</option>
-                    <option value="14:00 - 15:30">14:00 - 15:30</option>
-                    <option value="15:30 - 17:00">15:30 - 17:00</option>
-                    <option value="17:00 - 19:00">17:00 - 19:00</option>
-                    <option value="Sau 19:00 (Buổi tối)">Sau 19:00 (Buổi tối)</option>
-                  </select>
-                </div>
+                {/* All-Day Busy Alert */}
+                {isAllDayBusy ? (
+                  <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start gap-2.5">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold">Ngày {bookingDate}: Điều dưỡng Thúy Ngân đã kín lịch / nghỉ cả ngày.</p>
+                      <p className="mt-0.5 text-[11px] text-rose-700">
+                        Mẹ vui lòng đổi sang ngày khác. Nếu mẹ đang bị tắc tia sữa sốt cương đau khẩn cấp, hãy gọi trực tiếp hotline{' '}
+                        <a href="tel:0339627769" className="font-bold underline text-rose-900">0339.627.769</a> để được hỗ trợ cấp cứu.
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    {/* Time Selection Header */}
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="text-xs font-bold text-charcoal-900 flex items-center gap-1.5">
+                        <Clock className="w-4 h-4 text-gold-600" />
+                        <span>2. Chọn Mốc Giờ Hoặc Điền Giờ Tự Do *</span>
+                      </label>
+                      <span className="text-[11px] text-gray-500 font-normal">
+                        {slotsLoading ? 'Đang kiểm tra...' : '🟢 Trống • 🔒 Đã kín'}
+                      </span>
+                    </div>
+
+                    {/* Emergency ASAP Option */}
+                    <div className="mb-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsCustomTime(false);
+                          setBookingTime('Càng sớm càng tốt (Cấp cứu)');
+                        }}
+                        className={`w-full py-2.5 px-4 rounded-2xl border text-xs font-bold transition-all flex items-center justify-between ${
+                          !isCustomTime && bookingTime === 'Càng sớm càng tốt (Cấp cứu)'
+                            ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white border-red-600 shadow-md scale-[1.01]'
+                            : 'bg-rose-50/70 hover:bg-rose-100 text-red-700 border-rose-200'
+                        }`}
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <span>🚨</span>
+                          <span>Càng Sớm Càng Tốt (Cấp Cứu Tắc Tia / Sốt Cương Vú)</span>
+                        </span>
+                        <span className="text-[10px] uppercase tracking-wide bg-white/30 px-2 py-0.5 rounded-full font-black">
+                          Ưu Tiên Số 1
+                        </span>
+                      </button>
+                    </div>
+
+                    {/* 30-Minute Slot Sections: Morning, Afternoon, Evening */}
+                    <div className="space-y-2.5">
+                      {TIME_SLOT_SECTIONS.map((sec) => (
+                        <div key={sec.title} className="bg-cream-50/50 p-2.5 rounded-2xl border border-gold-100">
+                          <span className="text-[11px] font-extrabold text-charcoal-800 uppercase tracking-wider mb-2 block">
+                            {sec.icon} {sec.title}
+                          </span>
+                          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-1.5">
+                            {sec.slots.map((slot) => {
+                              const isBusy = busySlots.includes(slot);
+                              const isSelected = !isCustomTime && bookingTime === slot;
+
+                              return (
+                                <button
+                                  key={slot}
+                                  type="button"
+                                  disabled={isBusy}
+                                  onClick={() => {
+                                    setIsCustomTime(false);
+                                    setBookingTime(slot);
+                                  }}
+                                  className={`py-2 px-1 rounded-xl text-center text-xs font-bold transition-all ${
+                                    isBusy
+                                      ? 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed line-through opacity-60'
+                                      : isSelected
+                                      ? 'bg-gold-500 text-white shadow-gold-soft border border-gold-500 scale-105'
+                                      : 'bg-white hover:bg-gold-50 text-charcoal-900 border border-gray-200 hover:border-gold-300 shadow-xs'
+                                  }`}
+                                >
+                                  <span>{slot}</span>
+                                  {isBusy && <span className="block text-[8px] no-underline font-normal text-gray-400">Kín</span>}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Custom Flexible Time Option */}
+                    <div className="mt-3 p-3 rounded-2xl border border-dashed border-gold-300 bg-white">
+                      <div className="flex items-center justify-between">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsCustomTime(true);
+                            if (!customTimeInput) setCustomTimeInput('17:15');
+                          }}
+                          className={`text-xs font-bold flex items-center gap-2 transition-colors ${
+                            isCustomTime ? 'text-gold-700' : 'text-gray-600 hover:text-charcoal-900'
+                          }`}
+                        >
+                          <span
+                            className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${
+                              isCustomTime ? 'border-gold-500 bg-gold-500 text-white font-black' : 'border-gray-400'
+                            }`}
+                          >
+                            {isCustomTime && '✓'}
+                          </span>
+                          <span>🕒 Giờ khác / Ghi chú giờ tự do (Ví dụ: 08:45, sau 17h khi chồng về...)</span>
+                        </button>
+                      </div>
+
+                      {isCustomTime && (
+                        <div className="mt-2.5 pt-2.5 border-t border-gold-100 flex flex-col sm:flex-row items-center gap-2">
+                          <input
+                            type="text"
+                            placeholder="Nhập giờ mong muốn (VD: 08:45 sáng, sau 17h15...)"
+                            value={customTimeInput}
+                            onChange={(e) => setCustomTimeInput(e.target.value)}
+                            className="w-full sm:flex-1 px-3.5 py-2 rounded-xl border border-gold-400 focus:ring-2 focus:ring-gold-200 outline-none text-xs text-charcoal-900 font-medium bg-cream-50/50"
+                          />
+                          <span className="text-[11px] text-gray-500 italic">
+                            Điều dưỡng Thúy Ngân sẽ gọi lại xác nhận ngay!
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Selected Time Indicator */}
+                    <div className="mt-2 text-xs text-gray-600 flex items-center gap-1.5">
+                      <span>Khung giờ đã chọn:</span>
+                      <strong className="text-gold-700 font-black text-sm">
+                        {isCustomTime ? (customTimeInput || 'Chưa điền giờ') : bookingTime}
+                      </strong>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Notes */}
