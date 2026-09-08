@@ -117,7 +117,7 @@ export default function BlogListPage() {
               >
                 <div>
                   {/* Cover Image */}
-                  <Link href={`/blog/${post.slug}`} className="block relative h-52 w-full bg-cream-200 overflow-hidden">
+                  <Link href={`/blog/${post.slug}`} className="block relative aspect-video w-full bg-cream-200 overflow-hidden">
                     <Image
                       src={post.cover_image || '/images/banner.jpg'}
                       alt={post.title}

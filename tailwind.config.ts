@@ -40,7 +40,7 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-roboto)', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
         serif: ['var(--font-playfair)', 'Georgia', 'serif'],
       },
       boxShadow: {

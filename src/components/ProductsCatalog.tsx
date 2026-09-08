@@ -81,12 +81,13 @@ export default function ProductsCatalog() {
                 className="bg-white rounded-3xl border border-gold-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
               >
                 <div>
-                  {/* Product Image */}
-                  <div className="relative h-48 w-full bg-cream-100 overflow-hidden">
+                  {/* Product Image (Standard 1:1 aspect-square) */}
+                  <div className="relative aspect-square w-full bg-cream-100 overflow-hidden">
                     <Image
                       src={prod.image_url || '/images/banner.jpg'}
                       alt={prod.name}
                       fill
+                      unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-[11px] font-bold text-gold-700 shadow-sm flex items-center gap-1">

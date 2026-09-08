@@ -35,8 +35,9 @@ export default function HomeBlogSection() {
             <BookOpen className="w-3.5 h-3.5 text-gold-600" />
             <span>Cẩm Nang Y Khoa Mẹ & Bé</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Kiến Thức Y Khoa <span className="gold-gradient-text">Chuyên Sâu Từ Điều Dưỡng</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 text-balance max-w-2xl mx-auto leading-snug">
+            Kiến Thức Y Khoa{' '}
+            <span className="gold-gradient-text inline-block">Chuyên Sâu Từ Điều Dưỡng</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
             Tổng hợp các bài viết hướng dẫn xử trí tắc tia sữa, chăm sóc bé sơ sinh và dinh dưỡng sau sinh chuẩn Y học chứng cứ.
@@ -51,8 +52,8 @@ export default function HomeBlogSection() {
               className="bg-white rounded-3xl border border-gold-200 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
             >
               <div>
-                {/* Cover Image */}
-                <Link href={`/blog/${post.slug}`} className="block relative h-52 w-full bg-cream-100 overflow-hidden">
+                {/* Cover Image (Standard 16:9 aspect-video) */}
+                <Link href={`/blog/${post.slug}`} className="block relative aspect-video w-full bg-cream-100 overflow-hidden">
                   <Image
                     src={post.cover_image || '/images/banner.jpg'}
                     alt={post.title}

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 import JsonLd from '@/components/JsonLd';
 
-const inter = Inter({
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin', 'vietnamese'],
-  variable: '--font-inter',
+  variable: '--font-roboto',
   display: 'swap',
 });
 
@@ -67,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={inter.variable}>
+    <html lang="vi" className={roboto.variable}>
       <head>
         <JsonLd type="home" />
       </head>

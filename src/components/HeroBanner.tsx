@@ -111,13 +111,6 @@ export default function HeroBanner() {
                   priority
                   className="object-cover hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                
-                {/* Overlay Badge */}
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-gold-300">Dịch vụ tại nhà tận tâm</p>
-                  <p className="text-base sm:text-lg font-bold">Thấu hiểu từng nhịp thở của bé & giọt sữa của mẹ</p>
-                </div>
               </div>
 
               {/* Specialist Floating Mini-Card */}
