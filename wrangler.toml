@@ -2,5 +2,7 @@ name = "ngancare-com"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "out"
 
-# Lưu ý: Liên kết D1 Database (Variable: DB -> ngancare-db) được cấu hình 
-# trực tiếp trong Cloudflare Pages Dashboard (Settings -> Functions -> D1 Database Bindings)
+[[d1_databases]]
+binding = "DB"
+database_name = "ngancare-db"
+database_id = "f5e4dc40-40ec-4d02-b846-57c2beebe5ba"
