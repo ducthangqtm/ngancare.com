@@ -37,23 +37,39 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
   try {
     const { request, env } = context;
     const body = (await request.json()) as any;
-    const { id, status } = body;
+    const { id, status, booking_date, booking_time, notes } = body;
 
-    if (!id || !status) {
+    if (!id) {
       return new Response(
-        JSON.stringify({ success: false, error: 'Thiếu ID hoặc trạng thái cập nhật.' }),
+        JSON.stringify({ success: false, error: 'Thiếu ID lịch hẹn.' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
     if (env && env.DB) {
-      await env.DB.prepare('UPDATE bookings SET status = ? WHERE id = ?')
-        .bind(status, id)
-        .run();
+      if (booking_date && booking_time) {
+        await env.DB.prepare(`
+          UPDATE bookings 
+          SET status = ?, booking_date = ?, booking_time = ?, notes = ?
+          WHERE id = ?
+        `)
+          .bind(
+            status || 'confirmed',
+            booking_date.trim(),
+            booking_time.trim(),
+            notes !== undefined ? notes : '',
+            id
+          )
+          .run();
+      } else if (status) {
+        await env.DB.prepare('UPDATE bookings SET status = ? WHERE id = ?')
+          .bind(status, id)
+          .run();
+      }
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: 'Cập nhật trạng thái lịch hẹn thành công.' }),
+      JSON.stringify({ success: true, message: 'Cập nhật lịch hẹn thành công.' }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (err: any) {
