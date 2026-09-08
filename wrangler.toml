@@ -2,7 +2,5 @@ name = "ngancare-com"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "out"
 
-[[d1_databases]]
-binding = "DB"
-database_name = "ngancare-db"
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Thay thế bằng D1 Database ID thật sau khi chạy: wrangler d1 create ngancare-db
+# Lưu ý: Liên kết D1 Database (Variable: DB -> ngancare-db) được cấu hình 
+# trực tiếp trong Cloudflare Pages Dashboard (Settings -> Functions -> D1 Database Bindings)
