@@ -33,12 +33,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
       if (user) {
         const hash = await sha256(password);
-        // Supports SHA-256 hash match OR plain text OR initial fallbacks
-        if (
-          user.password_hash === hash ||
-          user.password_hash === password ||
-          (username === 'admin' && (password === 'ngancare2026!' || password === 'admin'))
-        ) {
+        // So khớp trực tiếp với mật khẩu đã lưu trong D1 (hỗ trợ cả chữ thường lẫn mã hash)
+        if (user.password_hash === hash || user.password_hash === password) {
           isValid = true;
         }
       }
