@@ -18,8 +18,8 @@ export default function AdminNav() {
 
   // Telegram Configuration State
   const [showTelegramModal, setShowTelegramModal] = useState(false);
-  const [teleBotToken, setTeleBotToken] = useState('8700850904:AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4');
-  const [teleChatId, setTeleChatId] = useState('-5427119274');
+  const [teleBotToken, setTeleBotToken] = useState('');
+  const [teleChatId, setTeleChatId] = useState('');
   const [teleLoading, setTeleLoading] = useState(false);
   const [teleTesting, setTeleTesting] = useState(false);
   const [teleDetecting, setTeleDetecting] = useState(false);

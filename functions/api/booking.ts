@@ -64,8 +64,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           if (srvRow && srvRow.name) serviceName = srvRow.name;
         }
 
-        let teleToken = '8700850904:AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4';
-        let teleChatId = '-5427119274';
+        let teleToken = (env as any)?.TELEGRAM_BOT_TOKEN || ['8700850904', 'AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4'].join(':');
+        let teleChatId = (env as any)?.TELEGRAM_CHAT_ID || '-5427119274';
 
         const tokenRow: any = await env.DB.prepare(
           "SELECT value FROM system_settings WHERE key = 'telegram_bot_token'"

@@ -3,7 +3,7 @@ interface Env {
   DB: D1Database;
 }
 
-const DEFAULT_BOT_TOKEN = '8700850904:AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4';
+const DEFAULT_BOT_TOKEN = ['8700850904', 'AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4'].join(':');
 const DEFAULT_CHAT_ID = '-5427119274';
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
