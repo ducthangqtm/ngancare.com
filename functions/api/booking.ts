@@ -106,6 +106,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
               chat_id: teleChatId,
               text: teleMsg,
               parse_mode: 'Markdown',
+              disable_web_page_preview: true,
+              link_preview_options: {
+                is_disabled: true,
+              },
             }),
           });
         }
