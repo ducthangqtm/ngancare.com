@@ -1,25 +1,25 @@
 import React from 'react';
-import { Ban, Leaf, CircleDollarSign, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { GraduationCap, PackageCheck, CircleDollarSign, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export default function Commitments3No() {
   const commitments = [
     {
-      icon: Ban,
-      title: 'KHÔNG Đau Đớn — KHÔNG Dập Nang Sữa',
-      desc: 'Tuyệt đối không dùng bạo lực nặn bóp, không châm chọc kim gây chảy máu hay rách mô liên kết. Mọi thao tác đều êm ái, bảo tồn trọn vẹn cấu trúc tuyến vú.',
-      tag: 'Bảo Tồn Tuyến Vú',
+      icon: GraduationCap,
+      title: 'Kiến thức chăm sóc sức khoẻ mẹ và bé được đào tạo chính quy',
+      desc: 'Được đào tạo bài bản từ các trường y thuộc Bộ Giáo dục và Bộ Y tế. Đảm bảo tính khoa học và cập nhật kiến thức theo tiêu chuẩn y tế hiện đại, không suy diễn, đoán mò mà luôn dựa trên nền tảng y học chứng cứ.',
+      tag: 'Đào Tạo Chính Quy',
     },
     {
-      icon: Leaf,
-      title: 'KHÔNG Hóa Chất — 100% Thảo Dược Tự Nhiên',
-      desc: 'Toàn bộ tinh dầu, nước xông, cao chè vằng và thảo dược sử dụng đều thuần tự nhiên, lành tính, an toàn tuyệt đối cho làn da mỏng manh của bé và sức khỏe mẹ.',
-      tag: 'Thuần Tự Nhiên 100%',
+      icon: PackageCheck,
+      title: 'Sản phẩm sử dụng rõ nguồn gốc xuất xứ',
+      desc: 'Mỗi sản phẩm sử dụng trong quá trình chăm sóc đều có rõ nguồn gốc xuất xứ và được công khai với khách hàng. Cam kết không sử dụng những sản phẩm không rõ chất lượng hay có dấu hiệu giả mạo, làm ảnh hưởng đến sức khoẻ của mẹ và bé.',
+      tag: 'Minh Bạch Xuất Xứ',
     },
     {
       icon: CircleDollarSign,
-      title: 'KHÔNG Phát Sinh Bất Kỳ Phụ Phí Nào',
-      desc: 'Báo giá trọn gói minh bạch trước khi đến nhà. Miễn phí cước di chuyển nội thành Hà Nội trong bán kính cam kết, không gợi ý mua thêm gói phụ khi chưa cần thiết.',
-      tag: 'Minh Bạch Giá 100%',
+      title: 'Không tự ý phát sinh thêm chi phí, phụ phí ngoài lề',
+      desc: 'Giá dịch vụ được công bố rõ ràng từ đầu, không tự ý thu bất kỳ phụ phí hay chi phí ngoài lề nào trong quá trình chăm sóc. Các mẹ biết rõ mình sẽ chi bao nhiêu, không lo bị động hay bất ngờ khi thanh toán.',
+      tag: 'Giá Cả Rõ Ràng',
     },
   ];
 
@@ -37,7 +37,7 @@ export default function Commitments3No() {
             <span>Danh Dự Nghề Y</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Cam Kết Vàng <span className="gold-gradient-text">“3 KHÔNG”</span> Từ Điều Dưỡng Thúy Ngân
+            Cam Kết Vàng Từ <span className="gold-gradient-text">Điều Dưỡng Thúy Ngân</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
             Đặt sự an toàn của mẹ và bé lên trên hết — Sự an tâm của gia đình là tôn chỉ hoạt động cao nhất.

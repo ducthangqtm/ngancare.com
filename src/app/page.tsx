@@ -6,7 +6,6 @@ import AboutSpecialist from '@/components/AboutSpecialist';
 import CoreServices from '@/components/CoreServices';
 import Process4Steps from '@/components/Process4Steps';
 import Commitments3No from '@/components/Commitments3No';
-import CoverageHanoi from '@/components/CoverageHanoi';
 import ProductsCatalog from '@/components/ProductsCatalog';
 import HomeBlogSection from '@/components/HomeBlogSection';
 import BookingForm from '@/components/BookingForm';
@@ -40,10 +39,7 @@ export default function HomePage() {
       {/* 5. Gold 3-NOs Commitments */}
       <Commitments3No />
 
-      {/* 6. Hanoi Local SEO Service Coverage Grid */}
-      <CoverageHanoi />
-
-      {/* 7. Natural Products Catalog */}
+      {/* 6. Natural Products Catalog */}
       <ProductsCatalog />
 
       {/* 8. Medical Blog Knowledge Section on Homepage */}

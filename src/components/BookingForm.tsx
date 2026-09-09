@@ -283,7 +283,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                 <input
                   type="text"
                   required
-                  placeholder="Ví dụ: Số 25 Ngõ 90 Thượng Thanh, Long Biên / Căn hộ S2.05 Vinhomes Ocean Park, Gia Lâm..."
+                  placeholder="Ví dụ: Số 25 Ngõ 90 Nguyễn Văn Cừ / Căn hộ Landmark 1, Vinhomes..."
                   value={customerAddress}
                   onChange={(e) => setCustomerAddress(e.target.value)}
                   className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-gold-500 focus:ring-2 focus:ring-gold-200 outline-none text-sm text-charcoal-900 bg-cream-50/50"

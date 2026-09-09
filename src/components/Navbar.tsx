@@ -29,20 +29,20 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top emergency announcement bar */}
-      <div className="bg-gradient-to-r from-emergency-600 via-emergency-500 to-amber-600 text-white text-xs sm:text-sm py-1.5 px-4 text-center font-medium flex items-center justify-center gap-2 shadow-sm">
+      {/* Top announcement bar */}
+      <div className="bg-gradient-to-r from-gold-600 via-amber-600 to-gold-700 text-white text-xs sm:text-sm py-1.5 px-4 text-center font-medium flex items-center justify-center gap-2 shadow-sm">
         <span className="flex h-2 w-2 relative flex-shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
         </span>
         <span className="truncate sm:overflow-visible">
-          Khu vực Long Biên & Gia Lâm: ĐD. Thúy Ngân trực cấp cứu tắc tia sữa 24/7 — Có mặt sau 15 - 30 phút!
+          Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!
         </span>
         <a
           href="tel:0339627769"
           className="underline font-bold hover:text-amber-100 hidden sm:inline ml-2 whitespace-nowrap"
         >
-          Hotline / Zalo: 0339.627.769
+          Hotline: 0339.627.769
         </a>
       </div>
 
@@ -88,14 +88,14 @@ export default function Navbar() {
 
             {/* Header Action Buttons */}
             <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
-              {/* Emergency Call Button */}
+              {/* Hotline Button */}
               <a
                 href="tel:0339627769"
-                className="animate-emergency inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emergency-500 hover:bg-emergency-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95 whitespace-nowrap"
-                title="Cấp cứu tắc tia sữa 24/7 tại Long Biên & Gia Lâm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emergency-500 hover:bg-emergency-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95 whitespace-nowrap"
+                title="Hotline tư vấn và chăm sóc: 0339.627.769"
               >
                 <PhoneCall className="w-4 h-4 animate-bounce-gentle flex-shrink-0" />
-                <span className="tracking-wide">CẤP CỨU TẮC TIA 24/7</span>
+                <span className="tracking-wide">HOTLINE: 0339.627.769</span>
               </a>
 
               {/* Book Appointment CTA */}
@@ -113,7 +113,7 @@ export default function Navbar() {
               <a
                 href="tel:0339627769"
                 className="p-2 rounded-full bg-emergency-500 text-white animate-pulse"
-                aria-label="Gọi cấp cứu"
+                aria-label="Gọi Hotline"
               >
                 <PhoneCall className="w-4 h-4" />
               </a>
@@ -150,7 +150,7 @@ export default function Navbar() {
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-emergency-500 text-white font-bold text-sm shadow-md"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>CẤP CỨU 24/7 (0339.627.769)</span>
+                <span>HOTLINE: 0339.627.769</span>
               </a>
               <a
                 href="/#dat-lich"

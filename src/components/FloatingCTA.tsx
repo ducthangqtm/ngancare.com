@@ -6,22 +6,6 @@ import { Phone, AlertTriangle } from 'lucide-react';
 export default function FloatingCTA() {
   return (
     <>
-      {/* 24/7 Emergency Floating Button on Bottom-Left */}
-      <a
-        href="tel:0339627769"
-        className="fixed bottom-5 left-4 sm:left-6 z-50 flex items-center gap-2 bg-gradient-to-r from-emergency-600 to-emergency-500 hover:from-emergency-700 hover:to-emergency-600 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-full shadow-xl hover:shadow-2xl transition-all active:scale-95 group border border-white/30"
-        title="Bấm gọi cấp cứu tắc tia sữa ngay: 0339.627.769"
-        aria-label="Gọi cấp cứu 24/7"
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
-        </span>
-        <AlertTriangle className="w-4 h-4 text-amber-200" />
-        <span className="hidden sm:inline">Cấp Cứu 24/7: Long Biên & Gia Lâm</span>
-        <span className="sm:hidden">Cấp Cứu 24/7</span>
-      </a>
-
       {/* Social & Contact Actions on Bottom-Right */}
       <aside
         aria-label="Hỗ trợ khách hàng"

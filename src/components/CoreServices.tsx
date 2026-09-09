@@ -53,10 +53,10 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-            <span>Dịch Vụ Y Khoa Trọng Tâm</span>
+            <span>Dịch Vụ Trọng Tâm</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Dịch Vụ Chăm Sóc <span className="gold-gradient-text">Chuẩn Y Khoa Tại Nhà</span>
+            Dịch Vụ Chăm Sóc <span className="gold-gradient-text">Mẹ Và Bé Tại Nhà</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
             Bảng giá niêm yết công khai, minh bạch 100% — Cam kết không phát sinh bất kỳ phụ phí nào.
@@ -80,7 +80,7 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
                 {isPopular && (
                   <div className="bg-gradient-to-r from-gold-600 to-amber-500 text-white text-xs font-bold py-1.5 px-4 text-center uppercase tracking-wider flex items-center justify-center gap-1">
                     <Star className="w-3.5 h-3.5 fill-white" />
-                    <span>Dịch Vụ Cấp Cứu Nổi Bật Nhất</span>
+                    <span>Dịch Vụ Nổi Bật</span>
                   </div>
                 )}
 
@@ -151,11 +151,6 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
               </div>
             );
           })}
-        </div>
-
-        {/* Extra note */}
-        <div className="mt-10 p-4 rounded-2xl bg-cream-200/80 border border-gold-200 text-center max-w-2xl mx-auto text-xs sm:text-sm text-charcoal-800">
-          💡 <strong>Mẹ lưu ý:</strong> Toàn bộ dụng cụ tiệt trùng, dầu massage thảo dược và máy sóng siêu âm đều do Điều dưỡng chuẩn bị 100%. Gia đình chỉ cần chuẩn bị nước ấm.
         </div>
 
       </div>

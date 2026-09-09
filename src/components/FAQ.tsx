@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       q: 'Một buổi thông tắc tia sữa thường mất bao lâu và có đau không?',
-      a: 'Một buổi thông tắc kéo dài từ 60 - 75 phút. Phương pháp của Ngân Care là massage theo xoang nang sữa kết hợp máy sóng siêu âm đa tần hiện đại và chườm ấm thảo dược. Tuyệt đối KHÔNG bóp nặn thô bạo, rất êm ái, mẹ sẽ cảm thấy nhẹ nhõm, hết cương căng tức thì ngay trong buổi đầu tiên.',
+      a: 'Một buổi thông tắc kéo dài khoảng 100 phút. Phương pháp chăm sóc ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp massage giải cơ vùng ngực bằng tay và máy chuyên dụng. Tuyệt đối KHÔNG tổn thương nang sữa, KHÔNG dùng lực thô bạo, giúp giải cơ lưu thông khí huyết, giảm ứ trệ và thông sữa thuận tự nhiên.',
     },
     {
       q: 'Dụng cụ y tế có được khử trùng trước khi đến nhà không?',
@@ -24,8 +24,8 @@ export default function FAQ() {
       a: 'Với mẹ sinh mổ, các động tác massage nhẹ nhàng vùng tay chân, cổ vai gáy và hỗ trợ thông tuyến sữa có thể thực hiện ngay sau khi xuất viện về nhà (ngày thứ 4 - 5). Riêng xông hơi toàn thân và quấn ấm bụng sẽ tiến hành sau khoảng 10 - 14 ngày khi vết mổ đã khô hoàn toàn.',
     },
     {
-      q: 'Ngân Care phục vụ chủ yếu ở những khu vực nào?',
-      a: 'Ngân Care hiện tại tập trung phục vụ chuyên sâu toàn bộ Quận Long Biên và Huyện Gia Lâm (Thượng Thanh, Đức Giang, Ngọc Thụy, Việt Hưng, Sài Đồng, Thạch Bàn, Bồ Đề, KĐT Vinhomes Riverside, KĐT Vinhomes Ocean Park 1, Đặng Xá, Trâu Quỳ...). Nhờ cự ly gần ngay tại Thượng Thanh, Điều dưỡng Thúy Ngân có mặt rất nhanh chỉ sau 15 - 30 phút khi mẹ liên hệ cấp cứu.',
+      q: 'Ngân Care nhận phục vụ tại nhà như thế nào?',
+      a: 'Điều dưỡng Nguyễn Thúy Ngân nhận chăm sóc mẹ và bé tận nơi tại nhà ở Hà Nội. Mẹ chỉ cần đặt lịch hẹn trước qua website hoặc liên hệ trực tiếp Hotline / Zalo: 0339.627.769 để được sắp xếp thời gian chăm sóc chu đáo nhất.',
     },
   ];
 

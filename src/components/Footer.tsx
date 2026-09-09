@@ -25,8 +25,8 @@ export default function Footer() {
                 <h3 className="text-lg font-bold text-white leading-tight">
                   Nguyễn Thúy Ngân
                 </h3>
-                <p className="text-xs text-gold-400 font-semibold tracking-wide uppercase">
-                  Chăm Sóc Mẹ & Bé Chuẩn Y Khoa
+                <p className="text-xs text-gold-400 font-semibold tracking-wide">
+                  Chăm sóc mẹ và bé tại nhà
                 </p>
               </div>
             </div>
@@ -72,12 +72,12 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-gray-400">
               <li>
                 <Link href="/#dich-vu" className="hover:text-gold-400 transition-colors">
-                  Thông tắc tia sữa 24/7
+                  Thông tắc tia sữa
                 </Link>
               </li>
               <li>
                 <Link href="/#dich-vu" className="hover:text-gold-400 transition-colors">
-                  Tắm bé sơ sinh chuẩn Y khoa
+                  Tắm và chăm sóc trẻ sơ sinh
                 </Link>
               </li>
               <li>
@@ -136,19 +136,15 @@ export default function Footer() {
             <div className="space-y-2 text-xs text-gray-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-                <span>Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội (Phục vụ Long Biên & Gia Lâm)</span>
+                <span>Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emergency-500 flex-shrink-0" />
-                <span>Hotline / Zalo 24/7: <a href="tel:0339627769" className="text-white font-bold hover:text-gold-400">0339.627.769</a></span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>Thời gian phục vụ: 24/7 tất cả các ngày trong tuần</span>
+                <span>Hotline / Zalo: <a href="tel:0339627769" className="text-white font-bold hover:text-gold-400">0339.627.769</a></span>
               </div>
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Bảo chứng y khoa: ĐD. Nguyễn Thúy Ngân</span>
+                <span>Bảo chứng chuyên môn: ĐD. Nguyễn Thúy Ngân</span>
               </div>
             </div>
           </div>

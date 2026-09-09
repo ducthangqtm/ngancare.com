@@ -87,17 +87,17 @@ CREATE TABLE IF NOT EXISTS system_settings (
 -- Dữ liệu Dịch vụ y tế cốt lõi
 INSERT OR IGNORE INTO services (id, name, slug, category, price, duration, description, features, image_url, is_active)
 VALUES
-('srv-01', 'Thông Tắc Tia Sữa & Giải Tỏa Cương Căng Tức Thì', 'thong-tac-tia-sua-khong-dau', 'thong_tac', 350000, 75,
- 'Phương pháp massage thông xoang nang sữa chuẩn y khoa, kết hợp chườm ấm thảo dược và máy massage sóng siêu âm đa tần. Tuyệt đối không nặn bóp thô bạo, giải tỏa tức thì cảm giác đau tức, tắc tia, sữa về ào ạt ngay sau 1 liệu trình.',
- '["Không đau đớn, không làm dập nát nang sữa","Máy sóng siêu âm đa tần làm tan cục tắc sâu","Giải tỏa sốt cương sữa, viêm tuyến vú kịp thời","Chỉnh khớp ngậm bú mẹ đúng cách tận nhà"]',
+('srv-01', 'Thông Tắc Tia Sữa & Kích Sữa bằng pp Dẫn lưu hệ bạch huyết', 'thong-tac-tia-sua-khong-dau', 'thong_tac', 450000, 100,
+ 'Massage giải cơ, dẫn lưu hệ bạch huyết vùng ngực. Chăm sóc kết hợp giữa thao tác tay và máy chuyên dụng.',
+ '["Không tổn thương nang sữa","Không dùng lực thô bạo","Không đắp lá đắp thuốc","Giải cơ lưu thông khí huyết","Dẫn lưu dịch bạch huyết giảm ứ trệ","Lấy cặn, thông sữa thuận tự nhiên"]',
  '/images/banner.jpg', 1),
 
-('srv-02', 'Tắm Bé Sơ Sinh & Massage Vận Động Sớm Chuẩn Y Khoa', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 150000, 45,
- 'Quy trình tắm và vệ sinh rốn an toàn 100% bằng găng tay và dụng cụ tiệt trùng vô khuẩn. Kết hợp massage thư giãn cơ bắp, vận động phản xạ sớm và hơ lá trầu không giữ ấm tỳ vị cho bé yêu ngon giấc.',
- '["Điều dưỡng y tế chuyên khoa trực tiếp chăm sóc","Vệ sinh rốn chuẩn vô khuẩn phòng nhiễm trùng","Massage kích thích tuần hoàn và tiêu hóa chống đầy hơi","Hơ lá trầu không giữ ấm thóp, ngực, bụng"]',
+('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 180000, 45,
+ 'Tắm bé theo quy trình y khoa, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh.',
+ '["100% Điều dưỡng chính quy trực tiếp tắm bé","Dụng cụ vệ sinh vô khuẩn","Theo dõi và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh trong suốt quá trình tắm"]',
  '/images/banner.jpg', 1),
 
-('srv-03', 'Chăm Sóc & Phục Hồi Mẹ Sau Sinh Toàn Diện', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 450000, 90,
+('srv-03', 'Chăm Sóc & Phục Hồi Toàn Diện Mẹ Sau Sinh', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 500000, 90,
  'Gói phục hồi chuyên sâu kết hợp tinh hoa thảo dược cổ truyền và kỹ thuật y khoa hiện đại. Giúp mẹ giảm đau mỏi lưng hông, co hồi tử cung nhanh chóng, đào thải sản dịch và lấy lại vóc dáng thon gọn.',
  '["Xông hơi toàn thân và vùng kín bằng lá thảo dược Dao Đỏ","Massage bấm huyệt lưu thông khí huyết toàn thân","Quấn bụng định hình thảo mộc giảm mỡ vòng eo","Tẩy tế bào chết sáng da bằng cốt cám gạo nghệ"]',
  '/images/banner.jpg', 1),

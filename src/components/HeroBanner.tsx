@@ -16,13 +16,13 @@ export default function HeroBanner() {
     },
     {
       icon: Sparkles,
-      title: 'Giải Pháp Tự Nhiên - Không Đau',
-      desc: 'Tuyệt đối không bóp nặn thô bạo, êm dịu thông tia',
+      title: 'Tích hợp dẫn lưu hệ bạch huyết trong quy trình chăm sóc',
+      desc: 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — một phương pháp mang lại hiệu quả cao trong xử lý tắc ống sữa, phù nề vú và viêm tuyến vú',
     },
     {
       icon: Clock,
-      title: 'Đồng Hành 24/7 Cùng Mẹ',
-      desc: 'Hỗ trợ giải đáp, hướng dẫn chỉnh khớp ngậm trọn đời',
+      title: 'Đồng hành trọn đời',
+      desc: 'Hỗ trợ giải đáp thắc mắc chăm sóc mẹ và bé trọn đời',
     },
   ];
 
@@ -38,15 +38,6 @@ export default function HeroBanner() {
           {/* Left Column: Core Value Proposition & Headings */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Speed Commitment Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-100 border border-gold-300 text-charcoal-900 text-xs sm:text-sm font-semibold shadow-sm">
-              <span className="flex h-2.5 w-2.5 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gold-600"></span>
-              </span>
-              <span>Khu vực Long Biên & Gia Lâm: <strong>Có mặt sau 15 - 30 phút</strong></span>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 leading-tight">
               Đồng Hành Cùng Mẹ Chăm Sóc Sức Khỏe{' '}
@@ -59,7 +50,7 @@ export default function HeroBanner() {
             </p>
 
             <p className="text-base sm:text-lg text-charcoal-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Được sáng lập và trực tiếp phụ trách bởi <strong>Điều Dưỡng Nguyễn Thúy Ngân</strong> (Thượng Thanh, Long Biên). Chuyên sâu thông tắc tia sữa không đau, tắm bé sơ sinh chuẩn Y khoa và phục hồi thể trạng toàn diện cho mẹ sau sinh tại nhà.
+              Được sáng lập và trực tiếp phụ trách bởi <strong>Điều Dưỡng Nguyễn Thúy Ngân</strong>. Chuyên viên chăm sóc sức khoẻ mẹ và bé được đào tạo và cấp chứng chỉ hành nghề chính quy.
             </p>
 
             {/* Call to Actions */}
@@ -73,10 +64,10 @@ export default function HeroBanner() {
 
               <a
                 href="tel:0339627769"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-cream-100 border-2 border-emergency-500 text-emergency-600 font-bold text-base shadow-sm transition-all text-center flex items-center justify-center gap-2 active:scale-95"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-cream-100 border-2 border-gold-500 text-gold-700 font-bold text-base shadow-sm transition-all text-center flex items-center justify-center gap-2 active:scale-95"
               >
-                <PhoneCall className="w-4 h-4 text-emergency-500" />
-                <span>Cấp Cứu 24/7: 0339.627.769</span>
+                <PhoneCall className="w-4 h-4 text-gold-600" />
+                <span>Hotline: 0339.627.769</span>
               </a>
             </div>
 
@@ -84,15 +75,15 @@ export default function HeroBanner() {
             <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-charcoal-800">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>100% Điều dưỡng Y tế</span>
+                <span>100% Điều dưỡng chính quy</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Vô khuẩn chuẩn Bệnh viện</span>
+                <span>Quy trình vô khuẩn</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Thảo dược thiên nhiên 100%</span>
+                <span>Sản phẩm thuần tự nhiên</span>
               </div>
             </div>
 
@@ -125,7 +116,7 @@ export default function HeroBanner() {
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-charcoal-900 leading-tight">ĐD. Nguyễn Thúy Ngân</h4>
-                  <p className="text-[11px] text-gold-700 font-medium">8+ Năm Kinh Nghiệm</p>
+                  <p className="text-[11px] text-gold-700 font-medium">9+ Năm Kinh Nghiệm</p>
                   <p className="text-[10px] text-gray-500">CĐ Y Tế Hà Nội</p>
                 </div>
               </div>

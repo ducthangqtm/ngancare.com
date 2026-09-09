@@ -11,13 +11,13 @@ export default function AboutSpecialist() {
     },
     {
       icon: FileBadge2,
-      title: 'Chứng Chỉ Tuyến Sữa Thuận Tự Nhiên',
-      desc: 'Chuyên sâu giải phẫu nang sữa, cơ chế bài tiết sữa tự nhiên và kỹ thuật thông tia không đau, kích sữa khoa học.',
+      title: 'Chứng Chỉ Ứng Dụng Dẫn Lưu Hệ Bạch Huyết Trong Y Học Cổ Truyền',
+      desc: 'Ứng dụng dẫn lưu hệ bạch huyết trong y học cổ truyền, kết hợp với kiến thức y học hiện đại và phương pháp truyền thống để chăm sóc bầu ngực và tuyến sữa và sức khoẻ mẹ và bé.',
     },
     {
       icon: Award,
-      title: 'Chứng Chỉ Phục Hồi Sàn Chậu & Spa Mẹ Sau Sinh',
-      desc: 'Kỹ thuật xoa bóp bấm huyệt phục hồi cơ quan sinh sản, giảm đau mỏi lưng hông và liệu pháp thảo dược cung đình.',
+      title: 'Chứng Chỉ Chăm Sóc Trẻ Sơ Sinh Và Bà Mẹ Sau Sinh',
+      desc: 'Hỗ trợ chuyên sâu trong giai đoạn phục hồi và chăm sóc trẻ sơ sinh. Từ luyện tập nuôi con, xử lý các vấn đề sinh lý bé và hỗ trợ sức khoẻ mẹ, mang lại giải pháp chăm sóc mẹ và bé toàn diện và an toàn.',
     },
   ];
 
@@ -35,7 +35,7 @@ export default function AboutSpecialist() {
             Gặp Gỡ Chuyên Viên Điều Dưỡng <span className="gold-gradient-text">Nguyễn Thúy Ngân</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
-            Hơn 8 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và sự chính xác của một nhân viên y tế.
+            Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và sự chính xác của một nhân viên y tế.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function AboutSpecialist() {
 
               {/* Experience Badge */}
               <div className="absolute -bottom-2 right-4 sm:right-8 bg-charcoal-900 text-white px-4 py-2 rounded-2xl shadow-xl border-2 border-gold-400 flex items-center gap-2">
-                <span className="text-xl sm:text-2xl font-black text-gold-400">8+</span>
+                <span className="text-xl sm:text-2xl font-black text-gold-400">9+</span>
                 <span className="text-[11px] sm:text-xs font-semibold leading-tight">Năm Y Đức<br/>Tận Tâm</span>
               </div>
             </div>
@@ -100,22 +100,6 @@ export default function AboutSpecialist() {
                   </div>
                 );
               })}
-            </div>
-
-            {/* Key Statistics Bar */}
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="bg-white p-3 rounded-xl border border-gold-200 text-center">
-                <p className="text-lg sm:text-2xl font-black text-gold-600">3,500+</p>
-                <p className="text-[10px] sm:text-xs text-charcoal-800 font-medium mt-0.5">Ca Thông Tắc & Tắm Bé</p>
-              </div>
-              <div className="bg-white p-3 rounded-xl border border-gold-200 text-center">
-                <p className="text-lg sm:text-2xl font-black text-gold-600">100%</p>
-                <p className="text-[10px] sm:text-xs text-charcoal-800 font-medium mt-0.5">Hài Lòng Dịch Vụ</p>
-              </div>
-              <div className="bg-white p-3 rounded-xl border border-gold-200 text-center">
-                <p className="text-lg sm:text-2xl font-black text-gold-600">15 - 30&apos;</p>
-                <p className="text-[10px] sm:text-xs text-charcoal-800 font-medium mt-0.5">Long Biên & Gia Lâm</p>
-              </div>
             </div>
 
           </div>
