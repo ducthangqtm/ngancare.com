@@ -6,26 +6,39 @@ export default function Process4Steps() {
     {
       num: '01',
       icon: Stethoscope,
-      title: 'Đánh Giá & Nhận Định',
-      desc: 'Điều dưỡng viên đánh giá toàn trạng sức khoẻ mẹ và bé. Xác định các vấn đề sinh lý / bệnh lý cần chăm sóc.',
+      title: 'Đánh giá và nhận định',
+      bullets: [
+        'Điều dưỡng viên đánh giá toàn trạng sức khoẻ mẹ và bé',
+        'Xác định các vấn đề sinh lý/ bệnh lý cần chăm sóc',
+      ],
     },
     {
       num: '02',
       icon: ShieldAlert,
-      title: 'Chuẩn Bị Dụng Cụ Chăm Sóc',
-      desc: 'Chuẩn bị các dụng cụ chăm sóc thường quy và chuyên sâu. Đảm bảo dụng cụ đạt tiêu chuẩn an toàn y tế trước khi thực hiện.',
+      title: 'Chuẩn bị dụng cụ chăm sóc',
+      bullets: [
+        'Chuẩn bị các dụng cụ chăm sóc thường quy và dụng cụ chuyên biệt theo thực tế',
+        'Đảm bảo dụng cụ chăm sóc đạt tiêu chuẩn an toàn y tế trước khi thực hiện',
+      ],
     },
     {
       num: '03',
       icon: Sparkles,
-      title: 'Thao Tác Chuyên Môn',
-      desc: 'Thực hiện các thao tác chuyên môn theo gói dịch vụ. Xử trí triệt để các vấn đề sinh lý / bệnh lý mà mẹ và bé đang gặp phải.',
+      title: 'Thao tác chuyên môn',
+      bullets: [
+        'Thực hiện các thao tác chuyên môn theo gói dịch vụ',
+        'Xử trí các vấn đề sinh lý/ bệnh lý mà mẹ và bé đang gặp phải',
+      ],
     },
     {
       num: '04',
       icon: Baby,
-      title: 'Đánh Giá Kết Quả & Giải Thích Thắc Mắc',
-      desc: 'Đánh giá kết quả sau chăm sóc, tổng hợp các vấn đề cần lưu ý và hướng dẫn gia đình cách theo dõi, xử trí sức khỏe tại nhà.',
+      title: 'Đánh giá kết quả & giải thích thắc mắc',
+      bullets: [
+        'Đánh giá kết quả chăm sóc sau quá trình chăm sóc',
+        'Tổng hợp những vấn đề mẹ và bé cần lưu ý sau buổi chăm sóc',
+        'Hướng dẫn gia đình cách theo dõi và xử trí các vấn đề sức khoẻ',
+      ],
     },
   ];
 
@@ -66,12 +79,17 @@ export default function Process4Steps() {
                   </div>
 
                   <span className="text-xs font-bold text-gold-600 tracking-wider uppercase">Bước {step.num}</span>
-                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 mt-1 mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 mt-1 mb-3 leading-snug">
                     {step.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    {step.desc}
-                  </p>
+                  <ul className="space-y-1.5 text-xs text-gray-700 leading-relaxed">
+                    {step.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-1.5">
+                        <span className="text-gold-500 font-bold mt-0.5">•</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             );

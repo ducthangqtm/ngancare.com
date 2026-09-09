@@ -14,7 +14,8 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
   const [services, setServices] = useState<Service[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const cached = localStorage.getItem('ngancare_cached_services');
+        localStorage.removeItem('ngancare_cached_services'); // Dọn dẹp cache cũ
+        const cached = localStorage.getItem('ngancare_cached_services_v2');
         if (cached) {
           const parsed = JSON.parse(cached);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -27,15 +28,15 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await fetch('/api/services');
+        const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
-        if (data.success && Array.isArray(data.data)) {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           const medicalServices = data.data.filter(
             (s: Service) => s.category !== 'san_pham' && s.is_active === 1
           );
           setServices(medicalServices);
           try {
-            localStorage.setItem('ngancare_cached_services', JSON.stringify(medicalServices));
+            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(medicalServices));
           } catch (e) {}
         }
       } catch (e) {
@@ -124,12 +125,24 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
                     {/* Features List */}
                     <ul className="space-y-2.5 text-xs sm:text-sm text-charcoal-900 mb-6">
                       {service.features &&
-                        service.features.map((feat, fIdx) => (
-                          <li key={fIdx} className="flex items-start gap-2">
-                            <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-                            <span className="leading-snug">{feat}</span>
-                          </li>
-                        ))}
+                        service.features.map((feat, fIdx) => {
+                          const isNegative = feat.startsWith('x ') || feat.startsWith('x');
+                          const text = feat.replace(/^[x+]\s*/, '');
+                          return (
+                            <li key={fIdx} className="flex items-start gap-2">
+                              {isNegative ? (
+                                <span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-[10px] font-black flex-shrink-0 mt-0.5">
+                                  ✕
+                                </span>
+                              ) : (
+                                <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                              )}
+                              <span className={`leading-snug ${isNegative ? 'text-charcoal-700' : 'text-charcoal-900 font-medium'}`}>
+                                {text}
+                              </span>
+                            </li>
+                          );
+                        })}
                     </ul>
                   </div>
 

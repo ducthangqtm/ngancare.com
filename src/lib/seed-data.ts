@@ -11,12 +11,12 @@ export const INITIAL_SERVICES: Service[] = [
     description:
       'Massage giải cơ, dẫn lưu hệ bạch huyết vùng ngực. Chăm sóc kết hợp giữa thao tác tay và máy chuyên dụng.',
     features: [
-      'Không tổn thương nang sữa',
-      'Không dùng lực thô bạo',
-      'Không đắp lá đắp thuốc',
-      'Giải cơ lưu thông khí huyết',
-      'Dẫn lưu dịch bạch huyết giảm ứ trệ',
-      'Lấy cặn, thông sữa thuận tự nhiên',
+      'x Không tổn thương nang sữa',
+      'x Không dùng lực thô bạo',
+      'x Không đắp lá đắp thuốc',
+      '+ Giải cơ lưu thông khí huyết',
+      '+ Dẫn lưu dịch bạch huyết giảm ứ trệ',
+      '+ Lấy cặn, thông sữa thuận tự nhiên',
     ],
     image_url: '/images/banner.jpg',
     is_active: 1,
@@ -31,16 +31,16 @@ export const INITIAL_SERVICES: Service[] = [
     description:
       'Tắm bé theo quy trình y khoa, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh.',
     features: [
-      '100% Điều dưỡng chính quy trực tiếp tắm bé',
-      'Dụng cụ vệ sinh vô khuẩn',
-      'Theo dõi và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh trong suốt quá trình tắm',
+      '+ 100% Điều dưỡng chính quy trực tiếp tắm bé',
+      '+ Dụng cụ vệ sinh vô khuẩn',
+      '+ Theo dõi và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh trong suốt quá trình tắm',
     ],
     image_url: '/images/banner.jpg',
     is_active: 1,
   },
   {
     id: 'srv-03',
-    name: 'Chăm Sóc & Phục Hồi Toàn Diện Mẹ Sau Sinh',
+    name: 'Chăm sóc sau sinh',
     slug: 'cham-soc-phuc-hoi-me-sau-sinh',
     category: 'sau_sinh',
     price: 500000,
@@ -48,9 +48,9 @@ export const INITIAL_SERVICES: Service[] = [
     description:
       'Xông hơi thảo dược Dao Đỏ, massage co hồi tử cung và quấn ấm bụng.',
     features: [
-      'Xông hơi thảo dược',
-      'Massage bấm huyệt',
-      'Quấn muối thảo mộc',
+      '+ Xông hơi thảo dược Dao Đỏ',
+      '+ Massage co hồi tử cung',
+      '+ Quấn ấm bụng thảo mộc',
     ],
     image_url: '/images/banner.jpg',
     is_active: 1,

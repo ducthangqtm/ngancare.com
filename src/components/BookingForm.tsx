@@ -36,7 +36,8 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
   const [serviceOptions, setServiceOptions] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
-        const cached = localStorage.getItem('ngancare_cached_services');
+        localStorage.removeItem('ngancare_cached_services');
+        const cached = localStorage.getItem('ngancare_cached_services_v2');
         if (cached) {
           const parsed = JSON.parse(cached);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -49,15 +50,15 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await fetch('/api/services');
+        const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
-        if (data.success && Array.isArray(data.data)) {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           const medicalServices = data.data.filter(
             (s: any) => s.category !== 'san_pham' && s.is_active === 1
           );
           setServiceOptions(medicalServices);
           try {
-            localStorage.setItem('ngancare_cached_services', JSON.stringify(medicalServices));
+            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(medicalServices));
           } catch (e) {}
         }
       } catch (e) {

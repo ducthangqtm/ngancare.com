@@ -126,8 +126,8 @@ export default function HeroBanner() {
                 <div className="flex items-center justify-center gap-1 text-amber-500 text-xs font-bold">
                   ★ ★ ★ ★ ★
                 </div>
-                <p className="text-[11px] font-bold text-charcoal-900 mt-0.5">3,500+ Mẹ Bỉm</p>
-                <p className="text-[9px] text-gray-500">Đã tin dùng dịch vụ</p>
+                <p className="text-[11px] font-bold text-charcoal-900 mt-0.5">Đánh Giá 5 Sao</p>
+                <p className="text-[9px] text-gray-500">Mẹ bỉm tin chọn</p>
               </div>
 
             </div>

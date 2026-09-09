@@ -39,22 +39,22 @@ async function ensureServicesTable(db: D1Database) {
         await db.prepare(`
           INSERT INTO services (id, name, slug, category, price, duration, description, features, image_url, is_active)
           VALUES 
-          ('srv-01', 'Thông Tắc Tia Sữa & Kích Sữa Tự Nhiên Không Đau', 'thong-tac-tia-sua-khong-dau', 'thong_tac', 350000, 75,
-           'Phương pháp massage xoang nang sữa chuẩn y khoa kết hợp máy sóng siêu âm đa tần hiện đại và thảo dược lành tính. Tuyệt đối không nặn bóp thô bạo, giải tỏa cương đau, viêm tắc tức thì, kích hoạt phản xạ xuống sữa mạnh mẽ.',
-           '["Không đau đớn, không bóp nặn làm dập nát nang sữa","Công nghệ sóng siêu âm đa tần đánh tan cục tắc sâu","Chườm đắp thảo dược làm dịu cơn sốt cương vú","Hướng dẫn mẹ tư thế bế và chỉnh khớp ngậm đúng tại nhà"]',
+          ('srv-01', 'Thông Tắc Tia Sữa & Kích Sữa bằng pp Dẫn lưu hệ bạch huyết', 'thong-tac-tia-sua-khong-dau', 'thong_tac', 450000, 100,
+           'Massage giải cơ, dẫn lưu hệ bạch huyết vùng ngực. Chăm sóc kết hợp giữa thao tác tay và máy chuyên dụng.',
+           '["x Không tổn thương nang sữa","x Không dùng lực thô bạo","x Không đắp lá đắp thuốc","+ Giải cơ lưu thông khí huyết","+ Dẫn lưu dịch bạch huyết giảm ứ trệ","+ Lấy cặn, thông sữa thuận tự nhiên"]',
            '/images/banner.jpg', 1),
-          ('srv-02', 'Tắm Bé Sơ Sinh & Massage Vận Động Sớm Chuẩn Y Khoa', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 150000, 45,
-           'Quy trình tắm và vệ sinh cuống rốn vô khuẩn 100% do Điều dưỡng chuyên khoa trực tiếp thực hiện. Kết hợp massage toàn thân kích thích tuần hoàn, tiêu hóa, phòng chống vàng da và hơ lá trầu không giữ ấm tỳ vị cho bé.',
-           '["Điều dưỡng Y tế trực tiếp thực hiện chuyên nghiệp","Vệ sinh rốn chuẩn vô khuẩn phòng viêm nhiễm","Massage kích thích nhu động ruột, giảm đầy hơi nôn trớ","Hơ lá trầu không giữ ấm thóp, ngực, bụng, lưng"]',
+          ('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 180000, 45,
+           'Tắm bé theo quy trình y khoa, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh.',
+           '["+ 100% Điều dưỡng chính quy trực tiếp tắm bé","+ Dụng cụ vệ sinh vô khuẩn","+ Theo dõi và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh trong suốt quá trình tắm"]',
            '/images/banner.jpg', 1),
-          ('srv-03', 'Chăm Sóc & Phục Hồi Toàn Diện Mẹ Sau Sinh', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 450000, 90,
-           'Liệu trình phục hồi chuyên sâu kết hợp thảo dược cổ truyền và kỹ thuật y khoa. Giúp giảm đau mỏi lưng hông, đẩy sạch sản dịch, co hồi tử cung, xông hơi vùng kín thải độc và quấn bụng thảo mộc định hình vòng eo.',
-           '["Xông hơi toàn thân và vùng kín bằng lá thảo dược Dao Đỏ","Massage bấm huyệt lưu thông khí huyết, giảm ứ trệ","Quấn muối thảo dược và đai nịt bụng định hình eo thon","Dưỡng da sáng mịn, mờ thâm rạn với cốt nghệ gừng hạ thổ"]',
+          ('srv-03', 'Chăm sóc sau sinh', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 500000, 90,
+           'Xông hơi thảo dược Dao Đỏ, massage co hồi tử cung và quấn ấm bụng.',
+           '["+ Xông hơi thảo dược Dao Đỏ","+ Massage co hồi tử cung","+ Quấn ấm bụng thảo mộc"]',
            '/images/banner.jpg', 1),
           ('srv-04', 'Massage Mẹ Bầu Thư Giãn & Giảm Đau Nhức Thai Kỳ', 'massage-me-bau-thu-gian', 'me_bau', 350000, 75,
            'Dành cho mẹ từ tuần thai thứ 16 trở đi. Giúp giải tỏa áp lực đè nặng lên cột sống, giảm chuột rút và phù nề bàn chân, xua tan lo âu, cải thiện giấc ngủ ngon cho mẹ và thai nhi phát triển khỏe mạnh.',
-           '["Dầu massage hữu cơ chiết xuất tự nhiên 100% an toàn cho thai nhi","Kỹ thuật vuốt miết chuẩn y học cổ truyền, không ấn huyệt nguy hiểm","Giảm phù nề chân, tê bì tay và đau khớp háng","Tư vấn tư thế nằm nghỉ ngơi và chế độ vận động thai kỳ"]',
-           '/images/banner.jpg', 1)
+           '["Dầu massage hữu cơ chiết xuất tự nhiên 100% an toàn cho thai nhi","Kỹ thuật vuốt miết chuẩn y học cổ truyền, không ấn huyệt nguy hiểm"]',
+           '/images/banner.jpg', 0)
         `).run();
       }
       await db.prepare("INSERT OR REPLACE INTO system_settings (key, value) VALUES ('services_initialized', '1')").run();

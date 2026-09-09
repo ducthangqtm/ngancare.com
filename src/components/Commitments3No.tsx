@@ -5,8 +5,8 @@ export default function Commitments3No() {
   const commitments = [
     {
       icon: GraduationCap,
-      title: 'Kiến thức chăm sóc sức khoẻ mẹ và bé được đào tạo chính quy',
-      desc: 'Được đào tạo bài bản từ các trường y thuộc Bộ Giáo dục và Bộ Y tế. Đảm bảo tính khoa học và cập nhật kiến thức theo tiêu chuẩn y tế hiện đại, không suy diễn, đoán mò mà luôn dựa trên nền tảng y học chứng cứ.',
+      title: 'Kiến thức chăm sóc sức khoẻ mẹ và bé được đào tạo chính quy từ các trường y thuộc Bộ Giáo dục và Bộ Y tế',
+      desc: 'Đảm bảo tính khoa học và cập nhật kiến thức theo tiêu chuẩn y tế hiện đại, không suy diễn, đoán mò mà luôn dựa trên nền tảng y học chứng cứ.',
       tag: 'Đào Tạo Chính Quy',
     },
     {
