@@ -3,18 +3,24 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Calendar, Stethoscope, ShoppingBag, FileText, LogOut, LayoutDashboard, Globe, KeyRound, X, Loader2, CheckCircle2, AlertCircle, Bell, Send, Search } from 'lucide-react';
+import { Calendar, Stethoscope, ShoppingBag, FileText, LogOut, LayoutDashboard, Globe, KeyRound, X, Menu, Loader2, CheckCircle2, AlertCircle, Bell, Send, Search } from 'lucide-react';
 
 export default function AdminNav() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+
+  // Close mobile menu on route change
+  React.useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   // Telegram Configuration State
   const [showTelegramModal, setShowTelegramModal] = useState(false);
@@ -189,9 +195,119 @@ export default function AdminNav() {
     { name: 'Bài Viết Blog', href: '/admin/posts', icon: FileText },
   ];
 
+  const currentLink = links.find((l) => l.href === pathname) || links[1];
+
   return (
     <>
-      <aside className="w-full md:w-64 bg-charcoal-900 text-white flex-shrink-0 flex flex-col justify-between min-h-screen p-4 border-r border-gray-800">
+      {/* 1. THANH TOPBAR DÀNH RIÊNG CHO MOBILE (HIỂN THỊ TRÊN MÀN HÌNH NHỎ) */}
+      <header className="md:hidden sticky top-0 z-40 bg-charcoal-900 text-white border-b border-gray-800 px-4 py-3 flex items-center justify-between shadow-md">
+        <div className="flex items-center gap-2.5">
+          <span className="w-8 h-8 rounded-lg bg-gold-500 text-charcoal-900 font-black flex items-center justify-center text-sm shadow-sm">
+            NC
+          </span>
+          <div>
+            <h2 className="text-sm font-bold text-white leading-tight">Ngân Care Admin</h2>
+            <p className="text-[11px] text-gold-400 font-semibold">{currentLink.name}</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={openTelegramModal}
+            className="p-2 rounded-xl bg-amber-950/60 border border-amber-800/60 text-amber-400 hover:text-white"
+            title="Báo Telegram"
+            aria-label="Cấu hình Telegram"
+          >
+            <Bell className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-xl bg-gray-800 text-white hover:bg-gray-700"
+            aria-label="Mở menu quản trị"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5 text-gold-400" /> : <Menu className="w-5 h-5 text-gold-400" />}
+          </button>
+        </div>
+      </header>
+
+      {/* 2. MENU DROPDOWN / DRAWER KHI MỞ TRÊN MOBILE */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-[57px] z-50 bg-black/70 backdrop-blur-xs flex flex-col">
+          <div className="bg-charcoal-900 border-b border-gray-800 p-4 space-y-4 max-h-[85vh] overflow-y-auto shadow-2xl">
+            <p className="text-[11px] uppercase font-bold text-gray-400 tracking-wider">Danh mục quản lý</p>
+            <nav className="space-y-1">
+              {links.map((item) => {
+                const Icon = item.icon;
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                      isActive
+                        ? 'bg-gold-500 text-white shadow-gold-soft'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className="w-4 h-4" />
+                      <span>{item.name}</span>
+                    </div>
+                    {isActive && <span className="w-2 h-2 rounded-full bg-white"></span>}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="pt-3 border-t border-gray-800 space-y-2">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openTelegramModal();
+                }}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs text-amber-300 bg-amber-950/40 border border-amber-800/40"
+              >
+                <Bell className="w-4 h-4 text-amber-400" />
+                <span>Cấu Hình Báo Lịch Telegram</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setShowPasswordModal(true);
+                }}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs text-gray-300 bg-gray-800/70"
+              >
+                <KeyRound className="w-4 h-4 text-gold-400" />
+                <span>Đổi Mật Khẩu Admin</span>
+              </button>
+
+              <Link
+                href="/"
+                target="_blank"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs text-gray-300 bg-gray-800/70"
+              >
+                <Globe className="w-4 h-4 text-gold-400" />
+                <span>Xem Trang Khách (ngancare.com)</span>
+              </Link>
+
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs text-red-400 bg-red-950/40 border border-red-900/40 font-bold"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Đăng Xuất Khỏi Admin</span>
+              </button>
+            </div>
+          </div>
+          <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
+        </div>
+      )}
+
+      {/* 3. SIDEBAR CỐ ĐỊNH CHO DESKTOP (MÀN HÌNH >= 768px) */}
+      <aside className="hidden md:flex md:w-64 bg-charcoal-900 text-white flex-shrink-0 flex-col justify-between min-h-screen p-4 border-r border-gray-800 sticky top-0 h-screen overflow-y-auto">
         <div>
           {/* Admin Brand */}
           <div className="p-3 mb-6 border-b border-gray-800">

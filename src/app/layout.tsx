@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import FloatingCTA from '@/components/FloatingCTA';
+import AppShell from '@/components/AppShell';
 import JsonLd from '@/components/JsonLd';
 
 const roboto = Roboto({
@@ -97,10 +95,7 @@ export default function RootLayout({
         <JsonLd type="home" />
       </head>
       <body className="min-h-screen flex flex-col antialiased bg-cream-200/50 text-charcoal-900">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <FloatingCTA />
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

@@ -28,7 +28,7 @@ try {
   }
 
   console.log('Building Next.js Static Export for Cloudflare Pages...');
-  execSync('next build', {
+  execSync('npx next build', {
     stdio: 'inherit',
     env: { ...process.env, STATIC_EXPORT: 'true' },
   });
