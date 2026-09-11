@@ -3,8 +3,8 @@ interface Env {
   DB: D1Database;
 }
 
-const DEFAULT_BOT_TOKEN = ['8700850904', 'AAGQUd380KftNANpmU3mbx7wNmHvH5oe4I4'].join(':');
-const DEFAULT_CHAT_ID = '-5427119274';
+const DEFAULT_BOT_TOKEN = '';
+const DEFAULT_CHAT_ID = '';
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   try {
@@ -12,8 +12,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     const url = new URL(request.url);
     const action = url.searchParams.get('action');
 
-    let botToken = DEFAULT_BOT_TOKEN;
-    let chatId = DEFAULT_CHAT_ID;
+    let botToken = (env as any)?.TELEGRAM_BOT_TOKEN || DEFAULT_BOT_TOKEN;
+    let chatId = (env as any)?.TELEGRAM_CHAT_ID || DEFAULT_CHAT_ID;
 
     if (env && env.DB) {
       const tokenRow: any = await env.DB.prepare(
@@ -98,7 +98,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const body = (await request.json()) as any;
     const { action, bot_token, chat_id } = body;
 
-    const token = bot_token || DEFAULT_BOT_TOKEN;
+    let token = bot_token;
+    if (!token && env && env.DB) {
+      const tokenRow: any = await env.DB.prepare(
+        "SELECT value FROM system_settings WHERE key = 'telegram_bot_token'"
+      ).first();
+      if (tokenRow && tokenRow.value) token = tokenRow.value;
+    }
+    if (!token) {
+      token = (env as any)?.TELEGRAM_BOT_TOKEN || '';
+    }
 
     if (action === 'save') {
       if (env && env.DB) {
@@ -112,7 +121,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         await env.DB.prepare(
           "INSERT OR REPLACE INTO system_settings (key, value) VALUES ('telegram_bot_token', ?)"
         )
-          .bind(token)
+          .bind(token || '')
           .run();
 
         await env.DB.prepare(
@@ -129,6 +138,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 
     if (action === 'test') {
+      if (!token) {
+        return new Response(
+          JSON.stringify({ success: false, error: 'Chưa có Mã Bot Token để gửi tin nhắn thử nghiệm.' }),
+          { status: 400, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
       if (!chat_id) {
         return new Response(
           JSON.stringify({ success: false, error: 'Chưa có ID nhóm (Chat ID) để gửi tin nhắn.' }),
