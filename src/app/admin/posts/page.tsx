@@ -289,10 +289,10 @@ export default function AdminPostsPage() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 flex items-center gap-2">
               <FileText className="w-7 h-7 text-gold-600" />
-              <span>Cẩm Nang Kiến Thức Y Khoa (Blog)</span>
+              <span>Cẩm Nang Kiến Thức Mẹ & Bé (Blog)</span>
             </h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">
-              Quản lý bài viết chuyên môn Y học, hướng dẫn mẹ bỉm chăm sóc bé và xử trí tắc tia sữa.
+              Quản lý bài viết cẩm nang, hướng dẫn mẹ bỉm chăm sóc bé và thông tắc tia sữa.
             </p>
           </div>
 
@@ -365,7 +365,7 @@ export default function AdminPostsPage() {
                 </div>
 
                 <div>
-                  <label className="block font-bold text-charcoal-900 mb-1">Tác Giả & Cố Vấn Y Khoa</label>
+                  <label className="block font-bold text-charcoal-900 mb-1">Tác Giả / Người Phụ Trách</label>
                   <input
                     type="text"
                     value={author}
@@ -455,7 +455,7 @@ export default function AdminPostsPage() {
                   rows={2}
                   value={excerpt}
                   onChange={(e) => setExcerpt(e.target.value)}
-                  placeholder="Mô tả tóm lược 2-3 câu ngắn gọn để người đọc nắm được nội dung y khoa cốt lõi..."
+                  placeholder="Mô tả tóm lược 2-3 câu ngắn gọn để người đọc nắm được nội dung cốt lõi..."
                   className="w-full px-3.5 py-2 rounded-xl border border-gray-300 focus:border-gold-500 outline-none leading-relaxed"
                 />
               </div>
@@ -572,7 +572,7 @@ export default function AdminPostsPage() {
 
                       <div className="h-4 w-px bg-gray-300 mx-1" />
 
-                      {/* Khung Lời Khuyên Y Khoa */}
+                      {/* Khung Lời Khuyên Chăm Sóc */}
                       <button
                         type="button"
                         onClick={() =>
@@ -586,7 +586,7 @@ export default function AdminPostsPage() {
                         title="Chèn khung lời khuyên nổi bật"
                       >
                         <Lightbulb className="w-3.5 h-3.5 text-amber-600" />
-                        <span>Khung Lời Khuyên Y Khoa</span>
+                        <span>Khung Lời Khuyên Chăm Sóc</span>
                       </button>
 
                       {/* CHÈN ẢNH VÀO BÀI VIẾT */}

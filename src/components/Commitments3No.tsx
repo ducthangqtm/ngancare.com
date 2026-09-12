@@ -5,8 +5,8 @@ export default function Commitments3No() {
   const commitments = [
     {
       icon: GraduationCap,
-      title: 'Kiến thức chăm sóc sức khoẻ mẹ và bé được đào tạo chính quy từ các trường y thuộc Bộ Giáo dục và Bộ Y tế',
-      desc: 'Đảm bảo tính khoa học và cập nhật kiến thức theo tiêu chuẩn y tế hiện đại, không suy diễn, đoán mò mà luôn dựa trên nền tảng y học chứng cứ.',
+      title: 'Đào tạo bài bản, chính quy chuyên ngành Điều dưỡng',
+      desc: 'Đảm bảo kiến thức chăm sóc khoa học, an toàn, được cập nhật thường xuyên; không suy diễn hay truyền miệng thiếu cơ sở.',
       tag: 'Đào Tạo Chính Quy',
     },
     {
@@ -34,7 +34,7 @@ export default function Commitments3No() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <ShieldCheck className="w-4 h-4 text-gold-600" />
-            <span>Danh Dự Nghề Y</span>
+            <span>Uy Tín & Tận Tâm</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
             Cam Kết Vàng Từ <span className="gold-gradient-text">Điều Dưỡng Thúy Ngân</span>

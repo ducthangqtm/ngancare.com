@@ -121,7 +121,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
                     {post.author}
                     <ShieldCheck className="w-4 h-4 text-emerald-600 fill-emerald-100" />
                   </p>
-                  <p className="text-[11px] text-gold-700">Tốt nghiệp CĐ Y Tế Hà Nội • Tham vấn chuyên môn Y học</p>
+                  <p className="text-[11px] text-gold-700">Tốt nghiệp CĐ Y Tế Hà Nội • Chuyên viên chăm sóc mẹ & bé</p>
                 </div>
               </div>
 
@@ -152,13 +152,13 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
               />
             </div>
 
-            {/* Medical Warning Callout */}
+            {/* Safety Warning Callout */}
             <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-amber-50 border border-amber-300 text-charcoal-900 text-xs sm:text-sm flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <div>
                 <strong className="text-amber-900 block mb-1">Khuyến cáo an toàn từ Điều Dưỡng Thúy Ngân:</strong>
                 <span>
-                  Các phương pháp massage và thông tia sữa phải được thực hiện nhẹ nhàng theo giải phẫu xoang nang sữa. Tuyệt đối <strong>KHÔNG</strong> dùng lực nặn bóp thô bạo hoặc dùng kim châm chọc tại nhà vì có nguy cơ cao làm dập nát ống dẫn sữa, tạo điều kiện cho vi khuẩn xâm nhập gây áp xe vú nguy hiểm.
+                  Các phương pháp massage và thông tia sữa phải được thực hiện nhẹ nhàng, êm dịu. Tuyệt đối <strong>KHÔNG</strong> dùng lực nặn bóp thô bạo hoặc dùng vật nhọn châm chọc tại nhà vì có nguy cơ cao làm tổn thương vùng ngực và gây viêm nhiễm nguy hiểm.
                 </span>
               </div>
             </div>
@@ -181,7 +181,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
               </div>
               <div className="text-center sm:text-left space-y-1">
                 <h4 className="text-base font-bold text-charcoal-900">
-                  Tác Giả & Cố Vấn Chuyên Môn: Điều Dưỡng Nguyễn Thúy Ngân
+                  Tác Giả: Điều Dưỡng Nguyễn Thúy Ngân
                 </h4>
                 <p className="text-xs text-gold-800 font-semibold">
                   Tốt nghiệp Trường Cao Đẳng Y Tế Hà Nội • Chứng chỉ Tuyến Sữa Thuận Tự Nhiên
@@ -195,7 +195,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
             {/* Bottom In-Article CTA */}
             <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-charcoal-900 to-charcoal-800 text-white text-center space-y-4 shadow-xl border border-gold-500/30">
               <h3 className="text-xl sm:text-2xl font-bold">
-                Mẹ Đang Bị Tắc Tia Sữa Cương Đau Hay Cần Tắm Bé Chuẩn Y Khoa?
+                Mẹ Đang Bị Tắc Tia Sữa Cương Đau Hay Cần Tắm Bé Chuyên Nghiệp Tại Nhà?
               </h3>
               <p className="text-xs sm:text-sm text-gray-300 max-w-xl mx-auto">
                 Đừng chịu đựng cơn đau đơn độc. Điều dưỡng Thúy Ngân sẵn sàng có mặt sau <strong>15 - 30 phút</strong> tại nhà bạn ở Long Biên & Gia Lâm để hỗ trợ thông tia êm ái!

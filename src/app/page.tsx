@@ -24,7 +24,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. Hero Banner with 4 Pillars & Emergency Quick Action */}
+      {/* 1. Hero Banner with 4 Pillars & Quick Action */}
       <HeroBanner />
 
       {/* 2. Specialist Credentials: Điều Dưỡng Nguyễn Thúy Ngân */}
@@ -33,7 +33,7 @@ export default function HomePage() {
       {/* 3. Core Flagship Services */}
       <CoreServices onSelectService={handleSelectService} />
 
-      {/* 4. Medical Standard 4-Step Process */}
+      {/* 4. Professional 4-Step Process */}
       <Process4Steps />
 
       {/* 5. Gold 3-NOs Commitments */}
@@ -42,13 +42,13 @@ export default function HomePage() {
       {/* 6. Natural Products Catalog */}
       <ProductsCatalog />
 
-      {/* 8. Medical Blog Knowledge Section on Homepage */}
+      {/* 8. Blog Knowledge Section on Homepage */}
       <HomeBlogSection />
 
       {/* 9. Online Booking Form */}
       <BookingForm initialServiceId={selectedServiceId} />
 
-      {/* 10. Interactive Medical FAQ Accordion */}
+      {/* 10. Interactive FAQ Accordion */}
       <FAQ />
     </>
   );

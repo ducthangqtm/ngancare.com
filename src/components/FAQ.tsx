@@ -9,15 +9,15 @@ export default function FAQ() {
   const faqs = [
     {
       q: 'Bé chưa rụng rốn có tắm tại nhà được không?',
-      a: 'Hoàn toàn được và rất an toàn khi có nhân viên y tế hỗ trợ. Điều dưỡng Thúy Ngân tuân thủ nghiêm ngặt quy trình vệ sinh cuống rốn vô khuẩn 100% bằng găng tay y tế và dung dịch sát khuẩn chuyên dụng, giúp cuống rốn luôn khô thoáng, tránh đọng nước gây nhiễm trùng hoặc u hạt rốn sơ sinh.',
+      a: 'Hoàn toàn được và rất an toàn khi có chuyên viên hỗ trợ. Điều dưỡng Thúy Ngân tuân thủ quy trình tắm và chăm sóc cuống rốn sạch sẽ, an toàn, cẩn thận, giúp cuống rốn luôn khô thoáng, sạch sẽ, tránh đọng nước cho bé.',
     },
     {
       q: 'Một buổi thông tắc tia sữa thường mất bao lâu và có đau không?',
-      a: 'Một buổi thông tắc kéo dài khoảng 100 phút. Phương pháp chăm sóc ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp massage giải cơ vùng ngực bằng tay và máy chuyên dụng. Tuyệt đối KHÔNG tổn thương nang sữa, KHÔNG dùng lực thô bạo, giúp giải cơ lưu thông khí huyết, giảm ứ trệ và thông sữa thuận tự nhiên.',
+      a: 'Một buổi thông tắc kéo dài khoảng 100 phút. Phương pháp chăm sóc ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp massage giải cơ vùng ngực bằng tay và máy chuyên dụng. Tuyệt đối KHÔNG làm đau rát, KHÔNG dùng lực thô bạo, giúp giải cơ lưu thông khí huyết, giảm ứ trệ và thông sữa thuận tự nhiên.',
     },
     {
-      q: 'Dụng cụ y tế có được khử trùng trước khi đến nhà không?',
-      a: 'Toàn bộ khăn xô, gạc y tế vô trùng, máy hút - thông sữa và thiết bị chuyên môn đều được tiệt trùng bằng cồn y tế chuyên dụng và tủ cực tím UV trước khi mang đến phục vụ mỗi gia đình.',
+      q: 'Dụng cụ chăm sóc có được tiệt trùng sạch sẽ trước khi đến nhà không?',
+      a: 'Toàn bộ khăn xô, dụng cụ vệ sinh, máy chuyên dụng và phụ kiện đều được làm sạch và tiệt trùng cẩn thận trước khi mang đến phục vụ mỗi gia đình.',
     },
     {
       q: 'Mẹ sinh mổ sau bao lâu thì có thể xông hơi và massage phục hồi?',

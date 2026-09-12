@@ -41,7 +41,7 @@ export default function FloatingCTA() {
         <a
           href="tel:0339627769"
           className="pointer-events-auto relative group w-14 h-14 rounded-full bg-gradient-to-tr from-emergency-600 to-amber-500 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform active:scale-95"
-          title="Gọi hotline cấp cứu ngay: 0339.627.769"
+          title="Gọi hotline hỗ trợ 24/7 ngay: 0339.627.769"
           aria-label="Gọi điện hotline 0339627769"
         >
           <span className="absolute -inset-1 rounded-full bg-emergency-500 opacity-60 animate-ping group-hover:opacity-100" />

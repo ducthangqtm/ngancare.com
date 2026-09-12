@@ -142,7 +142,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
       return;
     }
 
-    if (isAllDayBusy && finalTime !== 'Càng sớm càng tốt (Cấp cứu)') {
+    if (isAllDayBusy && !finalTime.includes('Càng sớm càng tốt')) {
       setErrorMessage(`Ngày ${bookingDate} Điều dưỡng Thúy Ngân hiện đã kín lịch. Vui lòng chọn ngày khác hoặc liên hệ hotline.`);
       return;
     }
@@ -192,7 +192,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
             Đặt Lịch Chăm Sóc <span className="gold-gradient-text">Mẹ & Bé Tại Nhà</span>
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-charcoal-800 max-w-xl mx-auto">
-            Điền thông tin bên dưới để Điều dưỡng Thúy Ngân sắp xếp lịch hẹn và chuẩn bị dụng cụ y tế chu đáo nhất cho gia đình bạn.
+            Điền thông tin bên dưới để Điều dưỡng Thúy Ngân sắp xếp lịch hẹn và chuẩn bị dụng cụ chăm sóc chu đáo nhất cho gia đình bạn.
           </p>
         </div>
 
@@ -336,8 +336,8 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                     <div>
                       <p className="font-bold">Ngày {bookingDate}: Điều dưỡng Thúy Ngân đã kín lịch / nghỉ cả ngày.</p>
                       <p className="mt-0.5 text-[11px] text-rose-700">
-                        Mẹ vui lòng đổi sang ngày khác. Nếu mẹ đang bị tắc tia sữa sốt cương đau khẩn cấp, hãy gọi trực tiếp hotline{' '}
-                        <a href="tel:0339627769" className="font-bold underline text-rose-900">0339.627.769</a> để được hỗ trợ cấp cứu.
+                        Mẹ vui lòng đổi sang ngày khác. Nếu mẹ đang bị tắc tia sữa sốt cương đau cần hỗ trợ gấp, hãy gọi trực tiếp hotline{' '}
+                        <a href="tel:0339627769" className="font-bold underline text-rose-900">0339.627.769</a> để được hỗ trợ nhanh chóng.
                       </p>
                     </div>
                   </div>
@@ -354,26 +354,26 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
                       </span>
                     </div>
 
-                    {/* Emergency ASAP Option */}
+                    {/* ASAP Priority Option */}
                     <div className="mb-3">
                       <button
                         type="button"
                         onClick={() => {
                           setIsCustomTime(false);
-                          setBookingTime('Càng sớm càng tốt (Cấp cứu)');
+                          setBookingTime('Càng sớm càng tốt (Ưu tiên gấp)');
                         }}
                         className={`w-full py-2.5 px-4 rounded-2xl border text-xs font-bold transition-all flex items-center justify-between ${
-                          !isCustomTime && bookingTime === 'Càng sớm càng tốt (Cấp cứu)'
-                            ? 'bg-gradient-to-r from-red-600 to-rose-600 text-white border-red-600 shadow-md scale-[1.01]'
-                            : 'bg-rose-50/70 hover:bg-rose-100 text-red-700 border-rose-200'
+                          !isCustomTime && bookingTime.includes('Càng sớm càng tốt')
+                            ? 'bg-gradient-to-r from-amber-600 to-rose-600 text-white border-amber-600 shadow-md scale-[1.01]'
+                            : 'bg-rose-50/70 hover:bg-rose-100 text-rose-700 border-rose-200'
                         }`}
                       >
                         <span className="flex items-center gap-1.5">
-                          <span>🚨</span>
-                          <span>Càng Sớm Càng Tốt (Cấp Cứu Tắc Tia / Sốt Cương Vú)</span>
+                          <span>⚡</span>
+                          <span>Càng Sớm Càng Tốt (Ưu Tiên Gấp / Tắc Tia Cương Đau)</span>
                         </span>
                         <span className="text-[10px] uppercase tracking-wide bg-white/30 px-2 py-0.5 rounded-full font-black">
-                          Ưu Tiên Số 1
+                          Ưu Tiên Hỗ Trợ
                         </span>
                       </button>
                     </div>

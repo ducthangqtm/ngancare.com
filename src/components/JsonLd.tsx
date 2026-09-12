@@ -17,15 +17,15 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
 
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': ['MedicalBusiness', 'LocalBusiness'],
+    '@type': ['LocalBusiness', 'ProfessionalService'],
     '@id': `${baseUrl}/#organization`,
-    name: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa',
+    name: 'Ngân Care - Chăm Sóc Mẹ Và Bé Tại Nhà',
     alternateName: 'Nguyễn Thúy Ngân Chăm Sóc Mẹ & Bé',
     url: baseUrl,
     logo: `${baseUrl}/images/logo.png`,
     image: `${baseUrl}/images/banner.jpg`,
     description:
-      'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh chuẩn y khoa tại nhà khu vực Long Biên & Gia Lâm bởi Điều dưỡng Thúy Ngân. Có mặt sau 15 - 30 phút.',
+      'Dịch vụ thông tắc tia sữa nhẹ nhàng, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà khu vực Long Biên & Gia Lâm bởi Điều dưỡng Thúy Ngân. Tận tâm, an toàn, có mặt sau 15 - 30 phút.',
     telephone: '0339627769',
     priceRange: '150.000đ - 500.000đ',
     address: {
@@ -61,12 +61,6 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
       'https://www.facebook.com/ngancare.mevabe',
       'https://zalo.me/0339627769',
     ],
-    medicalSpecialty: [
-      'Obstetric',
-      'Pediatric',
-      'LactationConsultant',
-      'Nursing',
-    ],
   };
 
   const personSchema = {
@@ -74,13 +68,13 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
     '@type': 'Person',
     '@id': `${baseUrl}/#specialist`,
     name: 'Nguyễn Thúy Ngân',
-    jobTitle: 'Điều Dưỡng Y Tế - Chuyên Gia Tuyến Sữa & Mẹ Bé',
+    jobTitle: 'Điều Dưỡng - Chuyên Viên Chăm Sóc Mẹ & Bé Tại Nhà',
     worksFor: {
       '@id': `${baseUrl}/#organization`,
     },
     image: `${baseUrl}/images/avata.jpg`,
     description:
-      'Tốt nghiệp Trường Cao Đẳng Y Tế Hà Nội, sở hữu chứng chỉ Chăm sóc Tuyến sữa thuận tự nhiên và chứng chỉ Phục hồi sức khỏe sàn chậu & Spa mẹ sau sinh với hơn 8 năm kinh nghiệm.',
+      'Tốt nghiệp chuyên ngành Điều dưỡng tại Trường Cao Đẳng Y Tế Hà Nội, sở hữu chứng chỉ Chăm sóc Tuyến sữa thuận tự nhiên và chứng chỉ Phục hồi sức khỏe sàn chậu & Spa mẹ sau sinh với hơn 8 năm kinh nghiệm.',
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'Trường Cao Đẳng Y Tế Hà Nội',
@@ -96,7 +90,7 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
         name: 'Bé chưa rụng rốn có tắm tại nhà được không?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Hoàn toàn được và rất an toàn. Điều dưỡng Thúy Ngân tuân thủ quy trình tắm và vệ sinh cuống rốn vô khuẩn 100% bằng găng tay y tế và dung dịch sát khuẩn chuyên dụng, giúp cuống rốn luôn khô thoáng, phòng ngừa viêm rốn sơ sinh.',
+          text: 'Hoàn toàn được và rất an toàn. Điều dưỡng Thúy Ngân tuân thủ quy trình tắm và chăm sóc cuống rốn sạch sẽ, an toàn, vệ sinh dụng cụ kỹ lưỡng, giúp cuống rốn luôn khô thoáng, phòng ngừa viêm nhiễm cho bé.',
         },
       },
       {
@@ -104,15 +98,15 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
         name: 'Một buổi thông tắc tia sữa thường mất bao lâu?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Một buổi thông tắc tia sữa chuẩn y khoa kéo dài từ 60 - 75 phút. Điều dưỡng sẽ dùng sóng siêu âm đa tần kết hợp massage nhẹ nhàng mở xoang sữa và hướng dẫn mẹ chỉnh khớp ngậm đúng.',
+          text: 'Một buổi thông tắc tia sữa chuyên nghiệp kéo dài từ 60 - 75 phút. Chuyên viên sẽ kết hợp massage nhẹ nhàng bằng phương pháp dẫn lưu hệ bạch huyết mở xoang sữa và hướng dẫn mẹ chỉnh khớp ngậm đúng.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Dụng cụ y tế có được tiệt trùng trước khi đến nhà không?',
+        name: 'Dụng cụ chăm sóc có được tiệt trùng sạch sẽ trước khi đến nhà không?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Tất cả dụng cụ, gạc vô trùng, khăn tiệt trùng và thiết bị đều được khử khuẩn bằng dung dịch y tế chuyên dụng và đèn cực tím UV trước khi mang đến nhà phục vụ mẹ và bé.',
+          text: 'Tất cả dụng cụ, khăn sạch và thiết bị đều được làm sạch, tiệt trùng cẩn thận trước khi mang đến phục vụ mẹ và bé.',
         },
       },
     ],
@@ -122,7 +116,7 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
   if (type === 'article' && articleData) {
     articleSchema = {
       '@context': 'https://schema.org',
-      '@type': 'MedicalWebPage',
+      '@type': 'BlogPosting',
       headline: articleData.title,
       description: articleData.description,
       image: articleData.coverImage.startsWith('http')
@@ -137,8 +131,6 @@ export default function JsonLd({ type = 'home', articleData }: JsonLdProps) {
       publisher: {
         '@id': `${baseUrl}/#organization`,
       },
-      medicalAudience: 'Patient',
-      aspect: ['Treatment', 'Prevention', 'Overview'],
     };
   }
 

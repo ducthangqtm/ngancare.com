@@ -479,7 +479,7 @@ export default function AdminBookingsPage() {
                       <p className="flex-1"><strong className="text-charcoal-900">Địa chỉ:</strong> {b.customer_address}</p>
                     </div>
 
-                    {/* Ghi chú y tế */}
+                    {/* Ghi chú khách hàng */}
                     {b.notes && (
                       <div className="text-xs text-amber-900 bg-amber-50/80 p-2.5 rounded-xl border border-amber-200/60 leading-relaxed italic">
                         <strong>Ghi chú:</strong> “{b.notes}”
@@ -538,7 +538,7 @@ export default function AdminBookingsPage() {
                       <th className="py-3.5 px-4">Khách Hàng</th>
                       <th className="py-3.5 px-4">Địa Chỉ Phục Vụ</th>
                       <th className="py-3.5 px-4">Dịch Vụ & Thời Gian</th>
-                      <th className="py-3.5 px-4">Ghi Chú Y Tế</th>
+                      <th className="py-3.5 px-4">Ghi Chú Yêu Cầu</th>
                       <th className="py-3.5 px-4">Trạng Thái</th>
                       <th className="py-3.5 px-4 text-right">Thao Tác</th>
                     </tr>

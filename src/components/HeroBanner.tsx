@@ -6,8 +6,8 @@ export default function HeroBanner() {
   const pillars = [
     {
       icon: ShieldCheck,
-      title: 'Kiến Thức Y Khoa Chính Quy',
-      desc: 'Tốt nghiệp Y tế Hà Nội, thao tác chuẩn y học chứng cứ',
+      title: 'Chuyên Môn Đào Tạo Chính Quy',
+      desc: 'Tốt nghiệp Cao Đẳng Y Tế Hà Nội, kinh nghiệm và tận tâm',
     },
     {
       icon: HeartHandshake,
@@ -17,7 +17,7 @@ export default function HeroBanner() {
     {
       icon: Sparkles,
       title: 'Tích hợp dẫn lưu hệ bạch huyết trong quy trình chăm sóc',
-      desc: 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — một phương pháp mang lại hiệu quả cao trong xử lý tắc ống sữa, phù nề vú và viêm tuyến vú',
+      desc: 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — phương pháp nhẹ nhàng giúp thông tắc và giải tỏa căng tức vú',
     },
     {
       icon: Clock,
@@ -79,7 +79,7 @@ export default function HeroBanner() {
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Quy trình vô khuẩn</span>
+                <span>Dụng cụ tiệt trùng sạch sẽ</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />

@@ -29,11 +29,11 @@ export const INITIAL_SERVICES: Service[] = [
     price: 180000,
     duration: 45,
     description:
-      'Tắm bé theo quy trình y khoa, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh.',
+      'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
     features: [
       '+ 100% Điều dưỡng chính quy trực tiếp tắm bé',
-      '+ Dụng cụ vệ sinh vô khuẩn',
-      '+ Theo dõi và xử trí các vấn đề sinh lý/ bệnh lý sơ sinh trong suốt quá trình tắm',
+      '+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng',
+      '+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm',
     ],
     image_url: '/images/banner.jpg',
     is_active: 1,
@@ -150,16 +150,16 @@ export const INITIAL_SERVICES: Service[] = [
 export const INITIAL_POSTS: BlogPost[] = [
   {
     id: 'post-01',
-    title: 'Tắc Tia Sữa Uống Gì, Làm Gì? Phác Đồ Xử Trí Chuẩn Y Khoa Tại Nhà Không Đau',
+    title: 'Tắc Tia Sữa Uống Gì, Làm Gì? Hướng Dẫn Chăm Sóc Tại Nhà Nhẹ Nhàng Không Đau',
     slug: 'tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa',
     excerpt:
-      'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn tuyệt đối không gây tổn thương nang sữa.',
+      'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn tuyệt đối không gây tổn thương.',
     cover_image: '/images/banner.jpg',
     category: 'Thông Tắc Tia Sữa',
     author: 'Điều Dưỡng Nguyễn Thúy Ngân',
     views: 1420,
     is_published: 1,
-    meta_title: 'Tắc Tia Sữa: Cách Xử Trí Không Đau Chuẩn Y Khoa | Ngân Care',
+    meta_title: 'Tắc Tia Sữa: Cách Chăm Sóc Nhẹ Nhàng Không Đau | Ngân Care',
     meta_description:
       'Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về cách nhận biết và thông tắc tia sữa tại nhà an toàn, giải tỏa cương đau ngay tức thì.',
     created_at: '2026-02-15T08:00:00Z',
@@ -181,25 +181,25 @@ export const INITIAL_POSTS: BlogPost[] = [
         <li><strong>Áp lực chèn ép ngoại cảnh:</strong> Mặc áo ngực quá chật hoặc nằm nghiêng đè lên bầu ngực suốt đêm.</li>
       </ol>
 
-      <h2>3. Phác đồ xử trí 4 bước chuẩn y khoa tại nhà</h2>
-      <p>Tuyệt đối <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây dập nang sữa dẫn đến viêm mủ áp xe. Hãy tuân thủ 4 bước:</p>
+      <h2>3. Hướng dẫn chăm sóc 4 bước nhẹ nhàng tại nhà</h2>
+      <p>Tuyệt đối <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây tổn thương vùng ngực. Hãy tuân thủ 4 bước:</p>
       <ul>
         <li><strong>Bước 1 - Chườm ấm vừa phải:</strong> Dùng khăn nhúng nước ấm khoảng 45°C chườm lên vùng ngực 5-7 phút để làm giãn nở các ống dẫn sữa.</li>
         <li><strong>Bước 2 - Massage nhẹ nhàng theo hình xoắn ốc:</strong> Sử dụng các đầu ngón tay vuốt nhẹ từ thành ngực hướng dần về phía đầu ti.</li>
-        <li><strong>Bước 3 - Cho bé bú bên ngực bị tắc trước:</strong> Lực hút sinh học tự nhiên của em bé là vũ khí thông tia mạnh mẽ và an toàn nhất.</li>
+        <li><strong>Bước 3 - Cho bé bú bên ngực bị tắc trước:</strong> Lực hút tự nhiên của em bé là cách thông tia hiệu quả và an toàn nhất.</li>
         <li><strong>Bước 4 - Vắt kiệt sữa thừa:</strong> Dùng máy hút sữa ở chế độ nhẹ nhàng để làm rỗng hoàn toàn bầu ngực sau cữ bú.</li>
       </ul>
 
-      <h2>4. Khi nào mẹ cần liên hệ chuyên viên y tế cấp cứu ngay?</h2>
-      <p>Nếu mẹ đã tự massage quá 24 giờ mà cục tắc không tan, sốt cao trên 38.5°C, ngực sưng đỏ tấy lan rộng thì cần liên hệ ngay chuyên viên thông tắc tia sữa chuẩn y khoa để được can thiệp kịp thời bằng máy sóng siêu âm và kỹ thuật vô khuẩn, tránh biến chứng viêm mủ áp xe vú phải phẫu thuật rạch dẫn lưu.</p>
+      <h2>4. Khi nào mẹ cần liên hệ chuyên viên hỗ trợ kịp thời?</h2>
+      <p>Nếu mẹ đã tự massage quá 24 giờ mà cục tắc không tan, bầu ngực sưng tức nhiều thì cần liên hệ ngay chuyên viên để được chăm sóc kịp thời bằng máy chuyên dụng và kỹ thuật dẫn lưu bạch huyết nhẹ nhàng, giúp thông thoáng tia sữa an toàn.</p>
     `,
   },
   {
     id: 'post-02',
-    title: 'Hướng Dẫn Tắm Bé Sơ Sinh Chưa Rụng Rốn Tại Nhà An Toàn 100% Chuẩn Bệnh Viện',
+    title: 'Hướng Dẫn Tắm Bé Sơ Sinh Chưa Rụng Rốn Tại Nhà An Toàn, Sạch Sẽ',
     slug: 'huong-dan-tam-be-so-sinh-chua-rung-ron-an-toan',
     excerpt:
-      'Quy trình tắm bé sơ sinh chi tiết từng bước, kỹ thuật bế và vệ sinh cuốn rốn vô khuẩn giúp bé ngủ sâu giấc, phòng tránh viêm rốn và vàng da sơ sinh.',
+      'Quy trình tắm bé sơ sinh chi tiết từng bước, kỹ thuật bế và vệ sinh cuống rốn sạch sẽ giúp bé ngủ sâu giấc, phòng tránh viêm nhiễm cho bé.',
     cover_image: '/images/banner.jpg',
     category: 'Tắm Bé Sơ Sinh',
     author: 'Điều Dưỡng Nguyễn Thúy Ngân',
@@ -207,14 +207,14 @@ export const INITIAL_POSTS: BlogPost[] = [
     is_published: 1,
     meta_title: 'Hướng Dẫn Tắm Bé Sơ Sinh Chưa Rụng Rốn An Toàn Tại Nhà | Ngân Care',
     meta_description:
-      'Quy trình chuẩn y khoa hướng dẫn tắm bé sơ sinh và vệ sinh cuống rốn an toàn, tránh viêm nhiễm từ Điều Dưỡng Thúy Ngân.',
+      'Quy trình hướng dẫn tắm bé sơ sinh và vệ sinh cuống rốn an toàn, sạch sẽ từ Điều Dưỡng Thúy Ngân.',
     created_at: '2026-02-18T10:30:00Z',
     content: `
-      <h2>1. Chuẩn bị phòng tắm và dụng cụ vô khuẩn</h2>
+      <h2>1. Chuẩn bị phòng tắm và dụng cụ sạch sẽ</h2>
       <p>Nhiệt độ phòng tắm lý tưởng cho trẻ sơ sinh là từ 26 - 28°C, kín gió, có thể bật đèn sưởi nếu thời tiết mùa đông. Nước tắm cần duy trì ở nhiệt độ 37 - 38°C (kiểm tra bằng nhiệt kế hoặc cùi chỏ tay).</p>
 
       <h2>2. Kỹ thuật bế và làm sạch mắt mũi tai trước khi tắm</h2>
-      <p>Dùng gạc y tế vô khuẩn nhúng nước muối sinh lý 0.9% lau sạch khóe mắt bé từ trong ra ngoài. Tiếp theo dùng tăm bông thấm nhẹ làm sạch vành tai ngoài.</p>
+      <p>Dùng gạc mềm thấm nước muối sinh lý 0.9% lau sạch khóe mắt bé từ trong ra ngoài. Tiếp theo dùng tăm bông thấm nhẹ làm sạch vành tai ngoài.</p>
 
       <h2>3. Thao tác tắm thân mình và bảo vệ rốn</h2>
       <p>Nhẹ nhàng hạ thân mình bé vào chậu nước, giữ vững phần cổ và đầu bé trên cánh tay mẹ/điều dưỡng. Rửa sạch các nếp gấp cổ, nách, bẹn - nơi đọng mồ hôi và chất gây.</p>
@@ -271,7 +271,7 @@ export const INITIAL_BOOKINGS: Booking[] = [
     customer_phone: '0915678901',
     customer_address: 'Toà S2.05 KĐT Vinhomes Smart City, Tây Mỗ, Nam Từ Liêm, Hà Nội',
     service_id: 'srv-02',
-    service_name: 'Tắm Bé Sơ Sinh & Massage Vận Động Sớm Chuẩn Y Khoa',
+    service_name: 'Tắm Bé Sơ Sinh & Massage Vận Động Sớm An Toàn',
     booking_date: '2026-03-09',
     booking_time: '09:00',
     notes: 'Bé sinh được 5 ngày chưa rụng rốn, đặt gói 10 buổi tắm và hơ lá trầu.',

@@ -190,7 +190,7 @@ export default function AdminNav() {
   const links = [
     { name: 'Tổng Quan', href: '/admin', icon: LayoutDashboard },
     { name: 'Lịch Hẹn Đặt', href: '/admin/bookings', icon: Calendar },
-    { name: 'Dịch Vụ Y Tế', href: '/admin/services', icon: Stethoscope },
+    { name: 'Dịch Vụ Chăm Sóc', href: '/admin/services', icon: Stethoscope },
     { name: 'Sản Phẩm & Affiliate', href: '/admin/products', icon: ShoppingBag },
     { name: 'Bài Viết Blog', href: '/admin/posts', icon: FileText },
   ];

@@ -84,19 +84,19 @@ CREATE TABLE IF NOT EXISTS admins (
 - Logo: Bông sen vàng và bàn tay nâng niu + Tên thương hiệu **Nguyễn Thúy Ngân - Mẹ và Bé** (ngancare.com).
 - Menu: Trang chủ, Về Ngân Care, Dịch vụ, Sản phẩm, Bảng giá, Quy trình, Blog, Đặt lịch.
 - Nút bấm nổi bật:
-  - **"Cấp cứu tắc tia sữa 24/7"** (Nút màu cam nổi bật, nhấp nháy, bấm gọi Hotline ngay lập tức).
+  - **"Hotline Hỗ Trợ 24/7"** (Nút màu cam nổi bật, nhấp nháy, bấm gọi Hotline ngay lập tức).
   - Nút "Đặt lịch ngay".
 
 ### Section 2: Hero Section
 - Hình ảnh: Bố cục banner mẹ và bé ấm áp, hình ảnh chuyên viên Ngân chăm sóc tận tâm.
 - Tiêu đề chính: *"Đồng Hành Cùng Mẹ Chăm Sóc Sức Khỏe Mẹ Và Bé Từ Thai Kỳ Đến Sau Sinh"*.
 - Slogan: *"Chăm sóc bằng kiến thức - Nuôi dưỡng bằng yêu thương"*.
-- Cam kết nhanh: *"Có mặt sau 30 - 45 phút nội thành Hà Nội"*.
+- Cam kết nhanh: *"Có mặt sau 15 - 30 phút khu vực Long Biên & Gia Lâm, Hà Nội"*.
 - 4 trụ cột giá trị:
-  1. Kiến thức y khoa chính quy.
+  1. Chuyên môn đào tạo chính quy.
   2. Chăm sóc nhẹ nhàng, tận tâm.
-  3. Giải pháp tự nhiên, không đau.
-  4. Đồng hành 24/7 cùng mẹ bỉm.
+  3. Phương pháp dẫn lưu hệ bạch huyết an toàn, êm ái.
+  4. Đồng hành hỗ trợ 24/7 cùng mẹ bỉm.
 
 ### Section 3: Giới thiệu Chuyên gia (About Specialist)
 - Ảnh chân dung tròn viền vàng sang trọng của Điều dưỡng Nguyễn Thúy Ngân.
@@ -106,23 +106,23 @@ CREATE TABLE IF NOT EXISTS admins (
   - Chứng chỉ Phục hồi sức khỏe sàn chậu & Spa mẹ bầu sau sinh.
 
 ### Section 4: Danh mục Dịch vụ Trọng tâm
-- **Thông tắc tia sữa & Kích sữa:** Không đau, không nặn bóp thô bạo, giải tỏa cương sữa tức thì.
-- **Tắm bé & Massage sơ sinh tại nhà:** Chuẩn y khoa, vệ sinh rốn an toàn, hơ lá trầu, vận động sớm.
+- **Thông tắc tia sữa & Kích sữa:** Nhẹ nhàng, không đau, không nặn bóp thô bạo, giải tỏa cương đau kịp thời.
+- **Tắm bé & Massage sơ sinh tại nhà:** Quy trình an toàn, chăm sóc rốn sạch sẽ, hơ lá trầu, vận động sớm.
 - **Chăm sóc mẹ bầu & Spa sau sinh:** Massage giảm đau lưng hông, xông hơi thảo dược toàn thân/vùng kín, quấn bụng định hình thảo mộc.
 
-### Section 5: Quy trình 4 Bước Chuẩn Y Khoa
-- Bước 1: Thăm khám, kiểm tra nang sữa và tình trạng sức khỏe mẹ/bé.
-- Bước 2: Vệ sinh, tiệt trùng dụng cụ y tế 100%.
+### Section 5: Quy Trình Chăm Sóc 4 Bước
+- Bước 1: Nắm bắt thể trạng và nhu cầu chăm sóc của mẹ và bé.
+- Bước 2: Chuẩn bị dụng cụ chăm sóc sạch sẽ, tiệt trùng an toàn.
 - Bước 3: Thực hiện thao tác chuyên môn nhẹ nhàng, êm dịu, không đau.
-- Bước 4: Hướng dẫn mẹ kỹ năng chỉnh khớp ngậm đúng và cách nuôi con bằng sữa mẹ.
+- Bước 4: Hướng dẫn mẹ kỹ năng chỉnh khớp ngậm đúng và cách nuôi con bằng sữa mẹ tại nhà.
 
 ### Section 6: Cam kết Vàng 3 KHÔNG
-- KHÔNG gây đau đớn, tổn thương nang sữa.
+- KHÔNG gây đau đớn, tổn thương vùng ngực.
 - KHÔNG dùng hóa chất độc hại (100% thảo mộc tự nhiên an toàn).
 - KHÔNG phát sinh chi phí ngoài giá niêm yết.
 
 ### Section 7: Khu vực Phục vụ tại Nhà (Local SEO Hà Nội)
-- Hỗ trợ nhanh tại các quận: Cầu Giấy, Nam Từ Liêm, Bắc Từ Liêm, Thanh Xuân, Đống Đa, Hà Đông, Ba Đình, Hoàn Kiếm, Hai Bà Trưng, Hoàng Mai, Long Biên, Gia Lâm.
+- Hỗ trợ nhanh tại các quận: Long Biên, Gia Lâm, Cầu Giấy, Nam Từ Liêm, Bắc Từ Liêm, Thanh Xuân, Đống Đa, Hà Đông, Ba Đình, Hoàn Kiếm, Hai Bà Trưng, Hoàng Mai.
 
 ### Section 8: Form Đặt Lịch Trực Tuyến
 - Nhập thông tin: Họ tên mẹ, Số điện thoại, Địa chỉ đón tiếp, Gói dịch vụ, Thời gian hẹn, Ghi chú tình trạng.
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS admins (
 ### Section 10: FAQ - Câu hỏi Thường Gặp
 - Bé chưa rụng rốn có tắm tại nhà được không?
 - Một buổi thông tia sữa thường mất bao lâu?
-- Dụng cụ có được khử trùng trước khi đến nhà không?
+- Dụng cụ có được tiệt trùng sạch sẽ trước khi đến nhà không?
 
 ### Section 11: Footer & Floating Action Buttons
 - Liên kết mạng xã hội: Fanpage Facebook (`facebook.com/ngancare.mevabe`), Zalo, Hotline.
@@ -145,8 +145,8 @@ CREATE TABLE IF NOT EXISTS admins (
 
 ## 4. HỆ THỐNG BLOG CHIA SẺ KIẾN THỨC (FRONTEND & SEO)
 - Route `/blog`: Hiển thị danh sách bài viết phân trang, lọc theo danh mục.
-- Route `/blog/[slug]`: Chi tiết bài viết chuẩn SEO YMYL (Mục lục, Khối tác giả Điều dưỡng Thúy Ngân, Nút CTA đặt lịch).
-- Cấu trúc JSON-LD Schema: Khai báo Schema `MedicalBusiness`, `Person`, `BlogPosting`, `FAQPage`.
+- Route `/blog/[slug]`: Chi tiết bài viết chuẩn SEO (Mục lục, Khối tác giả Điều dưỡng Thúy Ngân, Nút CTA đặt lịch).
+- Cấu trúc JSON-LD Schema: Khai báo Schema `LocalBusiness`, `ProfessionalService`, `Person`, `BlogPosting`, `FAQPage`.
 
 ---
 
@@ -170,8 +170,8 @@ Bạn là chuyên gia Full-stack và Chuyên gia SEO. Hãy tạo dự án mã ng
 - Cloudflare D1 cho Database (Services, Bookings, Posts, Admins).
 
 2. Trang Khách (Public):
-- Landing page trang chủ đầy đủ: Header (kèm nút Cấp Cứu Tắc Tia Sữa 24/7), Hero Banner, About Chuyên gia Thúy Ngân, Services, Quy trình 4 bước chuẩn Y khoa, Cam kết 3 KHÔNG, Khu vực phục vụ Hà Nội, Catalog Sản phẩm, Form Đặt lịch, FAQ, Footer.
-- Blog module: Trang danh sách `/blog` và bài viết chi tiết `/blog/[slug]`. Tích hợp đầy đủ JSON-LD Schema (MedicalBusiness, Person, FAQPage, Article).
+- Landing page trang chủ đầy đủ: Header (kèm nút Hotline Hỗ Trợ 24/7), Hero Banner, About Chuyên gia Thúy Ngân, Services, Quy trình chăm sóc 4 bước, Cam kết 3 KHÔNG, Khu vực phục vụ Hà Nội, Catalog Sản phẩm, Form Đặt lịch, FAQ, Footer.
+- Blog module: Trang danh sách `/blog` và bài viết chi tiết `/blog/[slug]`. Tích hợp đầy đủ JSON-LD Schema (LocalBusiness, ProfessionalService, Person, FAQPage, BlogPosting).
 
 3. Trang Quản trị (Admin):
 - Dashboard `/admin` quản lý Bookings, Services/Sản phẩm, và Viết bài Blog (kèm Rich Text Editor).

@@ -166,7 +166,7 @@ export default function AdminServicesPage() {
       <main className="flex-1 p-6 sm:p-10 max-w-7xl overflow-x-auto">
         <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900">Dịch Vụ Y Tế</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900">Dịch Vụ Chăm Sóc</h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">
               Quản lý danh sách dịch vụ chăm sóc mẹ và bé tại nhà (thông tắc tia sữa, tắm bé, sau sinh, massage bầu).
             </p>
@@ -184,7 +184,7 @@ export default function AdminServicesPage() {
             className="px-4 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-600 text-white font-bold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition-all"
           >
             {isAdding ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-            <span>{isAdding ? 'Đóng Form' : 'Thêm Dịch Vụ Y Tế'}</span>
+            <span>{isAdding ? 'Đóng Form' : 'Thêm Dịch Vụ Mới'}</span>
           </button>
         </div>
 
@@ -196,12 +196,12 @@ export default function AdminServicesPage() {
                 {editingId ? (
                   <>
                     <Edit2 className="w-5 h-5 text-gold-600" />
-                    <span>Chỉnh Sửa Dịch Vụ Y Tế</span>
+                    <span>Chỉnh Sửa Dịch Vụ</span>
                   </>
                 ) : (
                   <>
                     <Sparkles className="w-5 h-5 text-gold-600" />
-                    <span>Thêm Mới Dịch Vụ Y Tế</span>
+                    <span>Thêm Mới Dịch Vụ</span>
                   </>
                 )}
               </h3>
@@ -288,7 +288,7 @@ export default function AdminServicesPage() {
                   rows={2}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Mô tả kỹ thuật y tế, công nghệ áp dụng..."
+                  placeholder="Mô tả chi tiết phương pháp, kỹ thuật áp dụng..."
                   className="w-full px-3.5 py-2 rounded-xl border border-gray-300 focus:border-gold-500 outline-none"
                 />
               </div>
@@ -301,7 +301,7 @@ export default function AdminServicesPage() {
                   rows={3}
                   value={featuresInput}
                   onChange={(e) => setFeaturesInput(e.target.value)}
-                  placeholder="Không đau đớn&#10;Chuẩn y tế vô khuẩn 100%&#10;Điều dưỡng kinh nghiệm"
+                  placeholder="Không đau đớn&#10;Quy trình an toàn, tiệt trùng sạch sẽ&#10;Điều dưỡng kinh nghiệm"
                   className="w-full px-3.5 py-2 rounded-xl border border-gray-300 focus:border-gold-500 outline-none font-mono text-xs"
                 />
               </div>

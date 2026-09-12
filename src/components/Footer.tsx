@@ -98,25 +98,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Medical Blog Articles */}
+          {/* Blog Articles */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider text-gold-400">
-              Kiến Thức Y Khoa
+              Cẩm Nang Mẹ & Bé
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
               <li>
                 <Link href="/blog/tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa" className="hover:text-gold-400 transition-colors line-clamp-2">
-                  Phác đồ thông tắc tia sữa không đau tại nhà
+                  Kinh nghiệm thông tắc tia sữa nhẹ nhàng tại nhà
                 </Link>
               </li>
               <li>
                 <Link href="/blog/huong-dan-tam-be-so-sinh-chua-rung-ron-an-toan" className="hover:text-gold-400 transition-colors line-clamp-2">
-                  Hướng dẫn tắm bé chưa rụng rốn chuẩn bệnh viện
+                  Hướng dẫn tắm bé chưa rụng rốn an toàn, sạch sẽ
                 </Link>
               </li>
               <li>
                 <Link href="/blog/cam-nang-phuc-hoi-co-the-cho-me-sau-sinh" className="hover:text-gold-400 transition-colors line-clamp-2">
-                  Cẩm nang phục hồi sau sinh & co hồi tử cung
+                  Cẩm nang phục hồi sau sinh & chăm sóc cơ thể
                 </Link>
               </li>
               <li className="pt-1">
@@ -151,7 +151,7 @@ export default function Footer() {
 
         </div>
 
-        {/* Medical Disclaimer & Copyright */}
+        {/* Disclaimer & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} <strong>Ngân Care (ngancare.com)</strong>. Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân.
@@ -161,7 +161,7 @@ export default function Footer() {
               Khu Vực Quản Trị (Admin)
             </Link>
             <span>•</span>
-            <span>Chuẩn Y Khoa YMYL</span>
+            <span>An Toàn & Tận Tâm</span>
           </div>
         </div>
 

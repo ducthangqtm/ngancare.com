@@ -133,7 +133,7 @@ export default function CoverageHanoi() {
               <span>Trụ Sở Ngân Care: Thượng Thanh — Long Biên — Hà Nội</span>
             </h4>
             <p className="text-xs sm:text-sm text-gray-600 max-w-xl">
-              Khoảng cách gần, không lo kẹt cầu hay chậm trễ. Điều dưỡng Thúy Ngân luôn mang theo đầy đủ máy móc sóng siêu âm và dụng cụ vô khuẩn tới tận phòng của mẹ.
+              Khoảng cách gần, không lo kẹt cầu hay chậm trễ. Điều dưỡng Thúy Ngân luôn mang theo đầy đủ trang thiết bị chuyên dụng và dụng cụ sạch sẽ, an toàn tới tận nhà phục vụ mẹ và bé.
             </p>
           </div>
 
@@ -142,7 +142,7 @@ export default function CoverageHanoi() {
             className="flex-shrink-0 px-7 py-3.5 rounded-full bg-emergency-500 hover:bg-emergency-600 text-white font-bold text-sm flex items-center gap-2.5 shadow-md transition-all active:scale-95 whitespace-nowrap"
           >
             <PhoneCall className="w-4 h-4" />
-            <span>Gọi Cấp Cứu: 0339.627.769</span>
+            <span>Hotline Hỗ Trợ 24/7: 0339.627.769</span>
           </a>
         </div>
 

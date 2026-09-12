@@ -33,14 +33,14 @@ export default function HomeBlogSection() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <BookOpen className="w-3.5 h-3.5 text-gold-600" />
-            <span>Cẩm Nang Y Khoa Mẹ & Bé</span>
+            <span>Cẩm Nang Chăm Sóc Mẹ & Bé</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 text-balance max-w-2xl mx-auto leading-snug">
-            Kiến Thức Y Khoa{' '}
-            <span className="gold-gradient-text inline-block">Chuyên Sâu Từ Điều Dưỡng</span>
+            Kiến Thức Chăm Sóc{' '}
+            <span className="gold-gradient-text inline-block">Từ Điều Dưỡng Thúy Ngân</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
-            Tổng hợp các bài viết hướng dẫn xử trí tắc tia sữa, chăm sóc bé sơ sinh và dinh dưỡng sau sinh chuẩn Y học chứng cứ.
+            Tổng hợp các bài viết hướng dẫn thông tắc tia sữa nhẹ nhàng, chăm sóc bé sơ sinh và phục hồi sau sinh an toàn, chu đáo.
           </p>
         </div>
 

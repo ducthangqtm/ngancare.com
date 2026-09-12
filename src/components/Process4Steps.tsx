@@ -8,8 +8,8 @@ export default function Process4Steps() {
       icon: Stethoscope,
       title: 'Đánh giá và nhận định',
       bullets: [
-        'Điều dưỡng viên đánh giá toàn trạng sức khoẻ mẹ và bé',
-        'Xác định các vấn đề sinh lý/ bệnh lý cần chăm sóc',
+        'Điều dưỡng viên nắm bắt thể trạng và nhu cầu của mẹ và bé',
+        'Lắng nghe và kiểm tra tình trạng thực tế cần hỗ trợ chăm sóc',
       ],
     },
     {
@@ -17,8 +17,8 @@ export default function Process4Steps() {
       icon: ShieldAlert,
       title: 'Chuẩn bị dụng cụ chăm sóc',
       bullets: [
-        'Chuẩn bị các dụng cụ chăm sóc thường quy và dụng cụ chuyên biệt theo thực tế',
-        'Đảm bảo dụng cụ chăm sóc đạt tiêu chuẩn an toàn y tế trước khi thực hiện',
+        'Chuẩn bị các dụng cụ chăm sóc thường quy và chuyên biệt theo gói dịch vụ',
+        'Đảm bảo toàn bộ dụng cụ được vệ sinh và tiệt trùng sạch sẽ, an toàn',
       ],
     },
     {
@@ -26,8 +26,8 @@ export default function Process4Steps() {
       icon: Sparkles,
       title: 'Thao tác chuyên môn',
       bullets: [
-        'Thực hiện các thao tác chuyên môn theo gói dịch vụ',
-        'Xử trí các vấn đề sinh lý/ bệnh lý mà mẹ và bé đang gặp phải',
+        'Thực hiện các thao tác chuyên môn nhẹ nhàng theo gói dịch vụ',
+        'Chăm sóc chu đáo các vấn đề mẹ và bé đang gặp phải (thông tia, tắm bé, thư giãn)',
       ],
     },
     {
@@ -35,9 +35,9 @@ export default function Process4Steps() {
       icon: Baby,
       title: 'Đánh giá kết quả & giải thích thắc mắc',
       bullets: [
-        'Đánh giá kết quả chăm sóc sau quá trình chăm sóc',
-        'Tổng hợp những vấn đề mẹ và bé cần lưu ý sau buổi chăm sóc',
-        'Hướng dẫn gia đình cách theo dõi và xử trí các vấn đề sức khoẻ',
+        'Đánh giá hiệu quả sau buổi chăm sóc',
+        'Tổng hợp những điểm gia đình cần lưu ý khi chăm sóc mẹ và bé',
+        'Hướng dẫn mẹ cách tự chăm sóc và theo dõi thể trạng bé tại nhà',
       ],
     },
   ];
@@ -49,7 +49,7 @@ export default function Process4Steps() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
-            <span>Y Đức & Kỹ Thuật</span>
+            <span>Tận Tâm & Chuyên Nghiệp</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
             Quy Trình Chăm Sóc <span className="gold-gradient-text">4 Bước</span>

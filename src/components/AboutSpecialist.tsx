@@ -7,17 +7,17 @@ export default function AboutSpecialist() {
     {
       icon: GraduationCap,
       title: 'Tốt Nghiệp Trường Cao Đẳng Y Tế Hà Nội',
-      desc: 'Đào tạo chính quy bài bản về Điều dưỡng sản nhi, vô khuẩn y tế và kỹ thuật chăm sóc sơ sinh lâm sàng.',
+      desc: 'Đào tạo chính quy bài bản về Điều dưỡng, quy trình vệ sinh an toàn và kỹ thuật chăm sóc sơ sinh.',
     },
     {
       icon: FileBadge2,
-      title: 'Chứng Chỉ Ứng Dụng Dẫn Lưu Hệ Bạch Huyết Trong Y Học Cổ Truyền',
-      desc: 'Ứng dụng dẫn lưu hệ bạch huyết trong y học cổ truyền, kết hợp với kiến thức y học hiện đại và phương pháp truyền thống để chăm sóc bầu ngực và tuyến sữa và sức khoẻ mẹ và bé.',
+      title: 'Chứng Chỉ Kỹ Thuật Dẫn Lưu Hệ Bạch Huyết',
+      desc: 'Ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp phương pháp xoa bóp truyền thống để chăm sóc nhẹ nhàng bầu ngực, thông tắc tia sữa và phục hồi sức khỏe mẹ sau sinh.',
     },
     {
       icon: Award,
       title: 'Chứng Chỉ Chăm Sóc Trẻ Sơ Sinh Và Bà Mẹ Sau Sinh',
-      desc: 'Hỗ trợ chuyên sâu trong giai đoạn phục hồi và chăm sóc trẻ sơ sinh. Từ luyện tập nuôi con, xử lý các vấn đề sinh lý bé và hỗ trợ sức khoẻ mẹ, mang lại giải pháp chăm sóc mẹ và bé toàn diện và an toàn.',
+      desc: 'Hỗ trợ chuyên sâu trong giai đoạn phục hồi và chăm sóc trẻ sơ sinh. Hướng dẫn mẹ nuôi con, theo dõi chăm sóc thể trạng bé và hỗ trợ sức khỏe mẹ toàn diện, an toàn.',
     },
   ];
 
@@ -35,7 +35,7 @@ export default function AboutSpecialist() {
             Gặp Gỡ Chuyên Viên Điều Dưỡng <span className="gold-gradient-text">Nguyễn Thúy Ngân</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
-            Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và sự chính xác của một nhân viên y tế.
+            Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và tác phong chuyên nghiệp, tận tâm.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export default function AboutSpecialist() {
               {/* Experience Badge */}
               <div className="absolute -bottom-2 right-4 sm:right-8 bg-charcoal-900 text-white px-4 py-2 rounded-2xl shadow-xl border-2 border-gold-400 flex items-center gap-2">
                 <span className="text-xl sm:text-2xl font-black text-gold-400">9+</span>
-                <span className="text-[11px] sm:text-xs font-semibold leading-tight">Năm Y Đức<br/>Tận Tâm</span>
+                <span className="text-[11px] sm:text-xs font-semibold leading-tight">Năm Kinh Nghiệm<br/>Tận Tâm</span>
               </div>
             </div>
           </div>
@@ -74,14 +74,14 @@ export default function AboutSpecialist() {
             {/* Quote Box */}
             <div className="bg-white p-5 sm:p-6 rounded-2xl border-l-4 border-gold-500 shadow-sm">
               <p className="text-sm sm:text-base text-charcoal-900 italic font-medium leading-relaxed">
-                “Mỗi em bé chào đời là một thiên thần vô giá. Người mẹ sau cuộc vượt cạn thiêng liêng xứng đáng được nâng niu, chăm sóc bằng tất cả tình yêu thương và sự chuẩn mực y khoa cao nhất.”
+                “Mỗi em bé chào đời là một thiên thần vô giá. Người mẹ sau cuộc vượt cạn thiêng liêng xứng đáng được nâng niu, chăm sóc bằng tất cả tình yêu thương và sự chu đáo, tận tâm nhất.”
               </p>
               <p className="text-right text-xs font-bold text-gold-700 mt-2">
                 — Điều Dưỡng Nguyễn Thúy Ngân
               </p>
             </div>
 
-            {/* List of Medical Qualifications */}
+            {/* List of Qualifications */}
             <div className="space-y-4">
               {credentials.map((cred, idx) => {
                 const Icon = cred.icon;

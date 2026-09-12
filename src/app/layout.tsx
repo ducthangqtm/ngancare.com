@@ -14,14 +14,14 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ngancare.com'),
   title: {
-    default: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội | ĐD. Thúy Ngân',
+    default: 'Ngân Care - Dịch Vụ Chăm Sóc Mẹ Và Bé Tại Nhà Uy Tín Hà Nội | Điều Dưỡng Thúy Ngân',
     template: '%s | Ngân Care',
   },
   description:
-    'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội do Điều Dưỡng Nguyễn Thúy Ngân trực tiếp thực hiện. Có mặt sau 15 - 30 phút khu vực Long Biên & Gia Lâm.',
+    'Dịch vụ tắm bé sơ sinh, thông tắc tia sữa nhẹ nhàng, phục hồi mẹ sau sinh tại nhà khu vực Hà Nội. Tận tâm, chu đáo, an toàn.',
   keywords: [
-    'thông tắc tia sữa hà nội',
-    'thông tia sữa không đau',
+    'chăm sóc mẹ và bé tại nhà hà nội',
+    'thông tắc tia sữa nhẹ nhàng hà nội',
     'tắm bé sơ sinh tại nhà',
     'chăm sóc mẹ sau sinh hà nội',
     'ngân care',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     'thông tắc tia sữa long biên',
     'thông tắc tia sữa gia lâm',
     'massage mẹ bầu',
-    'cấp cứu tắc tia sữa 24 7',
+    'hỗ trợ tắc tia sữa 24 7',
   ],
   authors: [{ name: 'Điều Dưỡng Nguyễn Thúy Ngân' }],
   creator: 'Ngân Care',
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội',
+    title: 'Ngân Care - Dịch Vụ Chăm Sóc Mẹ Và Bé Tại Nhà Uy Tín Hà Nội | Điều Dưỡng Thúy Ngân',
     description:
-      'Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương. Có mặt sau 15 - 30 phút Long Biên & Gia Lâm.',
+      'Dịch vụ tắm bé sơ sinh, thông tắc tia sữa nhẹ nhàng, phục hồi mẹ sau sinh tại nhà khu vực Hà Nội. Tận tâm, chu đáo, an toàn.',
     url: 'https://ngancare.com',
     siteName: 'Ngân Care',
     images: [
@@ -77,9 +77,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ngân Care - Chăm Sóc Mẹ Và Bé Chuẩn Y Khoa Hà Nội | ĐD. Thúy Ngân',
+    title: 'Ngân Care - Dịch Vụ Chăm Sóc Mẹ Và Bé Tại Nhà Uy Tín Hà Nội | Điều Dưỡng Thúy Ngân',
     description:
-      'Dịch vụ thông tắc tia sữa không đau, tắm bé sơ sinh và chăm sóc phục hồi mẹ sau sinh tại nhà Hà Nội.',
+      'Dịch vụ tắm bé sơ sinh, thông tắc tia sữa nhẹ nhàng, phục hồi mẹ sau sinh tại nhà khu vực Hà Nội. Tận tâm, chu đáo, an toàn.',
     images: ['https://ngancare.com/images/banner.jpg'],
   },
 };

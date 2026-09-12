@@ -50,13 +50,13 @@ export default function BlogListPage() {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <BookOpen className="w-3.5 h-3.5 text-gold-600" />
-            <span>Cẩm Nang Kiến Thức Y Khoa</span>
+            <span>Cẩm Nang Kiến Thức Chăm Sóc</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-charcoal-900 leading-tight">
             Góc Chia Sẻ Cùng <span className="gold-gradient-text">Điều Dưỡng Thúy Ngân</span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800">
-            Tổng hợp các bài viết hướng dẫn chăm sóc mẹ bầu, xử trí tắc tia sữa và nuôi con bằng sữa mẹ chuẩn y học chứng cứ.
+            Tổng hợp các bài viết hướng dẫn chăm sóc mẹ bầu, thông tắc tia sữa nhẹ nhàng và nuôi con bằng sữa mẹ an toàn, chu đáo.
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-# Ngân Care - Website Chăm Sóc Mẹ & Bé Chuẩn Y Khoa (ngancare.com)
+# Ngân Care - Website Chăm Sóc Mẹ & Bé Tại Nhà (ngancare.com)
 
 Dự án full-stack hoàn chỉnh cho thương hiệu **Ngân Care** của **Điều Dưỡng Nguyễn Thúy Ngân**, triển khai trên **Cloudflare Pages** kết hợp **Cloudflare D1 Database**.
 
@@ -6,21 +6,21 @@ Dự án full-stack hoàn chỉnh cho thương hiệu **Ngân Care** của **Đi
 
 ## 🌟 Tính Năng Nổi Bật
 
-1. **Trang Chủ Chuẩn Chuyển Đổi & Y Khoa YMYL**:
-   - Header với thanh thông báo khẩn cấp và nút **"CẤP CỨU TẮC TIA 24/7"** nhấp nháy gọi hotline ngay lập tức.
-   - Hero banner ấm áp, cam kết **"Có mặt sau 30 - 45 phút nội thành Hà Nội"** và 4 trụ cột giá trị y tế.
+1. **Trang Chủ Chuẩn Chuyển Đổi & Tối Ưu Trải Nghiệm**:
+   - Header với thanh thông báo và nút **"HOTLINE HỖ TRỢ 24/7"** gọi hotline ngay lập tức.
+   - Hero banner ấm áp, cam kết **"Có mặt sau 15 - 30 phút Long Biên & Gia Lâm"** và 4 trụ cột giá trị dịch vụ.
    - Giới thiệu **Điều Dưỡng Thúy Ngân** (Cao Đẳng Y Tế Hà Nội, Chứng chỉ Tuyến sữa thuận tự nhiên, Chứng chỉ Phục hồi sàn chậu & Spa sau sinh).
-   - Danh mục dịch vụ trọng tâm: Thông tắc tia sữa không đau, Tắm bé chuẩn bệnh viện, Chăm sóc phục hồi sau sinh toàn diện.
-   - Quy trình 4 bước chuẩn Y khoa & Cam kết Vàng 3 KHÔNG.
+   - Danh mục dịch vụ trọng tâm: Thông tắc tia sữa nhẹ nhàng, Tắm bé sơ sinh an toàn, Chăm sóc phục hồi sau sinh toàn diện.
+   - Quy trình chăm sóc 4 bước an toàn & Cam kết Vàng 3 KHÔNG.
    - Mạng lưới phục vụ Local SEO 12 quận Hà Nội.
    - Catalog sản phẩm thiên nhiên lành tính cho mẹ và bé kèm nút tư vấn qua Zalo.
    - Form đặt lịch trực tuyến với validation, gửi dữ liệu thời gian thực.
-   - FAQ Accordion và Hệ thống nút gọi nổi (Hotline, Zalo, Messenger, Cấp cứu 24/7).
+   - FAQ Accordion và Hệ thống nút gọi nổi (Hotline, Zalo, Messenger).
 
-2. **Chuyên Mục Blog Chuẩn SEO YMYL**:
+2. **Chuyên Mục Cẩm Nang Mẹ & Bé**:
    - Danh sách bài viết `/blog` phân loại theo danh mục (`Thông Tắc Tia Sữa`, `Tắm Bé Sơ Sinh`, `Chăm Sóc Sau Sinh`...).
-   - Chi tiết bài viết `/blog/[slug]` với cấu trúc đề mục, cảnh báo y tế từ chuyên gia, khung tác giả y khoa và nút CTA đặt lịch khẩn cấp.
-   - Tích hợp đầy đủ JSON-LD Schema: `MedicalBusiness`, `LocalBusiness`, `Person`, `FAQPage`, `Article`.
+   - Chi tiết bài viết `/blog/[slug]` với cấu trúc đề mục, hướng dẫn an toàn từ chuyên gia, khung tác giả và nút CTA đặt lịch.
+   - Tích hợp đầy đủ JSON-LD Schema: `LocalBusiness`, `ProfessionalService`, `Person`, `FAQPage`, `BlogPosting`.
 
 3. **Admin Dashboard Quản Trị (/admin)**:
    - Đăng nhập bảo mật `/admin/login`.
