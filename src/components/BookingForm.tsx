@@ -188,10 +188,10 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
             <span>Chăm Sóc Tận Nhà Theo Yêu Cầu</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Đặt Lịch Chăm Sóc <span className="gold-gradient-text">Mẹ & Bé Tại Nhà</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Đặt Lịch Chăm Sóc <span className="gold-gradient-text whitespace-nowrap">Mẹ &amp; Bé Tại Nhà</span>
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-charcoal-800 max-w-xl mx-auto">
+          <p className="mt-2 text-xs sm:text-sm text-charcoal-800 text-balance max-w-xl mx-auto">
             Điền thông tin bên dưới để Điều dưỡng Thúy Ngân sắp xếp lịch hẹn và chuẩn bị dụng cụ chăm sóc chu đáo nhất cho gia đình bạn.
           </p>
         </div>
@@ -204,11 +204,11 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto animate-bounce-gentle">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-charcoal-900">
+              <h3 className="text-xl sm:text-2xl font-bold text-charcoal-900 text-balance">
                 Đặt Lịch Hẹn Thành Công!
               </h3>
-              <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-                Cảm ơn mẹ đã tin tưởng <strong>Ngân Care</strong>. Điều dưỡng Nguyễn Thúy Ngân sẽ gọi điện thoại xác nhận trong vòng <strong>5 - 10 phút</strong> để tư vấn cụ thể và khởi hành đến nhà mẹ.
+              <p className="text-sm text-gray-600 max-w-md mx-auto leading-relaxed text-balance">
+                Cảm ơn mẹ đã tin tưởng <strong>Ngân Care</strong>. Điều dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span> sẽ gọi điện thoại xác nhận trong vòng <strong>5 - 10 phút</strong> để tư vấn cụ thể và khởi hành đến nhà mẹ.
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a

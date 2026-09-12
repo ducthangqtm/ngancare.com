@@ -36,10 +36,10 @@ export default function Commitments3No() {
             <ShieldCheck className="w-4 h-4 text-gold-600" />
             <span>Uy Tín & Tận Tâm</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Cam Kết Vàng Từ <span className="gold-gradient-text">Điều Dưỡng Thúy Ngân</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Cam Kết Vàng Từ <span className="gold-gradient-text whitespace-nowrap">Điều Dưỡng Thúy Ngân</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
             Đặt sự an toàn của mẹ và bé lên trên hết — Sự an tâm của gia đình là tôn chỉ hoạt động cao nhất.
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function Commitments3No() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-charcoal-900 leading-snug mb-3">
+                  <h3 className="text-lg font-bold text-charcoal-900 leading-snug mb-3 text-balance">
                     {item.title}
                   </h3>
 

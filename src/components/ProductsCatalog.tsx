@@ -61,10 +61,13 @@ export default function ProductsCatalog() {
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
             <span>Thảo Mộc Cung Đình & Tự Nhiên</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Sản Phẩm Thiên Nhiên <span className="gold-gradient-text">Lành Tính Cho Mẹ & Bé</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Sản Phẩm Thiên Nhiên <br className="hidden sm:inline" />
+            <span className="gold-gradient-text sm:whitespace-nowrap">
+              Lành Tính Cho <span className="whitespace-nowrap">Mẹ &amp; Bé</span>
+            </span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
             Nguồn gốc xuất xứ rõ ràng, chưng cất thủ công truyền thống, không phụ gia và hóa chất bảo quản.
           </p>
         </div>
@@ -98,7 +101,7 @@ export default function ProductsCatalog() {
 
                   {/* Product Details */}
                   <div className="p-5">
-                    <h3 className="text-base font-bold text-charcoal-900 line-clamp-2 leading-snug group-hover:text-gold-600 transition-colors">
+                    <h3 className="text-base font-bold text-charcoal-900 line-clamp-2 leading-snug group-hover:text-gold-600 transition-colors text-balance">
                       {prod.name}
                     </h3>
 

@@ -56,10 +56,10 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
             <span>Dịch Vụ Trọng Tâm</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Dịch Vụ Chăm Sóc <span className="gold-gradient-text">Mẹ Và Bé Tại Nhà</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Dịch Vụ Chăm Sóc <span className="gold-gradient-text whitespace-nowrap">Mẹ Và Bé Tại Nhà</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
             Bảng giá niêm yết công khai, minh bạch 100% — Cam kết không phát sinh bất kỳ phụ phí nào.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
                       )}
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold text-charcoal-900 leading-snug">
+                    <h3 className="text-lg sm:text-xl font-bold text-charcoal-900 leading-snug text-balance">
                       {service.name}
                     </h3>
 

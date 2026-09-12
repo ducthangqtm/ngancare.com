@@ -43,10 +43,10 @@ export default function FAQ() {
             <HelpCircle className="w-3.5 h-3.5 text-gold-600" />
             <span>Giải Đáp Thắc Mắc</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Câu Hỏi Thường Gặp <span className="gold-gradient-text">(FAQ)</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Câu Hỏi Thường Gặp <span className="gold-gradient-text whitespace-nowrap">(FAQ)</span>
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-charcoal-800">
+          <p className="mt-2 text-xs sm:text-sm text-charcoal-800 text-balance">
             Những băn khoăn phổ biến nhất của các mẹ bầu và mẹ sau sinh khi lần đầu sử dụng dịch vụ tại nhà.
           </p>
         </div>

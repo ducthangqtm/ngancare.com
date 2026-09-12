@@ -51,10 +51,10 @@ export default function Process4Steps() {
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <span>Tận Tâm & Chuyên Nghiệp</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Quy Trình Chăm Sóc <span className="gold-gradient-text">4 Bước</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Quy Trình Chăm Sóc <span className="gold-gradient-text whitespace-nowrap">4 Bước</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gold-800 font-semibold">
+          <p className="mt-3 text-sm sm:text-base text-gold-800 font-semibold text-balance">
             4 Bước Vàng — Mẹ An Tâm
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function Process4Steps() {
                   </div>
 
                   <span className="text-xs font-bold text-gold-600 tracking-wider uppercase">Bước {step.num}</span>
-                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 mt-1 mb-3 leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 mt-1 mb-3 leading-snug text-balance">
                     {step.title}
                   </h3>
                   <ul className="space-y-1.5 text-xs text-gray-700 leading-relaxed">

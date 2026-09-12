@@ -36,11 +36,11 @@ export default function CoverageHanoi() {
             <Navigation className="w-3.5 h-3.5 text-gold-600" />
             <span>Địa Bàn Hoạt Động Trọng Tâm</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900">
-            Khu Vực Phục Vụ Nhanh <span className="gold-gradient-text">Long Biên & Gia Lâm</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Khu Vực Phục Vụ Nhanh <span className="gold-gradient-text whitespace-nowrap">Long Biên &amp; Gia Lâm</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
-            Điều dưỡng Nguyễn Thúy Ngân thường trú tại <strong>Thượng Thanh — Long Biên</strong>, tập trung phục vụ chuyên sâu và có mặt thần tốc chỉ <strong>15 — 30 phút</strong> tại khu vực Long Biên & Gia Lâm!
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
+            Điều dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span> thường trú tại <strong>Thượng Thanh — Long Biên</strong>, tập trung phục vụ chuyên sâu và có mặt thần tốc chỉ <strong>15 — 30 phút</strong> tại khu vực Long Biên &amp; Gia Lâm!
           </p>
         </div>
 

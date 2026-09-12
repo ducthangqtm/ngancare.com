@@ -37,9 +37,9 @@ export default function HomeBlogSection() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 text-balance max-w-2xl mx-auto leading-snug">
             Kiến Thức Chăm Sóc{' '}
-            <span className="gold-gradient-text inline-block">Từ Điều Dưỡng Thúy Ngân</span>
+            <span className="gold-gradient-text whitespace-nowrap">Từ Điều Dưỡng Thúy Ngân</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
             Tổng hợp các bài viết hướng dẫn thông tắc tia sữa nhẹ nhàng, chăm sóc bé sơ sinh và phục hồi sau sinh an toàn, chu đáo.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function HomeBlogSection() {
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 line-clamp-2 leading-snug group-hover:text-gold-600 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold text-charcoal-900 line-clamp-2 leading-snug group-hover:text-gold-600 transition-colors text-balance">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
 

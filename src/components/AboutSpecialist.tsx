@@ -31,10 +31,11 @@ export default function AboutSpecialist() {
             <Heart className="w-3.5 h-3.5 fill-gold-600 text-gold-600" />
             <span>Về Người Sáng Lập Ngân Care</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight">
-            Gặp Gỡ Chuyên Viên Điều Dưỡng <span className="gold-gradient-text">Nguyễn Thúy Ngân</span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
+            Gặp Gỡ Chuyên Viên Điều Dưỡng <br className="hidden sm:inline" />
+            <span className="whitespace-nowrap text-[#D4A359] gold-gradient-text">Nguyễn Thúy Ngân</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800">
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
             Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và tác phong chuyên nghiệp, tận tâm.
           </p>
         </div>
@@ -77,7 +78,7 @@ export default function AboutSpecialist() {
                 “Mỗi em bé chào đời là một thiên thần vô giá. Người mẹ sau cuộc vượt cạn thiêng liêng xứng đáng được nâng niu, chăm sóc bằng tất cả tình yêu thương và sự chu đáo, tận tâm nhất.”
               </p>
               <p className="text-right text-xs font-bold text-gold-700 mt-2">
-                — Điều Dưỡng Nguyễn Thúy Ngân
+                — Điều Dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span>
               </p>
             </div>
 
