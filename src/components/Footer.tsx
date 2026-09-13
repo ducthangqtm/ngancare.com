@@ -105,7 +105,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
               <li>
-                <Link href="/blog/tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa" className="hover:text-gold-400 transition-colors line-clamp-2">
+                <Link href="/blog/tac-tia-sua-uong-gi-lam-gi-huong-dan-an-toan" className="hover:text-gold-400 transition-colors line-clamp-2">
                   Kinh nghiệm thông tắc tia sữa nhẹ nhàng tại nhà
                 </Link>
               </li>

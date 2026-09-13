@@ -52,14 +52,14 @@ export async function ensureProductsTable(db: D1Database) {
             INSERT INTO products (id, name, slug, price, description, features, image_url, affiliate_url, is_active)
             VALUES 
             ('sp-01', 'Cao Chè Vằng Sẻ Quảng Trị Nguyên Chất', 'cao-che-vang-se-nguyen-chat', 180000, 
-             'Chiết xuất 100% từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon.',
-             '["100% nguyên chất không chất bảo quản","Kích sữa về nhanh sánh đặc"]', '/images/banner.jpg', 'https://shopee.vn', 1),
+             'Chiết xuất từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon.',
+             '["Nguyên chất không chất bảo quản","Kích sữa về nhanh sánh đặc"]', '/images/banner.jpg', 'https://shopee.vn', 1),
             ('sp-02', 'Cốt Gừng Nghệ Hạt Gấc Hạ Thổ 3 Tháng 10 Ngày', 'cot-gung-nghe-hat-gac-ha-tho', 250000,
              'Bài thuốc cổ truyền làm ấm cơ thể, phòng chống gió máy hậu sản, dưỡng sáng mờ thâm rạn da bụng.',
              '["Gừng ta và nghệ nếp nguyên chất","Giữ ấm cơ thể tránh cảm lạnh"]', '/images/banner.jpg', 'https://shopee.vn', 1),
             ('sp-03', 'Tinh Dầu Tràm Gió Huế Nguyên Chất', 'tinh-dau-tram-hue-nguyen-chat', 160000,
-             'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ an toàn tuyệt đối cho trẻ sơ sinh.',
-             '["Chiết xuất lá tràm tự nhiên 100%","Giữ ấm phổi và lòng bàn chân"]', '/images/banner.jpg', 'https://shopee.vn', 1),
+             'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ rất an toàn và dịu nhẹ cho trẻ sơ sinh.',
+             '["Chiết xuất thuần khiết từ lá tràm tự nhiên","Giữ ấm phổi và lòng bàn chân"]', '/images/banner.jpg', 'https://shopee.vn', 1),
             ('sp-04', 'Lá Xông Tắm Thảo Dược Mẹ Sau Sinh Dao Đỏ', 'la-xong-tam-thao-duoc-dao-do', 220000,
              'Bài thuốc lá xông tắm cổ truyền của đồng bào Dao Đỏ hơn 10 vị thảo mộc rừng giúp mẹ hồi phục thể lực.',
              '["Thảo mộc rừng Tây Bắc sấy sạch","Lưu thông khí huyết giảm đau mỏi"]', '/images/banner.jpg', 'https://shopee.vn', 1)

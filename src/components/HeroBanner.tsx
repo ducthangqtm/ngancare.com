@@ -75,7 +75,7 @@ export default function HeroBanner() {
             <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-charcoal-800">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>100% Điều dưỡng chính quy</span>
+                <span>Điều dưỡng chính quy, chuyên môn cao</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />

@@ -29,7 +29,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
                 price = 180000,
                 duration = 45,
                 description = 'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
-                features = '["+ 100% Điều dưỡng chính quy trực tiếp tắm bé","+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng","+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
+                features = '["+ Điều dưỡng chính quy trực tiếp tắm bé","+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng","+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
                 is_active = 1
             WHERE id = 'srv-02' AND price != 180000;
           `),

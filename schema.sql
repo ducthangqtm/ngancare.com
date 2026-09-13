@@ -92,9 +92,9 @@ VALUES
  '["Không tổn thương vùng ngực","Không dùng lực thô bạo","Không đắp lá đắp thuốc","Giải cơ lưu thông khí huyết","Dẫn lưu dịch bạch huyết giảm ứ trệ","Lấy cặn, thông sữa thuận tự nhiên"]',
  '/images/banner.jpg', 1),
 
-('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 180000, 45,
+('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-an-toan', 'tam_be', 180000, 45,
  'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
- '["100% Điều dưỡng chính quy trực tiếp tắm bé","Dụng cụ vệ sinh sạch sẽ, tiệt trùng","Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
+ '["Điều dưỡng chính quy trực tiếp tắm bé","Dụng cụ vệ sinh sạch sẽ, tiệt trùng","Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
  '/images/banner.jpg', 1),
 
 ('srv-03', 'Chăm Sóc & Phục Hồi Toàn Diện Mẹ Sau Sinh', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 500000, 90,
@@ -104,15 +104,15 @@ VALUES
 
 ('srv-04', 'Massage Mẹ Bầu Thư Giãn Giảm Đau Nhức Thai Kỳ', 'massage-me-bau-thu-gian', 'me_bau', 350000, 75,
  'Liệu trình massage êm dịu chuyên biệt cho mẹ từ tuần thứ 16 trở đi. Giúp giải tỏa áp lực cột sống, giảm phù nề chân tay, cải thiện chứng mất ngủ và kết nối gắn kết yêu thương giữa mẹ và bé.',
- '["Sử dụng dầu massage hữu cơ thiên nhiên 100% an toàn","Kỹ thuật vuốt miết nhẹ nhàng truyền thống","Giảm chuột rút, phù nề bàn chân và đau khớp háng","Tư vấn tư thế nằm nghỉ ngơi tốt nhất cho thai nhi"]',
+ '["Sử dụng dầu massage hữu cơ thiên nhiên, an toàn","Kỹ thuật vuốt miết nhẹ nhàng truyền thống","Giảm chuột rút, phù nề bàn chân và đau khớp háng","Tư vấn tư thế nằm nghỉ ngơi tốt nhất cho thai nhi"]',
  '/images/banner.jpg', 1);
 
 -- Dữ liệu Sản phẩm thiên nhiên & Affiliate
 INSERT OR IGNORE INTO products (id, name, slug, price, description, features, image_url, affiliate_url, is_active)
 VALUES
 ('sp-01', 'Cao Chè Vằng Sẻ Quảng Trị Nguyên Chất', 'cao-che-vang-se-nguyen-chat', 180000,
- 'Chiết xuất 100% từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
- '["100% nguyên chất, không chất bảo quản","Kích sữa về nhanh, sánh đặc dồi dào","Hỗ trợ giảm cân, tiêu mỡ bụng tự nhiên"]',
+ 'Chiết xuất từ lá chè vằng sẻ tự nhiên Quảng Trị, giúp kích thích tuyến sữa hoạt động mạnh mẽ, sữa đặc sánh thơm ngon và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
+ '["Nguyên chất thiên nhiên, không chất bảo quản","Kích sữa về nhanh, sánh đặc dồi dào","Hỗ trợ giảm cân, tiêu mỡ bụng tự nhiên"]',
  '/images/banner.jpg', 'https://shopee.vn', 1),
 
 ('sp-02', 'Cốt Gừng Nghệ Hạt Gấc Hạ Thổ 3 Tháng 10 Ngày', 'cot-gung-nghe-hat-gac-ha-tho', 250000,
@@ -121,8 +121,8 @@ VALUES
  '/images/banner.jpg', 'https://shopee.vn', 1),
 
 ('sp-03', 'Tinh Dầu Tràm Gió Huế Nguyên Chất', 'tinh-dau-tram-hue-nguyen-chat', 160000,
- 'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ an toàn tuyệt đối cho trẻ sơ sinh. Giúp giữ ấm, phòng cảm lạnh, xua muỗi và chống côn trùng cắn.',
- '["Chiết xuất lá tràm tự nhiên 100%","Giữ ấm phổi, ngực, bụng và lòng bàn chân cho bé","Làm dịu nhanh vết muỗi và côn trùng đốt"]',
+ 'Tinh dầu tràm tự nhiên xứ Huế cô đặc, hương thơm dịu nhẹ, rất an toàn cho trẻ sơ sinh. Giúp giữ ấm, phòng cảm lạnh, xua muỗi và chống côn trùng cắn.',
+ '["Chiết xuất thuần khiết từ lá tràm tự nhiên","Giữ ấm phổi, ngực, bụng và lòng bàn chân cho bé","Làm dịu nhanh vết muỗi và côn trùng đốt"]',
  '/images/banner.jpg', 'https://shopee.vn', 1),
 
 ('sp-04', 'Lá Xông Tắm Thảo Dược Mẹ Sau Sinh Dao Đỏ', 'la-xong-tam-thao-duoc-dao-do', 220000,
@@ -135,9 +135,9 @@ INSERT OR IGNORE INTO posts (id, title, slug, excerpt, content, cover_image, cat
 VALUES
 ('post-01', 
  'Tắc Tia Sữa Uống Gì, Làm Gì? Hướng Dẫn Chăm Sóc Tại Nhà Nhẹ Nhàng Không Đau',
- 'tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa',
- 'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn tuyệt đối không gây tổn thương.',
- '<h2>1. Dấu hiệu nhận biết sớm tình trạng tắc tia sữa</h2><p>Tắc tia sữa thường xuất hiện đột ngột vào giai đoạn 1 tuần đến 1 tháng sau sinh khi nguồn sữa bắt đầu về nhiều nhưng chưa được lưu thông nhịp nhàng. Mẹ cần nhận biết sớm qua các dấu hiệu:</p><ul><li>Bầu ngực căng cứng bất thường, sờ thấy một hoặc nhiều khối u cục nổi cộm rõ rệt.</li><li>Cảm giác đau tức tăng dần, bầu ngực có thể hơi ửng đỏ và nóng ran khi chạm vào.</li><li>Lượng sữa vắt ra giảm hẳn, bé bú lâu nhưng không no và quấy khóc.</li><li>Trường hợp nặng: mẹ có thể bị sốt nhẹ 37.5°C - 38.5°C kèm cảm giác gai rét ớn lạnh.</li></ul><h2>2. Nguyên nhân cốt lõi dẫn đến tắc tia sữa</h2><p>Có 3 nguyên nhân phổ biến nhất mà Điều dưỡng Thúy Ngân thường gặp khi đến thăm khám tại nhà cho các mẹ:</p><ol><li><strong>Khớp ngậm của bé chưa đúng:</strong> Bé chỉ ngậm núm vú mà không ngậm sâu vào quầng thâm vú, khiến sữa không được rút cạn ở các xoang sữa đáy.</li><li><strong>Căng thẳng, mất ngủ và thiếu nước:</strong> Tuyến sữa được kích hoạt bởi hormone Oxytocin. Khi mẹ lo âu, stress hay thiếu ngủ, phản xạ xuống sữa bị ức chế nghiêm trọng.</li><li><strong>Áp lực chèn ép ngoại cảnh:</strong> Mặc áo ngực quá chật hoặc nằm nghiêng đè lên bầu ngực suốt đêm.</li></ol><h2>3. Hướng dẫn chăm sóc 4 bước nhẹ nhàng tại nhà</h2><p>Tuyệt đối <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây tổn thương vùng ngực. Hãy tuân thủ 4 bước:</p><ul><li><strong>Bước 1 - Chườm ấm vừa phải:</strong> Dùng khăn nhúng nước ấm khoảng 45°C chườm lên vùng ngực 5-7 phút để làm giãn nở các ống dẫn sữa.</li><li><strong>Bước 2 - Massage nhẹ nhàng theo hình xoắn ốc:</strong> Sử dụng các đầu ngón tay vuốt nhẹ từ thành ngực hướng dần về phía đầu ti.</li><li><strong>Bước 3 - Cho bé bú bên ngực bị tắc trước:</strong> Lực hút tự nhiên của em bé là cách thông tia hiệu quả và an toàn nhất.</li><li><strong>Bước 4 - Vắt kiệt sữa thừa:</strong> Dùng máy hút sữa ở chế độ nhẹ nhàng để làm rỗng hoàn toàn bầu ngực sau cữ bú.</li></ul><h2>4. Khi nào mẹ cần liên hệ chuyên viên hỗ trợ kịp thời?</h2><p>Nếu mẹ đã tự massage quá 24 giờ mà cục tắc không tan, bầu ngực sưng tức nhiều thì cần liên hệ ngay chuyên viên để được chăm sóc kịp thời bằng máy chuyên dụng và kỹ thuật dẫn lưu bạch huyết nhẹ nhàng, giúp thông thoáng tia sữa an toàn.</p>',
+ 'tac-tia-sua-uong-gi-lam-gi-huong-dan-an-toan',
+ 'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn, không gây tổn thương.',
+ '<h2>1. Dấu hiệu nhận biết sớm tình trạng tắc tia sữa</h2><p>Tắc tia sữa thường xuất hiện đột ngột vào giai đoạn 1 tuần đến 1 tháng sau sinh khi nguồn sữa bắt đầu về nhiều nhưng chưa được lưu thông nhịp nhàng. Mẹ cần nhận biết sớm qua các dấu hiệu:</p><ul><li>Bầu ngực căng cứng bất thường, sờ thấy một hoặc nhiều khối u cục nổi cộm rõ rệt.</li><li>Cảm giác đau tức tăng dần, bầu ngực có thể hơi ửng đỏ và nóng ran khi chạm vào.</li><li>Lượng sữa vắt ra giảm hẳn, bé bú lâu nhưng không no và quấy khóc.</li><li>Trường hợp nặng: mẹ có thể bị sốt nhẹ 37.5°C - 38.5°C kèm cảm giác gai rét ớn lạnh.</li></ul><h2>2. Nguyên nhân cốt lõi dẫn đến tắc tia sữa</h2><p>Có 3 nguyên nhân phổ biến nhất mà Điều dưỡng Thúy Ngân thường gặp khi đến hỗ trợ chăm sóc tại nhà cho các mẹ:</p><ol><li><strong>Khớp ngậm của bé chưa đúng:</strong> Bé chỉ ngậm núm vú mà không ngậm sâu vào quầng thâm vú, khiến sữa không được rút cạn ở các xoang sữa đáy.</li><li><strong>Căng thẳng, mất ngủ và thiếu nước:</strong> Tuyến sữa được kích hoạt bởi hormone Oxytocin. Khi mẹ lo âu, stress hay thiếu ngủ, phản xạ xuống sữa bị ức chế nghiêm trọng.</li><li><strong>Áp lực chèn ép ngoại cảnh:</strong> Mặc áo ngực quá chật hoặc nằm nghiêng đè lên bầu ngực suốt đêm.</li></ol><h2>3. Hướng dẫn chăm sóc 4 bước nhẹ nhàng tại nhà</h2><p>Lưu ý <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây tổn thương vùng ngực. Hãy tuân thủ 4 bước:</p><ul><li><strong>Bước 1 - Chườm ấm vừa phải:</strong> Dùng khăn nhúng nước ấm khoảng 45°C chườm lên vùng ngực 5-7 phút để làm giãn nở các ống dẫn sữa.</li><li><strong>Bước 2 - Massage nhẹ nhàng theo hình xoắn ốc:</strong> Sử dụng các đầu ngón tay vuốt nhẹ từ thành ngực hướng dần về phía đầu ti.</li><li><strong>Bước 3 - Cho bé bú bên ngực bị tắc trước:</strong> Lực hút tự nhiên của em bé là cách thông tia hiệu quả và an toàn nhất.</li><li><strong>Bước 4 - Vắt kiệt sữa thừa:</strong> Dùng máy hút sữa ở chế độ nhẹ nhàng để làm rỗng hoàn toàn bầu ngực sau cữ bú.</li></ul><h2>4. Khi nào mẹ cần liên hệ chuyên viên hỗ trợ kịp thời?</h2><p>Nếu mẹ đã tự massage quá 24 giờ mà cục tắc không tan, bầu ngực sưng tức nhiều thì cần liên hệ ngay chuyên viên để được chăm sóc kịp thời bằng máy chuyên dụng và kỹ thuật dẫn lưu bạch huyết nhẹ nhàng, giúp thông thoáng tia sữa an toàn.</p>',
  '/images/banner.jpg',
  'Thông Tắc Tia Sữa',
  'Điều Dưỡng Nguyễn Thúy Ngân',

@@ -53,12 +53,12 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
         const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          const medicalServices = data.data.filter(
+          const careServices = data.data.filter(
             (s: any) => s.category !== 'san_pham' && s.is_active === 1
           );
-          setServiceOptions(medicalServices);
+          setServiceOptions(careServices);
           try {
-            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(medicalServices));
+            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(careServices));
           } catch (e) {}
         }
       } catch (e) {
@@ -510,7 +510,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
               </div>
 
               <p className="text-center text-[11px] text-gray-500">
-                🔒 Thông tin của mẹ được bảo mật tuyệt đối. Cam kết không làm phiền khi không có yêu cầu.
+                🔒 Thông tin của mẹ được bảo mật an toàn. Cam kết không làm phiền khi không có yêu cầu.
               </p>
 
             </form>

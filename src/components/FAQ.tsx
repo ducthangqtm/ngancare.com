@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       q: 'Một buổi thông tắc tia sữa thường mất bao lâu và có đau không?',
-      a: 'Một buổi thông tắc kéo dài khoảng 100 phút. Phương pháp chăm sóc ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp massage giải cơ vùng ngực bằng tay và máy chuyên dụng. Tuyệt đối KHÔNG làm đau rát, KHÔNG dùng lực thô bạo, giúp giải cơ lưu thông khí huyết, giảm ứ trệ và thông sữa thuận tự nhiên.',
+      a: 'Một buổi thông tắc kéo dài khoảng 100 phút. Phương pháp chăm sóc ứng dụng kỹ thuật dẫn lưu hệ bạch huyết kết hợp massage giải cơ vùng ngực bằng tay và máy chuyên dụng. Cam kết KHÔNG làm đau rát, KHÔNG dùng lực thô bạo, giúp giải cơ lưu thông khí huyết, giảm ứ trệ và thông sữa thuận tự nhiên.',
     },
     {
       q: 'Dụng cụ chăm sóc có được tiệt trùng sạch sẽ trước khi đến nhà không?',

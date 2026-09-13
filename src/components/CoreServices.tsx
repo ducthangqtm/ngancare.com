@@ -31,12 +31,12 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
         const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
         if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-          const medicalServices = data.data.filter(
+          const careServices = data.data.filter(
             (s: Service) => s.category !== 'san_pham' && s.is_active === 1
           );
-          setServices(medicalServices);
+          setServices(careServices);
           try {
-            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(medicalServices));
+            localStorage.setItem('ngancare_cached_services_v2', JSON.stringify(careServices));
           } catch (e) {}
         }
       } catch (e) {
@@ -60,7 +60,7 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
             Dịch Vụ Chăm Sóc <span className="gold-gradient-text whitespace-nowrap">Mẹ Và Bé Tại Nhà</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
-            Bảng giá niêm yết công khai, minh bạch 100% — Cam kết không phát sinh bất kỳ phụ phí nào.
+            Bảng giá niêm yết công khai, minh bạch rõ ràng — Cam kết không phát sinh bất kỳ phụ phí nào.
           </p>
         </div>
 

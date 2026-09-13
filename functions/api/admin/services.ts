@@ -43,9 +43,9 @@ async function ensureServicesTable(db: D1Database) {
            'Massage giải cơ, dẫn lưu hệ bạch huyết vùng ngực. Chăm sóc kết hợp giữa thao tác tay và máy chuyên dụng.',
            '["x Không tổn thương nang sữa","x Không dùng lực thô bạo","x Không đắp lá đắp thuốc","+ Giải cơ lưu thông khí huyết","+ Dẫn lưu dịch bạch huyết giảm ứ trệ","+ Lấy cặn, thông sữa thuận tự nhiên"]',
            '/images/banner.jpg', 1),
-          ('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-chuan-y-khoa', 'tam_be', 180000, 45,
+          ('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-an-toan', 'tam_be', 180000, 45,
            'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
-           '["+ 100% Điều dưỡng chính quy trực tiếp tắm bé","+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng","+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
+           '["+ Điều dưỡng chính quy trực tiếp tắm bé","+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng","+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
            '/images/banner.jpg', 1),
           ('srv-03', 'Chăm sóc sau sinh', 'cham-soc-phuc-hoi-me-sau-sinh', 'sau_sinh', 500000, 90,
            'Xông hơi thảo dược Dao Đỏ, massage co hồi tử cung và quấn ấm bụng.',
@@ -53,7 +53,7 @@ async function ensureServicesTable(db: D1Database) {
            '/images/banner.jpg', 1),
           ('srv-04', 'Massage Mẹ Bầu Thư Giãn & Giảm Đau Nhức Thai Kỳ', 'massage-me-bau-thu-gian', 'me_bau', 350000, 75,
            'Dành cho mẹ từ tuần thai thứ 16 trở đi. Giúp giải tỏa áp lực đè nặng lên cột sống, giảm chuột rút và phù nề bàn chân, xua tan lo âu, cải thiện giấc ngủ ngon cho mẹ và thai nhi phát triển khỏe mạnh.',
-           '["Dầu massage hữu cơ chiết xuất tự nhiên 100% an toàn cho thai nhi","Kỹ thuật vuốt miết chuẩn y học cổ truyền, không ấn huyệt nguy hiểm"]',
+           '["Dầu massage hữu cơ chiết xuất tự nhiên, an toàn cho thai nhi","Kỹ thuật vuốt miết dưỡng sinh truyền thống, không ấn huyệt nguy hiểm"]',
            '/images/banner.jpg', 0)
         `).run();
       }

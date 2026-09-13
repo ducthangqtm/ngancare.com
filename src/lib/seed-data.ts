@@ -24,14 +24,14 @@ export const INITIAL_SERVICES: Service[] = [
   {
     id: 'srv-02',
     name: 'Tắm và chăm sóc trẻ sơ sinh',
-    slug: 'tam-be-so-sinh-chuan-y-khoa',
+    slug: 'tam-be-so-sinh-an-toan',
     category: 'tam_be',
     price: 180000,
     duration: 45,
     description:
       'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
     features: [
-      '+ 100% Điều dưỡng chính quy trực tiếp tắm bé',
+      '+ Điều dưỡng chính quy trực tiếp tắm bé',
       '+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng',
       '+ Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm',
     ],
@@ -65,8 +65,8 @@ export const INITIAL_SERVICES: Service[] = [
     description:
       'Dành cho mẹ từ tuần thai thứ 16 trở đi. Giúp giải tỏa áp lực đè nặng lên cột sống, giảm chuột rút và phù nề bàn chân, xua tan lo âu, cải thiện giấc ngủ ngon cho mẹ và thai nhi phát triển khỏe mạnh.',
     features: [
-      'Dầu massage hữu cơ chiết xuất tự nhiên 100% an toàn cho thai nhi',
-      'Kỹ thuật vuốt miết chuẩn y học cổ truyền, không ấn huyệt nguy hiểm',
+      'Dầu massage hữu cơ chiết xuất tự nhiên, lành tính cho thai nhi',
+      'Kỹ thuật vuốt miết dưỡng sinh truyền thống, không ấn huyệt nguy hiểm',
       'Giảm phù nề chân, tê bì tay và đau khớp háng',
       'Tư vấn tư thế nằm nghỉ ngơi và chế độ vận động thai kỳ',
     ],
@@ -81,9 +81,9 @@ export const INITIAL_SERVICES: Service[] = [
     price: 180000,
     duration: null,
     description:
-      'Nấu từ 100% lá chè vằng sẻ tươi vùng đất cát Quảng Trị, giúp kích thích tuyến sữa dồi dào, sữa đặc thơm và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
+      'Nấu từ lá chè vằng sẻ tươi tự nhiên vùng đất cát Quảng Trị, giúp kích thích tuyến sữa dồi dào, sữa đặc thơm và hỗ trợ co bóp tử cung tống sạch sản dịch sau sinh.',
     features: [
-      '100% nguyên chất, không pha tạp, không chất bảo quản',
+      'Nguyên chất thiên nhiên, không pha tạp, không chất bảo quản',
       'Kích sữa về nhanh, sánh đặc dồi dào dinh dưỡng',
       'Hỗ trợ tiêu mỡ thừa vùng bụng, thanh nhiệt giải độc',
     ],
@@ -117,9 +117,9 @@ export const INITIAL_SERVICES: Service[] = [
     price: 160000,
     duration: null,
     description:
-      'Chưng cất thủ công từ lá tràm gió thiên nhiên Thừa Thiên Huế, hương thơm ấm dịu, không gây cay nóng, dùng an toàn tuyệt đối cho trẻ sơ sinh và sản phụ.',
+      'Chưng cất thủ công từ lá tràm gió thiên nhiên Thừa Thiên Huế, hương thơm ấm dịu, không gây cay nóng, dùng rất an toàn và dịu nhẹ cho trẻ sơ sinh và sản phụ.',
     features: [
-      'Chiết xuất 100% lá tràm gió tự nhiên xứ Huế',
+      'Chiết xuất thuần khiết từ lá tràm gió tự nhiên xứ Huế',
       'Giữ ấm ngực, lưng, bàn chân phòng cảm ho sổ mũi',
       'Làm dịu nhanh vết muỗi đốt và côn trùng cắn',
     ],
@@ -135,7 +135,7 @@ export const INITIAL_SERVICES: Service[] = [
     price: 220000,
     duration: null,
     description:
-      'Bài thuốc lá xông tắm cổ truyền của đồng bào Dao Đỏ, gồm hơn 10 vị thảo mộc rừng giúp mẹ bỉm hồi phục thể lực thần tốc, sạch sản dịch và sảng khoái tinh thần.',
+      'Bài thuốc lá xông tắm cổ truyền của đồng bào Dao Đỏ, gồm hơn 10 vị thảo mộc rừng giúp mẹ bỉm hồi phục thể lực nhanh chóng, sạch sản dịch và sảng khoái tinh thần.',
     features: [
       'Hơn 10 loại thảo mộc rừng Tây Bắc phơi sấy sạch',
       'Giúp lưu thông khí huyết, bài trừ độc tố qua tuyến mồ hôi',
@@ -151,9 +151,9 @@ export const INITIAL_POSTS: BlogPost[] = [
   {
     id: 'post-01',
     title: 'Tắc Tia Sữa Uống Gì, Làm Gì? Hướng Dẫn Chăm Sóc Tại Nhà Nhẹ Nhàng Không Đau',
-    slug: 'tac-tia-sua-uong-gi-lam-gi-phac-do-chuan-y-khoa',
+    slug: 'tac-tia-sua-uong-gi-lam-gi-huong-dan-an-toan',
     excerpt:
-      'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn tuyệt đối không gây tổn thương.',
+      'Tắc tia sữa là nỗi ám ảnh lớn của mẹ bỉm sau sinh. Hướng dẫn chi tiết từ Điều dưỡng Thúy Ngân về nguyên nhân, dấu hiệu nhận biết sớm và cách thông tắc an toàn, không gây tổn thương.',
     cover_image: '/images/banner.jpg',
     category: 'Thông Tắc Tia Sữa',
     author: 'Điều Dưỡng Nguyễn Thúy Ngân',
@@ -174,7 +174,7 @@ export const INITIAL_POSTS: BlogPost[] = [
       </ul>
 
       <h2>2. Nguyên nhân cốt lõi dẫn đến tắc tia sữa</h2>
-      <p>Có 3 nguyên nhân phổ biến nhất mà Điều dưỡng Thúy Ngân thường gặp khi đến thăm khám tại nhà cho các mẹ:</p>
+      <p>Có 3 nguyên nhân phổ biến nhất mà Điều dưỡng Thúy Ngân thường gặp khi đến hỗ trợ chăm sóc tại nhà cho các mẹ:</p>
       <ol>
         <li><strong>Khớp ngậm của bé chưa đúng:</strong> Bé chỉ ngậm núm vú mà không ngậm sâu vào quầng thâm vú, khiến sữa không được rút cạn ở các xoang sữa đáy.</li>
         <li><strong>Căng thẳng, mất ngủ và thiếu nước:</strong> Tuyến sữa được kích hoạt bởi hormone Oxytocin. Khi mẹ lo âu, stress hay thiếu ngủ, phản xạ xuống sữa bị ức chế nghiêm trọng.</li>
@@ -182,7 +182,7 @@ export const INITIAL_POSTS: BlogPost[] = [
       </ol>
 
       <h2>3. Hướng dẫn chăm sóc 4 bước nhẹ nhàng tại nhà</h2>
-      <p>Tuyệt đối <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây tổn thương vùng ngực. Hãy tuân thủ 4 bước:</p>
+      <p>Lưu ý <strong>KHÔNG</strong> dùng kim chọc, không bóp nặn thô bạo gây tổn thương vùng ngực. Hãy tuân thủ 4 bước:</p>
       <ul>
         <li><strong>Bước 1 - Chườm ấm vừa phải:</strong> Dùng khăn nhúng nước ấm khoảng 45°C chườm lên vùng ngực 5-7 phút để làm giãn nở các ống dẫn sữa.</li>
         <li><strong>Bước 2 - Massage nhẹ nhàng theo hình xoắn ốc:</strong> Sử dụng các đầu ngón tay vuốt nhẹ từ thành ngực hướng dần về phía đầu ti.</li>

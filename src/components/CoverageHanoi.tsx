@@ -40,7 +40,7 @@ export default function CoverageHanoi() {
             Khu Vực Phục Vụ Nhanh <span className="gold-gradient-text whitespace-nowrap">Long Biên &amp; Gia Lâm</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
-            Điều dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span> thường trú tại <strong>Thượng Thanh — Long Biên</strong>, tập trung phục vụ chuyên sâu và có mặt thần tốc chỉ <strong>15 — 30 phút</strong> tại khu vực Long Biên &amp; Gia Lâm!
+            Điều dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span> thường trú tại <strong>Thượng Thanh — Long Biên</strong>, tập trung phục vụ chuyên sâu và có mặt nhanh chóng chỉ <strong>15 — 30 phút</strong> tại khu vực Long Biên &amp; Gia Lâm!
           </p>
         </div>
 

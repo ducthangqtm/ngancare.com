@@ -105,7 +105,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
               {post.title}
             </h1>
 
-            {/* Author Meta & Medical Verification Badge */}
+            {/* Author Meta & Specialist Verification Badge */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-100 text-xs text-gray-500">
               <div className="flex items-center gap-3">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gold-500 flex-shrink-0">
@@ -158,7 +158,7 @@ export default function BlogPostDetail({ params }: { params: { slug: string } })
               <div>
                 <strong className="text-amber-900 block mb-1">Khuyến cáo an toàn từ Điều Dưỡng Thúy Ngân:</strong>
                 <span>
-                  Các phương pháp massage và thông tia sữa phải được thực hiện nhẹ nhàng, êm dịu. Tuyệt đối <strong>KHÔNG</strong> dùng lực nặn bóp thô bạo hoặc dùng vật nhọn châm chọc tại nhà vì có nguy cơ cao làm tổn thương vùng ngực và gây viêm nhiễm nguy hiểm.
+                  Các phương pháp massage và thông tia sữa phải được thực hiện nhẹ nhàng, êm dịu. Đặc biệt <strong>KHÔNG</strong> dùng lực nặn bóp thô bạo hoặc dùng vật nhọn châm chọc tại nhà vì có nguy cơ cao làm tổn thương vùng ngực và gây viêm nhiễm nguy hiểm.
                 </span>
               </div>
             </div>
