@@ -39,18 +39,18 @@ export default function HeroBanner() {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 leading-tight text-balance">
               Đồng Hành Cùng Mẹ Chăm Sóc Sức Khỏe{' '}
-              <span className="gold-gradient-text">Mẹ Và Bé</span> Từ Thai Kỳ Đến Sau Sinh
+              <span className="gold-gradient-text whitespace-nowrap">Mẹ Và Bé</span> Từ Thai Kỳ Đến Sau Sinh
             </h1>
 
             {/* Slogan */}
-            <p className="text-lg sm:text-xl font-medium text-gold-700 italic">
+            <p className="text-lg sm:text-xl font-medium text-gold-700 italic text-balance">
               “Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương”
             </p>
 
             <p className="text-base sm:text-lg text-charcoal-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Được sáng lập và trực tiếp phụ trách bởi <strong>Điều Dưỡng Nguyễn Thúy Ngân</strong>. Chuyên viên chăm sóc sức khoẻ mẹ và bé được đào tạo và cấp chứng chỉ hành nghề chính quy.
+              Được sáng lập và trực tiếp phụ trách bởi <strong>Điều Dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span></strong>. Chuyên viên chăm sóc sức khoẻ mẹ và bé được đào tạo và cấp chứng chỉ hành nghề chính quy.
             </p>
 
             {/* Call to Actions */}
@@ -151,7 +151,7 @@ export default function HeroBanner() {
                     </div>
                     <span className="text-xs font-bold text-gold-600 uppercase tracking-wider">Trụ cột 0{index + 1}</span>
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-charcoal-900 leading-snug">{item.title}</h3>
+                  <h3 className="text-sm sm:text-base font-bold text-charcoal-900 leading-snug text-balance">{item.title}</h3>
                   <p className="text-xs text-gray-600 mt-1.5 leading-relaxed">{item.desc}</p>
                 </div>
               );

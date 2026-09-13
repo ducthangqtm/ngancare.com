@@ -22,7 +22,7 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white leading-tight">
+                <h3 className="text-lg font-bold text-white leading-tight whitespace-nowrap">
                   Nguyễn Thúy Ngân
                 </h3>
                 <p className="text-xs text-gold-400 font-semibold tracking-wide">
