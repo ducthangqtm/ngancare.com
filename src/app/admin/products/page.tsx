@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import AdminNav from '@/components/AdminNav';
 import { ShoppingBag, Plus, Trash2, Edit2, X, ExternalLink, Sparkles, Image as ImageIcon, Link2, Loader2 } from 'lucide-react';
 import { Service } from '@/lib/types';
-import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<Service[]>([]);

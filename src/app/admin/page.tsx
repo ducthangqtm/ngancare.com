@@ -4,12 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AdminNav from '@/components/AdminNav';
 import { Calendar, Stethoscope, ShoppingBag, FileText, ArrowRight } from 'lucide-react';
-import { INITIAL_BOOKINGS, INITIAL_SERVICES, INITIAL_POSTS } from '@/lib/seed-data';
 import { Service, Booking, BlogPost } from '@/lib/types';
 
 export default function AdminDashboardPage() {
-  const initialServices = INITIAL_SERVICES.filter((s) => s.category !== 'san_pham');
-  const initialProducts = INITIAL_SERVICES.filter((s) => s.category === 'san_pham');
 
   const [bookingsCount, setBookingsCount] = useState<number | null>(null);
   const [pendingCount, setPendingCount] = useState<number | null>(null);

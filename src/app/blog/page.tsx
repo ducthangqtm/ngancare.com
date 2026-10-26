@@ -5,22 +5,28 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BookOpen, Calendar, Eye, User, ArrowRight, Search, Sparkles } from 'lucide-react';
 import { BlogPost } from '@/lib/types';
-import { INITIAL_POSTS } from '@/lib/seed-data';
 
 export default function BlogListPage() {
-  const [posts, setPosts] = useState<BlogPost[]>(INITIAL_POSTS);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
   const [searchTerm, setSearchTerm] = useState('');
 
   React.useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('/api/posts');
+        const res = await fetch(`/api/posts?_t=${Date.now()}`);
         const data = await res.json();
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           setPosts(data.data);
+        } else {
+          setPosts([]);
         }
-      } catch (e) {}
+      } catch (e) {
+        setPosts([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchPosts();
   }, []);
@@ -95,8 +101,18 @@ export default function BlogListPage() {
         </div>
 
         {/* Blog Posts Grid */}
-        {filteredPosts.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-3xl border border-gold-200 p-8">
+        {isLoading ? (
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-sm">Đang tải danh sách bài viết...</p>
+          </div>
+        ) : posts.length === 0 ? (
+          <div className="text-center py-16 bg-white rounded-3xl border border-gold-200 p-8 max-w-xl mx-auto shadow-sm">
+            <BookOpen className="w-10 h-10 text-gold-400 mx-auto mb-3" />
+            <p className="text-charcoal-700 font-medium text-sm sm:text-base">Chuyên mục đang cập nhật bài viết mới...</p>
+            <p className="mt-1 text-xs text-gray-500">Mời quý khách quay lại sau hoặc liên hệ hotline để được tư vấn chu đáo.</p>
+          </div>
+        ) : filteredPosts.length === 0 ? (
+          <div className="text-center py-16 bg-white rounded-3xl border border-gold-200 p-8 max-w-xl mx-auto shadow-sm">
             <p className="text-gray-500 text-sm">Không tìm thấy bài viết phù hợp với từ khóa &ldquo;{searchTerm}&rdquo;.</p>
             <button
               onClick={() => {

@@ -26,7 +26,6 @@ import {
   Link2,
 } from 'lucide-react';
 import { BlogPost } from '@/lib/types';
-import { INITIAL_POSTS } from '@/lib/seed-data';
 
 export default function AdminPostsPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, MapPin, User, Phone, FileText, CheckCircle2, AlertCircle, Loader2, Sparkles } from 'lucide-react';
-import { INITIAL_SERVICES } from '@/lib/seed-data';
 import { TIME_SLOT_SECTIONS } from '@/lib/time-slots';
 
 interface BookingFormProps {
@@ -40,11 +39,11 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
         const cached = localStorage.getItem('ngancare_cached_services_v2');
         if (cached) {
           const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         }
       } catch (e) {}
     }
-    return INITIAL_SERVICES.filter((s) => s.category !== 'san_pham' && s.is_active === 1);
+    return [];
   });
 
   useEffect(() => {
@@ -52,7 +51,7 @@ export default function BookingForm({ initialServiceId }: BookingFormProps) {
       try {
         const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
-        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           const careServices = data.data.filter(
             (s: any) => s.category !== 'san_pham' && s.is_active === 1
           );

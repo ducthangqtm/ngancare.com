@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, Check, Sparkles, ShoppingCart, ExternalLink } from 'lucide-react';
 import { Service } from '@/lib/types';
-import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function ProductsCatalog() {
   const [products, setProducts] = useState<Service[]>([]);
@@ -14,15 +13,15 @@ export default function ProductsCatalog() {
     let isMounted = true;
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products');
+        const res = await fetch(`/api/products?_t=${Date.now()}`);
         const data = await res.json();
-        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           if (isMounted) setProducts(data.data);
         } else {
-          if (isMounted) setProducts(INITIAL_SERVICES.filter((s) => s.category === 'san_pham'));
+          if (isMounted) setProducts([]);
         }
       } catch (e) {
-        if (isMounted) setProducts(INITIAL_SERVICES.filter((s) => s.category === 'san_pham'));
+        if (isMounted) setProducts([]);
       } finally {
         if (isMounted) setIsLoading(false);
       }
@@ -122,6 +121,11 @@ export default function ProductsCatalog() {
                 </div>
               </div>
             ))}
+          </div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-12 px-6 bg-white rounded-3xl border border-gold-200 max-w-xl mx-auto shadow-sm">
+            <Sparkles className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+            <p className="text-charcoal-700 font-medium text-sm">Danh mục sản phẩm đang được cập nhật...</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

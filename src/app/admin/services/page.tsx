@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import AdminNav from '@/components/AdminNav';
 import { Package, Plus, Trash2, Edit2, Check, X, Clock, DollarSign, Sparkles, Loader2 } from 'lucide-react';
 import { Service, ServiceCategory } from '@/lib/types';
-import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 export default function AdminServicesPage() {
   const [services, setServices] = useState<Service[]>([]);

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Check, Clock, Calendar, ArrowRight, Star } from 'lucide-react';
 import { Service } from '@/lib/types';
-import { INITIAL_SERVICES } from '@/lib/seed-data';
 
 interface CoreServicesProps {
   onSelectService?: (serviceId: string) => void;
@@ -18,19 +17,20 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
         const cached = localStorage.getItem('ngancare_cached_services_v2');
         if (cached) {
           const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         }
       } catch (e) {}
     }
-    return INITIAL_SERVICES.filter((s) => s.category !== 'san_pham' && s.is_active === 1);
+    return [];
   });
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const res = await fetch(`/api/services?_t=${Date.now()}`, { cache: 'no-store' });
         const data = await res.json();
-        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+        if (data.success && Array.isArray(data.data)) {
           const careServices = data.data.filter(
             (s: Service) => s.category !== 'san_pham' && s.is_active === 1
           );
@@ -40,7 +40,9 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
           } catch (e) {}
         }
       } catch (e) {
-        // Fallback to initial seed
+        // Network error
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchServices();
@@ -65,7 +67,17 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
         </div>
 
         {/* Services Grid (Flagship Healthcare Services) */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 ${services.length === 3 ? 'lg:grid-cols-3 max-w-6xl mx-auto' : 'lg:grid-cols-4'} gap-6 items-stretch`}>
+        {isLoading && services.length === 0 ? (
+          <div className="py-12 text-center">
+            <p className="text-gray-500 text-sm">Đang tải danh sách dịch vụ...</p>
+          </div>
+        ) : services.length === 0 ? (
+          <div className="text-center py-12 px-6 bg-cream-50 rounded-3xl border border-gold-200 max-w-xl mx-auto shadow-sm">
+            <Sparkles className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+            <p className="text-charcoal-700 font-medium text-sm">Danh mục dịch vụ đang được cập nhật...</p>
+          </div>
+        ) : (
+          <div className={`grid grid-cols-1 md:grid-cols-2 ${services.length === 3 ? 'lg:grid-cols-3 max-w-6xl mx-auto' : 'lg:grid-cols-4'} gap-6 items-stretch`}>
           {services.map((service, index) => {
             const isPopular = index === 0; // Most requested: Thông tắc tia sữa
             return (
@@ -165,6 +177,7 @@ export default function CoreServices({ onSelectService }: CoreServicesProps) {
             );
           })}
         </div>
+        )}
 
       </div>
     </section>

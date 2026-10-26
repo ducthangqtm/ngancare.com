@@ -17,7 +17,7 @@ function getLocalStore(): LocalStore {
   if (!globalThis.__ngancare_store__) {
     globalThis.__ngancare_store__ = {
       services: [...INITIAL_SERVICES],
-      posts: [...INITIAL_POSTS],
+      posts: [],
       bookings: [...INITIAL_BOOKINGS],
       admins: [
         {
