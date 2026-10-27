@@ -8,10 +8,11 @@ const tempDir = path.join(process.cwd(), 'src', 'app', '_api_temp');
 let moved = false;
 
 function restoreDir() {
-  if (moved && existsSync(tempDir)) {
-    for (let i = 0; i < 5; i++) {
+  if (existsSync(tempDir) && !existsSync(apiDir)) {
+    for (let i = 0; i < 10; i++) {
       try {
         renameSync(tempDir, apiDir);
+        console.log('Restored src/app/api directory.');
         return;
       } catch (e) {
         // Sleep 500ms and retry if locked by Windows filesystem
@@ -24,6 +25,8 @@ function restoreDir() {
 try {
   if (existsSync(apiDir)) {
     renameSync(apiDir, tempDir);
+    moved = true;
+  } else if (existsSync(tempDir)) {
     moved = true;
   }
 
