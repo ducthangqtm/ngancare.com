@@ -1,9 +1,38 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, AlertTriangle } from 'lucide-react';
 
 export default function FloatingCTA() {
+  const [hotline, setHotline] = useState('0339627769');
+  const [hotlineDisplay, setHotlineDisplay] = useState('0339.627.769');
+  const [zalo, setZalo] = useState('https://zalo.me/0339627769');
+  const [messenger, setMessenger] = useState('https://m.me/ngancare.mevabe');
+
+  useEffect(() => {
+    fetch('/api/homepage')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          if (data.data.contact_hotline) setHotline(data.data.contact_hotline);
+          if (data.data.contact_hotline_display) setHotlineDisplay(data.data.contact_hotline_display);
+          if (data.data.contact_zalo) {
+            const z = data.data.contact_zalo.trim();
+            setZalo(z.startsWith('http') ? z : `https://zalo.me/${z}`);
+          }
+          if (data.data.contact_facebook) {
+            const fb = data.data.contact_facebook.trim();
+            if (fb.includes('facebook.com')) {
+              setMessenger(fb.replace('facebook.com', 'm.me').replace('www.facebook.com', 'm.me'));
+            } else if (fb.startsWith('http')) {
+              setMessenger(fb);
+            }
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <>
       {/* Social & Contact Actions on Bottom-Right */}
@@ -13,7 +42,7 @@ export default function FloatingCTA() {
       >
         {/* Button: Facebook Messenger */}
         <a
-          href="https://m.me/ngancare.mevabe"
+          href={messenger}
           target="_blank"
           rel="noopener noreferrer"
           className="pointer-events-auto w-12 h-12 rounded-full bg-gradient-to-tr from-[#0084FF] via-[#0099FF] to-[#A824FF] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95"
@@ -27,11 +56,11 @@ export default function FloatingCTA() {
 
         {/* Button: Chat Zalo */}
         <a
-          href="https://zalo.me/0339627769"
+          href={zalo}
           target="_blank"
           rel="noopener noreferrer"
           className="pointer-events-auto w-12 h-12 rounded-full bg-[#0068FF] hover:bg-[#0052cc] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform active:scale-95 text-xs font-black tracking-tight"
-          title="Chat Zalo (+84 339 627 769)"
+          title={`Chat Zalo (${hotlineDisplay})`}
           aria-label="Chat Zalo"
         >
           <span className="text-[12px] font-extrabold">Zalo</span>
@@ -39,10 +68,10 @@ export default function FloatingCTA() {
 
         {/* Button: Hotline Instant Call with Ripple */}
         <a
-          href="tel:0339627769"
+          href={`tel:${hotline}`}
           className="pointer-events-auto relative group w-14 h-14 rounded-full bg-gradient-to-tr from-emergency-600 to-amber-500 text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform active:scale-95"
-          title="Gọi hotline hỗ trợ 24/7 ngay: 0339.627.769"
-          aria-label="Gọi điện hotline 0339627769"
+          title={`Gọi hotline hỗ trợ 24/7 ngay: ${hotlineDisplay}`}
+          aria-label={`Gọi điện hotline ${hotline}`}
         >
           <span className="absolute -inset-1 rounded-full bg-emergency-500 opacity-60 animate-ping group-hover:opacity-100" />
           <Phone className="w-6 h-6 animate-bounce-gentle relative z-10" />

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Calendar, Stethoscope, ShoppingBag, FileText, LogOut, LayoutDashboard, Globe, KeyRound, X, Menu, Loader2, CheckCircle2, AlertCircle, Bell, Send, Search } from 'lucide-react';
+import { Calendar, Stethoscope, ShoppingBag, FileText, LogOut, LayoutDashboard, Globe, KeyRound, X, Menu, Loader2, CheckCircle2, AlertCircle, Bell, Send, Search, Sliders } from 'lucide-react';
 
 export default function AdminNav() {
   const pathname = usePathname();
@@ -189,6 +189,7 @@ export default function AdminNav() {
 
   const links = [
     { name: 'Tổng Quan', href: '/admin', icon: LayoutDashboard },
+    { name: 'Cài Đặt Trang Chủ', href: '/admin/homepage', icon: Sliders },
     { name: 'Lịch Hẹn Đặt', href: '/admin/bookings', icon: Calendar },
     { name: 'Dịch Vụ Chăm Sóc', href: '/admin/services', icon: Stethoscope },
     { name: 'Sản Phẩm & Affiliate', href: '/admin/products', icon: ShoppingBag },

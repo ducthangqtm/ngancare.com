@@ -55,6 +55,8 @@ export interface AdminUser {
   created_at?: string;
 }
 
+export type { HomepageConfig } from './homepage-config';
+
 export interface ApiResponse<T = any> {
   success: boolean;
   message?: string;

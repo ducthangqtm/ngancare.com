@@ -1,5 +1,6 @@
 import { Service, Booking, BlogPost, AdminUser } from './types';
 import { INITIAL_SERVICES, INITIAL_POSTS, INITIAL_BOOKINGS } from './seed-data';
+import { HomepageConfig, DEFAULT_HOMEPAGE_CONFIG } from './homepage-config';
 
 // Singleton in-memory/fallback store for Next.js local dev & preview
 interface LocalStore {
@@ -7,6 +8,7 @@ interface LocalStore {
   posts: BlogPost[];
   bookings: Booking[];
   admins: AdminUser[];
+  homepageConfig?: HomepageConfig;
 }
 
 declare global {
@@ -60,6 +62,20 @@ export const localDb = {
     if (idx === -1) return false;
     store.services.splice(idx, 1);
     return true;
+  },
+
+  // Homepage Config
+  getHomepageConfig: async (): Promise<HomepageConfig> => {
+    const store = getLocalStore();
+    return store.homepageConfig || { ...DEFAULT_HOMEPAGE_CONFIG };
+  },
+  saveHomepageConfig: async (config: Partial<HomepageConfig>): Promise<HomepageConfig> => {
+    const store = getLocalStore();
+    store.homepageConfig = {
+      ...(store.homepageConfig || DEFAULT_HOMEPAGE_CONFIG),
+      ...config,
+    };
+    return store.homepageConfig;
   },
 
   // Posts

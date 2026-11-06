@@ -8,6 +8,8 @@ import { PhoneCall, Menu, X, Calendar, Sparkles, Heart } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hotline, setHotline] = useState('0339627769');
+  const [hotlineDisplay, setHotlineDisplay] = useState('0339.627.769');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +17,18 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/homepage')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          if (data.data.contact_hotline) setHotline(data.data.contact_hotline);
+          if (data.data.contact_hotline_display) setHotlineDisplay(data.data.contact_hotline_display);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const navLinks = [
@@ -39,10 +53,10 @@ export default function Navbar() {
           Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!
         </span>
         <a
-          href="tel:0339627769"
+          href={`tel:${hotline}`}
           className="underline font-bold hover:text-amber-100 hidden sm:inline ml-2 whitespace-nowrap"
         >
-          Hotline: 0339.627.769
+          Hotline: {hotlineDisplay}
         </a>
       </div>
 
@@ -90,12 +104,12 @@ export default function Navbar() {
             <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
               {/* Hotline Button */}
               <a
-                href="tel:0339627769"
+                href={`tel:${hotline}`}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emergency-500 hover:bg-emergency-600 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95 whitespace-nowrap"
-                title="Hotline tư vấn và chăm sóc: 0339.627.769"
+                title={`Hotline tư vấn và chăm sóc: ${hotlineDisplay}`}
               >
                 <PhoneCall className="w-4 h-4 animate-bounce-gentle flex-shrink-0" />
-                <span className="tracking-wide">HOTLINE: 0339.627.769</span>
+                <span className="tracking-wide">HOTLINE: {hotlineDisplay}</span>
               </a>
 
               {/* Book Appointment CTA */}
@@ -111,7 +125,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <div className="flex sm:hidden items-center gap-2">
               <a
-                href="tel:0339627769"
+                href={`tel:${hotline}`}
                 className="p-2 rounded-full bg-emergency-500 text-white animate-pulse"
                 aria-label="Gọi Hotline"
               >
@@ -146,11 +160,11 @@ export default function Navbar() {
 
             <div className="pt-3 border-t border-gold-100 flex flex-col gap-2.5">
               <a
-                href="tel:0339627769"
+                href={`tel:${hotline}`}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-emergency-500 text-white font-bold text-sm shadow-md"
               >
                 <PhoneCall className="w-4 h-4" />
-                <span>HOTLINE: 0339.627.769</span>
+                <span>HOTLINE: {hotlineDisplay}</span>
               </a>
               <a
                 href="/#dat-lich"

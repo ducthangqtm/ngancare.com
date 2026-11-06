@@ -1,9 +1,34 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, MapPin, Mail, Heart, ShieldCheck, Clock, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
+  const [hotline, setHotline] = useState('0339627769');
+  const [hotlineDisplay, setHotlineDisplay] = useState('0339.627.769');
+  const [zalo, setZalo] = useState('https://zalo.me/0339627769');
+  const [facebook, setFacebook] = useState('https://www.facebook.com/ngancare.mevabe');
+  const [address, setAddress] = useState('Thượng Thanh, Q. Long Biên, Hà Nội');
+
+  useEffect(() => {
+    fetch('/api/homepage')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.data) {
+          if (data.data.contact_hotline) setHotline(data.data.contact_hotline);
+          if (data.data.contact_hotline_display) setHotlineDisplay(data.data.contact_hotline_display);
+          if (data.data.contact_zalo) {
+            const z = data.data.contact_zalo.trim();
+            setZalo(z.startsWith('http') ? z : `https://zalo.me/${z}`);
+          }
+          if (data.data.contact_facebook) setFacebook(data.data.contact_facebook);
+          if (data.data.contact_address) setAddress(data.data.contact_address);
+        }
+      })
+      .catch(() => {});
+  }, []);
   return (
     <footer className="bg-charcoal-900 text-gray-300 pt-16 pb-12 border-t border-gold-500/20 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +62,7 @@ export default function Footer() {
 
             <div className="pt-2 flex items-center gap-3">
               <a
-                href="https://www.facebook.com/ngancare.mevabe"
+                href={facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-600 text-white flex items-center justify-center transition-colors"
@@ -46,18 +71,18 @@ export default function Footer() {
                 <span className="font-bold text-sm">f</span>
               </a>
               <a
-                href="https://zalo.me/0339627769"
+                href={zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-blue-500 text-white flex items-center justify-center transition-colors font-bold text-xs"
-                aria-label="Zalo (+84 339 627 769)"
+                aria-label={`Zalo (${hotlineDisplay})`}
               >
                 Zalo
               </a>
               <a
-                href="tel:0339627769"
+                href={`tel:${hotline}`}
                 className="w-9 h-9 rounded-full bg-gray-800 hover:bg-emerald-600 text-white flex items-center justify-center transition-colors"
-                aria-label="Gọi điện 0339627769"
+                aria-label={`Gọi điện ${hotline}`}
               >
                 <Phone className="w-4 h-4" />
               </a>
@@ -136,11 +161,11 @@ export default function Footer() {
             <div className="space-y-2 text-xs text-gray-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
-                <span>Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội</span>
+                <span>{address}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emergency-500 flex-shrink-0" />
-                <span>Hotline / Zalo: <a href="tel:0339627769" className="text-white font-bold hover:text-gold-400">0339.627.769</a></span>
+                <span>Hotline / Zalo: <a href={`tel:${hotline}`} className="text-white font-bold hover:text-gold-400">{hotlineDisplay}</a></span>
               </div>
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />

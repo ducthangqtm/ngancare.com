@@ -1,24 +1,33 @@
 import React from 'react';
 import { GraduationCap, PackageCheck, CircleDollarSign, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { HomepageConfig } from '@/lib/homepage-config';
 
-export default function Commitments3No() {
+interface Commitments3NoProps {
+  config?: Partial<HomepageConfig>;
+}
+
+export default function Commitments3No({ config }: Commitments3NoProps) {
+  const badge = config?.commit_badge || 'Uy Tín & Tận Tâm';
+  const title = config?.commit_title || 'Cam Kết Vàng Từ Điều Dưỡng Thúy Ngân';
+  const subtitle = config?.commit_subtitle || 'Đặt sự an toàn của mẹ và bé lên trên hết — Sự an tâm của gia đình là tôn chỉ hoạt động cao nhất.';
+
   const commitments = [
     {
       icon: GraduationCap,
-      title: 'Đào tạo bài bản, chính quy chuyên ngành Điều dưỡng',
-      desc: 'Đảm bảo kiến thức chăm sóc khoa học, an toàn, được cập nhật thường xuyên; không suy diễn hay truyền miệng thiếu cơ sở.',
+      title: config?.commit_item1_title || 'Đào tạo bài bản, chính quy chuyên ngành Điều dưỡng',
+      desc: config?.commit_item1_desc || 'Đảm bảo kiến thức chăm sóc khoa học, an toàn, được cập nhật thường xuyên; không suy diễn hay truyền miệng thiếu cơ sở.',
       tag: 'Đào Tạo Chính Quy',
     },
     {
       icon: PackageCheck,
-      title: 'Sản phẩm sử dụng rõ nguồn gốc xuất xứ',
-      desc: 'Mỗi sản phẩm sử dụng trong quá trình chăm sóc đều có rõ nguồn gốc xuất xứ và được công khai với khách hàng. Cam kết không sử dụng những sản phẩm không rõ chất lượng hay có dấu hiệu giả mạo, làm ảnh hưởng đến sức khoẻ của mẹ và bé.',
+      title: config?.commit_item2_title || 'Sản phẩm sử dụng rõ nguồn gốc xuất xứ',
+      desc: config?.commit_item2_desc || 'Mỗi sản phẩm sử dụng trong quá trình chăm sóc đều có rõ nguồn gốc xuất xứ và được công khai với khách hàng. Cam kết không sử dụng những sản phẩm không rõ chất lượng hay có dấu hiệu giả mạo, làm ảnh hưởng đến sức khoẻ của mẹ và bé.',
       tag: 'Minh Bạch Xuất Xứ',
     },
     {
       icon: CircleDollarSign,
-      title: 'Không tự ý phát sinh thêm chi phí, phụ phí ngoài lề',
-      desc: 'Giá dịch vụ được công bố rõ ràng từ đầu, không tự ý thu bất kỳ phụ phí hay chi phí ngoài lề nào trong quá trình chăm sóc. Các mẹ biết rõ mình sẽ chi bao nhiêu, không lo bị động hay bất ngờ khi thanh toán.',
+      title: config?.commit_item3_title || 'Không tự ý phát sinh thêm chi phí, phụ phí ngoài lề',
+      desc: config?.commit_item3_desc || 'Giá dịch vụ được công bố rõ ràng từ đầu, không tự ý thu bất kỳ phụ phí hay chi phí ngoài lề nào trong quá trình chăm sóc. Các mẹ biết rõ mình sẽ chi bao nhiêu, không lo bị động hay bất ngờ khi thanh toán.',
       tag: 'Giá Cả Rõ Ràng',
     },
   ];
@@ -34,13 +43,13 @@ export default function Commitments3No() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <ShieldCheck className="w-4 h-4 text-gold-600" />
-            <span>Uy Tín & Tận Tâm</span>
+            <span>{badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
-            Cam Kết Vàng Từ <span className="gold-gradient-text whitespace-nowrap">Điều Dưỡng Thúy Ngân</span>
+            {title}
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
-            Đặt sự an toàn của mẹ và bé lên trên hết — Sự an tâm của gia đình là tôn chỉ hoạt động cao nhất.
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto whitespace-pre-line">
+            {subtitle}
           </p>
         </div>
 
@@ -67,7 +76,7 @@ export default function Commitments3No() {
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-charcoal-800 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-charcoal-800 leading-relaxed whitespace-pre-line">
                     {item.desc}
                   </p>
                 </div>

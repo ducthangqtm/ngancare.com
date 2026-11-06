@@ -1,8 +1,38 @@
 import React from 'react';
 import Image from 'next/image';
 import { ShieldCheck, Clock, HeartHandshake, PhoneCall, Sparkles, CheckCircle2 } from 'lucide-react';
+import { HomepageConfig } from '@/lib/homepage-config';
 
-export default function HeroBanner() {
+interface HeroBannerProps {
+  config?: Partial<HomepageConfig>;
+}
+
+export default function HeroBanner({ config }: HeroBannerProps) {
+  const title = config?.hero_title || 'Đồng Hành Cùng Mẹ Chăm Sóc Sức Khỏe Mẹ Và Bé Từ Thai Kỳ Đến Sau Sinh';
+  const highlight = config?.hero_title_highlight ?? 'Mẹ Và Bé';
+  const badge = config?.hero_badge || '“Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương”';
+  const subtitle = config?.hero_subtitle || 'Được sáng lập và trực tiếp phụ trách bởi Điều Dưỡng Nguyễn Thúy Ngân. Chuyên viên chăm sóc sức khoẻ mẹ và bé được đào tạo và cấp chứng chỉ hành nghề chính quy.';
+  const ctaBooking = config?.hero_cta_booking || 'Đặt Lịch Chăm Sóc Ngay';
+  const ctaHotline = config?.hero_cta_hotline || (config?.contact_hotline_display ? `Hotline: ${config.contact_hotline_display}` : 'Hotline: 0339.627.769');
+  const hotlineTel = config?.contact_hotline || '0339627769';
+  const bannerImg = config?.hero_banner_image || '/images/banner.jpg';
+  const founderImg = config?.founder_image || '/images/avata.jpg';
+  const founderName = config?.founder_name || 'Nguyễn Thúy Ngân';
+  const founderExp = config?.founder_experience_badge ? `${config.founder_experience_badge} Năm Kinh Nghiệm` : '9+ Năm Kinh Nghiệm';
+
+  const renderTitle = () => {
+    if (highlight && title.includes(highlight)) {
+      const parts = title.split(highlight);
+      return (
+        <>
+          {parts[0]}
+          <span className="gold-gradient-text whitespace-nowrap">{highlight}</span>
+          {parts.slice(1).join(highlight)}
+        </>
+      );
+    }
+    return title;
+  };
   const pillars = [
     {
       icon: ShieldCheck,
@@ -40,17 +70,16 @@ export default function HeroBanner() {
             
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 leading-tight text-balance">
-              Đồng Hành Cùng Mẹ Chăm Sóc Sức Khỏe{' '}
-              <span className="gold-gradient-text whitespace-nowrap">Mẹ Và Bé</span> Từ Thai Kỳ Đến Sau Sinh
+              {renderTitle()}
             </h1>
 
             {/* Slogan */}
             <p className="text-lg sm:text-xl font-medium text-gold-700 italic text-balance">
-              “Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương”
+              {badge}
             </p>
 
-            <p className="text-base sm:text-lg text-charcoal-800 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Được sáng lập và trực tiếp phụ trách bởi <strong>Điều Dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span></strong>. Chuyên viên chăm sóc sức khoẻ mẹ và bé được đào tạo và cấp chứng chỉ hành nghề chính quy.
+            <p className="text-base sm:text-lg text-charcoal-800 leading-relaxed max-w-2xl mx-auto lg:mx-0 whitespace-pre-line">
+              {subtitle}
             </p>
 
             {/* Call to Actions */}
@@ -59,15 +88,15 @@ export default function HeroBanner() {
                 href="#dat-lich"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-base shadow-gold-soft hover:shadow-gold-lg transition-all text-center flex items-center justify-center gap-2 active:scale-95"
               >
-                <span>Đặt Lịch Chăm Sóc Ngay</span>
+                <span>{ctaBooking}</span>
               </a>
 
               <a
-                href="tel:0339627769"
+                href={`tel:${hotlineTel}`}
                 className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-cream-100 border-2 border-gold-500 text-gold-700 font-bold text-base shadow-sm transition-all text-center flex items-center justify-center gap-2 active:scale-95"
               >
                 <PhoneCall className="w-4 h-4 text-gold-600" />
-                <span>Hotline: 0339.627.769</span>
+                <span>{ctaHotline}</span>
               </a>
             </div>
 
@@ -96,7 +125,7 @@ export default function HeroBanner() {
               {/* Main Banner Card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11]">
                 <Image
-                  src="/images/banner.jpg"
+                  src={bannerImg}
                   alt="Chuyên viên Ngân Care chăm sóc bé sơ sinh và mẹ bỉm"
                   fill
                   priority
@@ -108,15 +137,15 @@ export default function HeroBanner() {
               <div className="absolute -bottom-6 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md p-3 sm:p-4 rounded-2xl shadow-xl border border-gold-200 flex items-center gap-3.5 max-w-[260px] sm:max-w-[280px]">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-gold-500 flex-shrink-0">
                   <Image
-                    src="/images/avata.jpg"
-                    alt="Điều Dưỡng Nguyễn Thúy Ngân"
+                    src={founderImg}
+                    alt={founderName}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-charcoal-900 leading-tight">ĐD. Nguyễn Thúy Ngân</h4>
-                  <p className="text-[11px] text-gold-700 font-medium">9+ Năm Kinh Nghiệm</p>
+                  <h4 className="text-xs sm:text-sm font-bold text-charcoal-900 leading-tight">ĐD. {founderName}</h4>
+                  <p className="text-[11px] text-gold-700 font-medium">{founderExp}</p>
                   <p className="text-[10px] text-gray-500">CĐ Y Tế Hà Nội</p>
                 </div>
               </div>

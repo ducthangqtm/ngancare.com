@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AdminNav from '@/components/AdminNav';
-import { Calendar, Stethoscope, ShoppingBag, FileText, ArrowRight } from 'lucide-react';
+import { Calendar, Stethoscope, ShoppingBag, FileText, ArrowRight, Sliders } from 'lucide-react';
 import { Service, Booking, BlogPost } from '@/lib/types';
 
 export default function AdminDashboardPage() {
@@ -180,7 +180,23 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Quick Management Shortcuts */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <Link
+            href="/admin/homepage"
+            className="p-5 bg-gradient-to-br from-white to-amber-50/40 rounded-2xl border-2 border-gold-300 hover:border-gold-500 shadow-sm hover:shadow-gold-soft transition-all group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-gold-500 text-white flex items-center justify-center mb-3 shadow-gold-soft">
+              <Sliders className="w-5 h-5" />
+            </div>
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-gold-600 flex items-center justify-between">
+              <span>Cài Đặt Trang Chủ (CMS)</span>
+              <ArrowRight className="w-4 h-4 text-gold-600" />
+            </h3>
+            <p className="text-xs text-gray-500 mt-1">
+              Tùy chỉnh hotline, câu chữ banner, giới thiệu chuyên viên và quy trình hiển thị trực tiếp ra trang khách.
+            </p>
+          </Link>
+
           <Link
             href="/admin/bookings"
             className="p-5 bg-white rounded-2xl border border-gray-200 hover:border-gold-400 shadow-sm transition-all group"

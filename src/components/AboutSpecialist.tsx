@@ -1,8 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 import { Award, GraduationCap, FileBadge2, Heart, CheckCircle } from 'lucide-react';
+import { HomepageConfig } from '@/lib/homepage-config';
 
-export default function AboutSpecialist() {
+interface AboutSpecialistProps {
+  config?: Partial<HomepageConfig>;
+}
+
+export default function AboutSpecialist({ config }: AboutSpecialistProps) {
+  const badge = config?.founder_section_badge || 'Về Người Sáng Lập Ngân Care';
+  const title = config?.founder_title || 'Gặp Gỡ Chuyên Viên Điều Dưỡng';
+  const name = config?.founder_name || 'Nguyễn Thúy Ngân';
+  const bio = config?.founder_experience || 'Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và tác phong chuyên nghiệp, tận tâm.';
+  const quote = config?.founder_quote || '“Mỗi em bé chào đời là một thiên thần vô giá. Người mẹ sau cuộc vượt cạn thiêng liêng xứng đáng được nâng niu, chăm sóc bằng tất cả tình yêu thương và sự chu đáo, tận tâm nhất.”';
+  const badgeExp = config?.founder_experience_badge || '9+';
+  const avatar = config?.founder_image || '/images/avata.jpg';
   const credentials = [
     {
       icon: GraduationCap,
@@ -29,14 +41,14 @@ export default function AboutSpecialist() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Heart className="w-3.5 h-3.5 fill-gold-600 text-gold-600" />
-            <span>Về Người Sáng Lập Ngân Care</span>
+            <span>{badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
-            Gặp Gỡ Chuyên Viên Điều Dưỡng <br className="hidden sm:inline" />
-            <span className="whitespace-nowrap text-[#D4A359] gold-gradient-text">Nguyễn Thúy Ngân</span>
+            {title} <br className="hidden sm:inline" />
+            <span className="whitespace-nowrap text-[#D4A359] gold-gradient-text">{name}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
-            Hơn 9 năm tận tụy đồng hành cùng hàng nghìn mẹ bỉm sữa Thủ đô bằng sự thấu cảm của một người mẹ và tác phong chuyên nghiệp, tận tâm.
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto whitespace-pre-line">
+            {bio}
           </p>
         </div>
 
@@ -53,8 +65,8 @@ export default function AboutSpecialist() {
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full p-2 bg-gradient-to-tr from-gold-500 via-amber-200 to-gold-600 shadow-2xl">
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white">
                   <Image
-                    src="/images/avata.jpg"
-                    alt="Chân dung Điều Dưỡng Nguyễn Thúy Ngân"
+                    src={avatar}
+                    alt={`Chân dung ${name}`}
                     fill
                     className="object-cover scale-105 hover:scale-110 transition-transform duration-500"
                   />
@@ -63,7 +75,7 @@ export default function AboutSpecialist() {
 
               {/* Experience Badge */}
               <div className="absolute -bottom-2 right-4 sm:right-8 bg-charcoal-900 text-white px-4 py-2 rounded-2xl shadow-xl border-2 border-gold-400 flex items-center gap-2">
-                <span className="text-xl sm:text-2xl font-black text-gold-400">9+</span>
+                <span className="text-xl sm:text-2xl font-black text-gold-400">{badgeExp}</span>
                 <span className="text-[11px] sm:text-xs font-semibold leading-tight">Năm Kinh Nghiệm<br/>Tận Tâm</span>
               </div>
             </div>
@@ -74,11 +86,11 @@ export default function AboutSpecialist() {
             
             {/* Quote Box */}
             <div className="bg-white p-5 sm:p-6 rounded-2xl border-l-4 border-gold-500 shadow-sm">
-              <p className="text-sm sm:text-base text-charcoal-900 italic font-medium leading-relaxed">
-                “Mỗi em bé chào đời là một thiên thần vô giá. Người mẹ sau cuộc vượt cạn thiêng liêng xứng đáng được nâng niu, chăm sóc bằng tất cả tình yêu thương và sự chu đáo, tận tâm nhất.”
+              <p className="text-sm sm:text-base text-charcoal-900 italic font-medium leading-relaxed whitespace-pre-line">
+                {quote}
               </p>
               <p className="text-right text-xs font-bold text-gold-700 mt-2">
-                — Điều Dưỡng <span className="whitespace-nowrap">Nguyễn Thúy Ngân</span>
+                — Điều Dưỡng <span className="whitespace-nowrap">{name}</span>
               </p>
             </div>
 
