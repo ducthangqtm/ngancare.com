@@ -2,13 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import AdminNav from '@/components/AdminNav';
 import {
   Phone,
-  MessageCircle,
-  MapPin,
-  Clock,
   Sparkles,
   Save,
   RotateCcw,
@@ -20,12 +16,16 @@ import {
   UserCheck,
   ShieldCheck,
   ListOrdered,
-  Image as ImageIcon,
-  HeartHandshake
+  PanelTop,
+  Columns,
+  Tag,
+  Stethoscope,
+  ShoppingBag,
+  FileText
 } from 'lucide-react';
 import { HomepageConfig, DEFAULT_HOMEPAGE_CONFIG } from '@/lib/homepage-config';
 
-type ActiveTab = 'contact' | 'hero' | 'founder' | 'process_commit';
+type ActiveTab = 'contact' | 'hero' | 'founder' | 'process_commit' | 'header_footer' | 'pillars' | 'headings';
 
 export default function AdminHomepageSettingsPage() {
   const [config, setConfig] = useState<HomepageConfig>(DEFAULT_HOMEPAGE_CONFIG);
@@ -109,10 +109,10 @@ export default function AdminHomepageSettingsPage() {
               <span>Hệ Thống Quản Trị Trực Quan (CMS)</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-charcoal-900">
-              Cài Đặt Nội Dung Trang Chủ
+              Cài Đặt Nội Dung Toàn Website
             </h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1 max-w-2xl">
-              Tự tay chỉnh sửa hotline, câu chữ giới thiệu, banner và quy trình phục vụ. Khách hàng truy cập sẽ thấy ngay nội dung mới nhất.
+              Tùy chỉnh 100% câu chữ: Hotline, Header, Footer, 4 Trụ Cột, Banner, Giới Thiệu, Tiêu Đề Dịch Vụ & Sản Phẩm.
             </p>
           </div>
 
@@ -160,11 +160,10 @@ export default function AdminHomepageSettingsPage() {
         {/* Toast Alert */}
         {toast && (
           <div
-            className={`mb-6 p-4 rounded-xl flex items-center gap-3 border shadow-sm transition-all ${
-              toast.type === 'success'
+            className={`mb-6 p-4 rounded-xl flex items-center gap-3 border shadow-sm transition-all ${toast.type === 'success'
                 ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
                 : 'bg-red-50 border-red-200 text-red-800'
-            }`}
+              }`}
           >
             {toast.type === 'success' ? (
               <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
@@ -182,16 +181,15 @@ export default function AdminHomepageSettingsPage() {
           </div>
         ) : (
           <div className="space-y-6">
-            {/* Tab Navigation */}
+            {/* Tab Navigation (7 Tabs) */}
             <div className="bg-white rounded-2xl p-1.5 border border-gray-200 shadow-xs flex flex-wrap gap-1">
               <button
                 type="button"
                 onClick={() => setActiveTab('contact')}
-                className={`flex-1 min-w-[140px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
-                  activeTab === 'contact'
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'contact'
                     ? 'bg-gold-500 text-white shadow-gold-soft'
                     : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 <Phone className="w-4 h-4" />
                 <span>1. Liên Hệ Chung</span>
@@ -200,11 +198,10 @@ export default function AdminHomepageSettingsPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab('hero')}
-                className={`flex-1 min-w-[140px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
-                  activeTab === 'hero'
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'hero'
                     ? 'bg-gold-500 text-white shadow-gold-soft'
                     : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 <Layers className="w-4 h-4" />
                 <span>2. Banner Đầu Trang</span>
@@ -213,11 +210,10 @@ export default function AdminHomepageSettingsPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab('founder')}
-                className={`flex-1 min-w-[140px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
-                  activeTab === 'founder'
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'founder'
                     ? 'bg-gold-500 text-white shadow-gold-soft'
                     : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 <UserCheck className="w-4 h-4" />
                 <span>3. Giới Thiệu Chuyên Viên</span>
@@ -226,14 +222,49 @@ export default function AdminHomepageSettingsPage() {
               <button
                 type="button"
                 onClick={() => setActiveTab('process_commit')}
-                className={`flex-1 min-w-[140px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all ${
-                  activeTab === 'process_commit'
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'process_commit'
                     ? 'bg-gold-500 text-white shadow-gold-soft'
                     : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
-                }`}
+                  }`}
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>4. Cam Kết & Quy Trình</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('header_footer')}
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'header_footer'
+                    ? 'bg-gold-500 text-white shadow-gold-soft'
+                    : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
+                  }`}
+              >
+                <PanelTop className="w-4 h-4" />
+                <span>5. Header & Footer</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('pillars')}
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'pillars'
+                    ? 'bg-gold-500 text-white shadow-gold-soft'
+                    : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
+                  }`}
+              >
+                <Columns className="w-4 h-4" />
+                <span>6. 4 Trụ Cột Niềm Tin</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveTab('headings')}
+                className={`px-3 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all ${activeTab === 'headings'
+                    ? 'bg-gold-500 text-white shadow-gold-soft'
+                    : 'text-gray-600 hover:text-charcoal-900 hover:bg-gray-100'
+                  }`}
+              >
+                <Tag className="w-4 h-4" />
+                <span>7. Tiêu Đề Dịch Vụ & SP</span>
               </button>
             </div>
 
@@ -255,15 +286,13 @@ export default function AdminHomepageSettingsPage() {
                     <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
                       Số Hotline Gọi Nhanh (Dùng để bấm gọi tel:)
                     </label>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        value={config.contact_hotline}
-                        onChange={(e) => handleChange('contact_hotline', e.target.value)}
-                        placeholder="0339627769"
-                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      value={config.contact_hotline}
+                      onChange={(e) => handleChange('contact_hotline', e.target.value)}
+                      placeholder="0339627769"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                    />
                     <p className="text-[11px] text-gray-400 mt-1">
                       Số liền không dấu cách để trình duyệt và điện thoại tự quay số.
                     </p>
@@ -862,6 +891,396 @@ export default function AdminHomepageSettingsPage() {
               </div>
             )}
 
+            {/* TAB 5: HEADER & FOOTER */}
+            {activeTab === 'header_footer' && (
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-xs p-6 sm:p-8 space-y-6">
+                <div>
+                  <h2 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
+                    <PanelTop className="w-5 h-5 text-gold-600" />
+                    <span>Cài Đặt Thanh Tiêu Đề (Header) & Chân Trang (Footer)</span>
+                  </h2>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Tùy chỉnh câu thông báo trên cùng, đoạn mô tả giới thiệu thương hiệu và thông tin bản quyền ở chân trang.
+                  </p>
+                </div>
+
+                <div className="space-y-5 pt-2">
+                  {/* Header Announcement Bar */}
+                  <div>
+                    <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                      Text Thanh Thông Báo Đầu Trang (Top Bar Announcement)
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={config.header_announcement}
+                      onChange={(e) => handleChange('header_announcement', e.target.value)}
+                      placeholder="Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                    />
+                    <p className="text-[11px] text-gray-400 mt-1">
+                      Dải thông báo màu vàng đồng chạy trên cùng cùng số Hotline.
+                    </p>
+                  </div>
+
+                  {/* Footer Description */}
+                  <div>
+                    <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                      Mô Tả Thương Hiệu Chân Trang (Footer Description)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={config.footer_description}
+                      onChange={(e) => handleChange('footer_description', e.target.value)}
+                      placeholder="Dịch vụ chăm sóc mẹ và bé tại nhà uy tín hàng đầu Hà Nội..."
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium leading-relaxed"
+                    />
+                  </div>
+
+                  {/* Footer Address */}
+                  <div>
+                    <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                      Dòng Địa Chỉ Trụ Sở Chân Trang (Footer Address)
+                    </label>
+                    <input
+                      type="text"
+                      value={config.footer_address}
+                      onChange={(e) => handleChange('footer_address', e.target.value)}
+                      placeholder="Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                    />
+                  </div>
+
+                  {/* Footer Disclaimer / Specialist */}
+                  <div>
+                    <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                      Dòng Ghi Chú Chuyên Môn (Bảo Chứng Chuyên Môn)
+                    </label>
+                    <input
+                      type="text"
+                      value={config.footer_disclaimer}
+                      onChange={(e) => handleChange('footer_disclaimer', e.target.value)}
+                      placeholder="Bảo chứng chuyên môn: ĐD. Nguyễn Thúy Ngân"
+                      className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* Copyright Text */}
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Dòng Bản Quyền (Copyright Text)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.footer_copyright}
+                        onChange={(e) => handleChange('footer_copyright', e.target.value)}
+                        placeholder="Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân."
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    {/* Trust Badge Text */}
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Huy Hiệu Tin Cậy (Góc Phải Footer)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.footer_badge_trust}
+                        onChange={(e) => handleChange('footer_badge_trust', e.target.value)}
+                        placeholder="An Toàn & Tận Tâm"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB 6: 4 TRỤ CỘT NIỀM TIN */}
+            {activeTab === 'pillars' && (
+              <div className="bg-white rounded-2xl border border-gray-200 shadow-xs p-6 sm:p-8 space-y-6">
+                <div>
+                  <h2 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
+                    <Columns className="w-5 h-5 text-gold-600" />
+                    <span>4 Trụ Cột Niềm Tin (Nằm Dưới Hero Banner)</span>
+                  </h2>
+                  <p className="text-xs text-gray-500 mt-1">
+                    4 khối giá trị cốt lõi giúp tạo dựng niềm tin tuyệt đối với các mẹ bầu và mẹ bỉm sữa.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                  {/* Trụ cột 01 */}
+                  <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/70 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-gold-700 uppercase tracking-wider">Trụ Cột 01</span>
+                      <span className="text-[11px] text-gray-400 font-semibold">Chuyên Môn</span>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Tiêu Đề Trụ Cột 01
+                      </label>
+                      <input
+                        type="text"
+                        value={config.pillar1_title}
+                        onChange={(e) => handleChange('pillar1_title', e.target.value)}
+                        placeholder="Chuyên Môn Đào Tạo Chính Quy"
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs sm:text-sm font-bold bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Mô Tả Trụ Cột 01
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.pillar1_desc}
+                        onChange={(e) => handleChange('pillar1_desc', e.target.value)}
+                        placeholder="Tốt nghiệp Cao Đẳng Y Tế Hà Nội..."
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs text-gray-700 bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Trụ cột 02 */}
+                  <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/70 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-gold-700 uppercase tracking-wider">Trụ Cột 02</span>
+                      <span className="text-[11px] text-gray-400 font-semibold">Tận Tâm</span>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Tiêu Đề Trụ Cột 02
+                      </label>
+                      <input
+                        type="text"
+                        value={config.pillar2_title}
+                        onChange={(e) => handleChange('pillar2_title', e.target.value)}
+                        placeholder="Chăm Sóc Nhẹ Nhàng, Tận Tâm"
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs sm:text-sm font-bold bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Mô Tả Trụ Cột 02
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.pillar2_desc}
+                        onChange={(e) => handleChange('pillar2_desc', e.target.value)}
+                        placeholder="Thương bé như con..."
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs text-gray-700 bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Trụ cột 03 */}
+                  <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/70 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-gold-700 uppercase tracking-wider">Trụ Cột 03</span>
+                      <span className="text-[11px] text-gray-400 font-semibold">Dẫn Lưu Bạch Huyết</span>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Tiêu Đề Trụ Cột 03
+                      </label>
+                      <input
+                        type="text"
+                        value={config.pillar3_title}
+                        onChange={(e) => handleChange('pillar3_title', e.target.value)}
+                        placeholder="Tích hợp dẫn lưu hệ bạch huyết..."
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs sm:text-sm font-bold bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Mô Tả Trụ Cột 03
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.pillar3_desc}
+                        onChange={(e) => handleChange('pillar3_desc', e.target.value)}
+                        placeholder="Chăm sóc bầu ngực và tuyến sữa..."
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs text-gray-700 bg-white"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Trụ cột 04 */}
+                  <div className="p-5 rounded-xl border border-gray-200 bg-gray-50/70 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-gold-700 uppercase tracking-wider">Trụ Cột 04</span>
+                      <span className="text-[11px] text-gray-400 font-semibold">Đồng Hành</span>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Tiêu Đề Trụ Cột 04
+                      </label>
+                      <input
+                        type="text"
+                        value={config.pillar4_title}
+                        onChange={(e) => handleChange('pillar4_title', e.target.value)}
+                        placeholder="Đồng hành trọn đời"
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs sm:text-sm font-bold bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-bold text-charcoal-800 uppercase mb-1">
+                        Mô Tả Trụ Cột 04
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.pillar4_desc}
+                        onChange={(e) => handleChange('pillar4_desc', e.target.value)}
+                        placeholder="Hỗ trợ giải đáp thắc mắc..."
+                        className="w-full px-3.5 py-2 rounded-lg border border-gray-300 text-xs text-gray-700 bg-white"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TAB 7: TIÊU ĐỀ DỊCH VỤ & SẢN PHẨM */}
+            {activeTab === 'headings' && (
+              <div className="space-y-6">
+                {/* Phần 1: Tiêu đề Section Dịch Vụ */}
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-xs p-6 sm:p-8 space-y-6">
+                  <div>
+                    <h2 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
+                      <Stethoscope className="w-5 h-5 text-gold-600" />
+                      <span>Tiêu Đề Section "Dịch Vụ Chăm Sóc Mẹ & Bé"</span>
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Tùy chỉnh câu chữ phần đầu khối giới thiệu các gói dịch vụ (Thông tắc, Tắm bé, Sau sinh).
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Badge Tiêu Đề Nhỏ
+                      </label>
+                      <input
+                        type="text"
+                        value={config.services_badge}
+                        onChange={(e) => handleChange('services_badge', e.target.value)}
+                        placeholder="Dịch Vụ Trọng Tâm"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Cụm Từ Nổi Bật (Tô Màu Vàng Kim Trong H2)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.services_title_highlight}
+                        onChange={(e) => handleChange('services_title_highlight', e.target.value)}
+                        placeholder="Mẹ Và Bé Tại Nhà"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Tiêu Đề Chính Lớn (H2)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.services_title}
+                        onChange={(e) => handleChange('services_title', e.target.value)}
+                        placeholder="Dịch Vụ Chăm Sóc Mẹ Và Bé Tại Nhà"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Đoạn Mô Tả Phụ Dưới H2
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.services_subtitle}
+                        onChange={(e) => handleChange('services_subtitle', e.target.value)}
+                        placeholder="Bảng giá niêm yết công khai, minh bạch rõ ràng..."
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Phần 2: Tiêu đề Section Sản Phẩm */}
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-xs p-6 sm:p-8 space-y-6">
+                  <div>
+                    <h2 className="text-lg font-bold text-charcoal-900 flex items-center gap-2">
+                      <ShoppingBag className="w-5 h-5 text-gold-600" />
+                      <span>Tiêu Đề Section "Sản Phẩm Thiên Nhiên & Affiliate"</span>
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Tùy chỉnh câu chữ phần đầu khối giới thiệu sản phẩm thảo mộc và link liên kết.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Badge Tiêu Đề Nhỏ
+                      </label>
+                      <input
+                        type="text"
+                        value={config.products_badge}
+                        onChange={(e) => handleChange('products_badge', e.target.value)}
+                        placeholder="Thảo Mộc Cung Đình & Tự Nhiên"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Cụm Từ Nổi Bật (Tô Màu Vàng Kim Trong H2)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.products_title_highlight}
+                        onChange={(e) => handleChange('products_title_highlight', e.target.value)}
+                        placeholder="Lành Tính Cho Mẹ & Bé"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Tiêu Đề Chính Lớn (H2)
+                      </label>
+                      <input
+                        type="text"
+                        value={config.products_title}
+                        onChange={(e) => handleChange('products_title', e.target.value)}
+                        placeholder="Sản Phẩm Thiên Nhiên Lành Tính Cho Mẹ & Bé"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-xs font-bold text-charcoal-900 uppercase tracking-wide mb-1.5">
+                        Đoạn Mô Tả Phụ Dưới H2
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={config.products_subtitle}
+                        onChange={(e) => handleChange('products_subtitle', e.target.value)}
+                        placeholder="Nguồn gốc xuất xứ rõ ràng, chưng cất thủ công..."
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:outline-hidden focus:border-gold-500 focus:ring-2 focus:ring-gold-200 text-sm font-medium"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Bottom Floating Save Button Bar for Convenience */}
             <div className="sticky bottom-4 z-20 bg-charcoal-900/90 backdrop-blur-md text-white p-4 rounded-2xl border border-gray-700 shadow-2xl flex items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
@@ -897,4 +1316,3 @@ export default function AdminHomepageSettingsPage() {
     </div>
   );
 }
-

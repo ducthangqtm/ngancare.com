@@ -10,6 +10,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hotline, setHotline] = useState('0339627769');
   const [hotlineDisplay, setHotlineDisplay] = useState('0339.627.769');
+  const [announcement, setAnnouncement] = useState('Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,7 @@ export default function Navbar() {
         if (data.success && data.data) {
           if (data.data.contact_hotline) setHotline(data.data.contact_hotline);
           if (data.data.contact_hotline_display) setHotlineDisplay(data.data.contact_hotline_display);
+          if (data.data.header_announcement) setAnnouncement(data.data.header_announcement);
         }
       })
       .catch(() => {});
@@ -50,7 +52,7 @@ export default function Navbar() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
         </span>
         <span className="truncate sm:overflow-visible">
-          Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!
+          {announcement}
         </span>
         <a
           href={`tel:${hotline}`}

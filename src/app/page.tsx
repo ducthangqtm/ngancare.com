@@ -49,7 +49,7 @@ export default function HomePage() {
       <AboutSpecialist config={config} />
 
       {/* 3. Core Flagship Services */}
-      <CoreServices onSelectService={handleSelectService} />
+      <CoreServices onSelectService={handleSelectService} config={config} />
 
       {/* 4. Professional 4-Step Process */}
       <Process4Steps config={config} />
@@ -58,7 +58,7 @@ export default function HomePage() {
       <Commitments3No config={config} />
 
       {/* 6. Natural Products Catalog */}
-      <ProductsCatalog />
+      <ProductsCatalog config={config} />
 
       {/* 8. Blog Knowledge Section on Homepage */}
       <HomeBlogSection />

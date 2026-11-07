@@ -29,7 +29,7 @@ export const INITIAL_SERVICES: Service[] = [
     price: 180000,
     duration: 45,
     description:
-      'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
+      'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn và theo dõi thể trạng bé sơ sinh',
     features: [
       '+ Điều dưỡng chính quy trực tiếp tắm bé',
       '+ Dụng cụ vệ sinh sạch sẽ, tiệt trùng',

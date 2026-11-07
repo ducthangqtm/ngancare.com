@@ -4,10 +4,34 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, Check, Sparkles, ShoppingCart, ExternalLink } from 'lucide-react';
 import { Service } from '@/lib/types';
+import { HomepageConfig } from '@/lib/homepage-config';
 
-export default function ProductsCatalog() {
+interface ProductsCatalogProps {
+  config?: Partial<HomepageConfig>;
+}
+
+export default function ProductsCatalog({ config }: ProductsCatalogProps) {
   const [products, setProducts] = useState<Service[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const badge = config?.products_badge || 'Thảo Mộc Cung Đình & Tự Nhiên';
+  const title = config?.products_title || 'Sản Phẩm Thiên Nhiên Lành Tính Cho Mẹ & Bé';
+  const highlight = config?.products_title_highlight ?? 'Lành Tính Cho Mẹ & Bé';
+  const subtitle = config?.products_subtitle || 'Nguồn gốc xuất xứ rõ ràng, chưng cất thủ công truyền thống, không phụ gia và hóa chất bảo quản.';
+
+  const renderTitle = () => {
+    if (highlight && title.includes(highlight)) {
+      const parts = title.split(highlight);
+      return (
+        <>
+          {parts[0]}
+          <span className="gold-gradient-text sm:whitespace-nowrap">{highlight}</span>
+          {parts.slice(1).join(highlight)}
+        </>
+      );
+    }
+    return title;
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -60,21 +84,18 @@ export default function ProductsCatalog() {
   return (
     <section id="san-pham" className="py-16 sm:py-20 bg-cream-200/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gold-100 border border-gold-300 text-gold-800 text-xs font-bold uppercase tracking-wider mb-3">
             <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-            <span>Thảo Mộc Cung Đình & Tự Nhiên</span>
+            <span>{badge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-charcoal-900 leading-tight text-balance">
-            Sản Phẩm Thiên Nhiên <br className="hidden sm:inline" />
-            <span className="gold-gradient-text sm:whitespace-nowrap">
-              Lành Tính Cho <span className="whitespace-nowrap">Mẹ &amp; Bé</span>
-            </span>
+            {renderTitle()}
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto">
-            Nguồn gốc xuất xứ rõ ràng, chưng cất thủ công truyền thống, không phụ gia và hóa chất bảo quản.
+          <p className="mt-3 text-sm sm:text-base text-charcoal-800 text-balance max-w-2xl mx-auto whitespace-pre-line">
+            {subtitle}
           </p>
         </div>
 

@@ -36,23 +36,23 @@ export default function HeroBanner({ config }: HeroBannerProps) {
   const pillars = [
     {
       icon: ShieldCheck,
-      title: 'Chuyên Môn Đào Tạo Chính Quy',
-      desc: 'Tốt nghiệp Cao Đẳng Y Tế Hà Nội, kinh nghiệm và tận tâm',
+      title: config?.pillar1_title || 'Chuyên Môn Đào Tạo Chính Quy',
+      desc: config?.pillar1_desc || 'Tốt nghiệp Cao Đẳng Y Tế Hà Nội, kinh nghiệm và tận tâm',
     },
     {
       icon: HeartHandshake,
-      title: 'Chăm Sóc Nhẹ Nhàng, Tận Tâm',
-      desc: 'Thương bé như con, thấu hiểu mọi âu lo của mẹ bỉm',
+      title: config?.pillar2_title || 'Chăm Sóc Nhẹ Nhàng, Tận Tâm',
+      desc: config?.pillar2_desc || 'Thương bé như con, thấu hiểu mọi âu lo của mẹ bỉm',
     },
     {
       icon: Sparkles,
-      title: 'Tích hợp dẫn lưu hệ bạch huyết trong quy trình chăm sóc',
-      desc: 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — phương pháp nhẹ nhàng giúp thông tắc và giải tỏa căng tức vú',
+      title: config?.pillar3_title || 'Tích hợp dẫn lưu hệ bạch huyết trong quy trình chăm sóc',
+      desc: config?.pillar3_desc || 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — phương pháp nhẹ nhàng giúp thông tắc và giải tỏa căng tức vú',
     },
     {
       icon: Clock,
-      title: 'Đồng hành trọn đời',
-      desc: 'Hỗ trợ giải đáp thắc mắc chăm sóc mẹ và bé trọn đời',
+      title: config?.pillar4_title || 'Đồng hành trọn đời',
+      desc: config?.pillar4_desc || 'Hỗ trợ giải đáp thắc mắc chăm sóc mẹ và bé trọn đời',
     },
   ];
 
@@ -64,10 +64,10 @@ export default function HeroBanner({ config }: HeroBannerProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
+
           {/* Left Column: Core Value Proposition & Headings */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            
+
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-charcoal-900 leading-tight text-balance">
               {renderTitle()}
@@ -121,7 +121,7 @@ export default function HeroBanner({ config }: HeroBannerProps) {
           {/* Right Column: Hero Visual Showcase */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              
+
               {/* Main Banner Card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11]">
                 <Image

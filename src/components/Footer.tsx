@@ -10,7 +10,13 @@ export default function Footer() {
   const [hotlineDisplay, setHotlineDisplay] = useState('0339.627.769');
   const [zalo, setZalo] = useState('https://zalo.me/0339627769');
   const [facebook, setFacebook] = useState('https://www.facebook.com/ngancare.mevabe');
-  const [address, setAddress] = useState('Thượng Thanh, Q. Long Biên, Hà Nội');
+  const [address, setAddress] = useState('Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội');
+  const [description, setDescription] = useState(
+    'Dịch vụ chăm sóc mẹ và bé tại nhà uy tín hàng đầu Hà Nội. Trực tiếp thực hiện bởi Điều dưỡng chuyên khoa với phương châm: “Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương”.'
+  );
+  const [copyright, setCopyright] = useState('Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân.');
+  const [disclaimer, setDisclaimer] = useState('Bảo chứng chuyên môn: ĐD. Nguyễn Thúy Ngân');
+  const [badgeTrust, setBadgeTrust] = useState('An Toàn & Tận Tâm');
 
   useEffect(() => {
     fetch('/api/homepage')
@@ -24,17 +30,22 @@ export default function Footer() {
             setZalo(z.startsWith('http') ? z : `https://zalo.me/${z}`);
           }
           if (data.data.contact_facebook) setFacebook(data.data.contact_facebook);
-          if (data.data.contact_address) setAddress(data.data.contact_address);
+          if (data.data.footer_address) setAddress(data.data.footer_address);
+          else if (data.data.contact_address) setAddress(data.data.contact_address);
+          if (data.data.footer_description) setDescription(data.data.footer_description);
+          if (data.data.footer_copyright) setCopyright(data.data.footer_copyright);
+          if (data.data.footer_disclaimer) setDisclaimer(data.data.footer_disclaimer);
+          if (data.data.footer_badge_trust) setBadgeTrust(data.data.footer_badge_trust);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
   return (
     <footer className="bg-charcoal-900 text-gray-300 pt-16 pb-12 border-t border-gold-500/20 text-xs sm:text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-gray-800">
-          
+
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
@@ -56,8 +67,8 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-gray-400 leading-relaxed text-xs">
-              Dịch vụ chăm sóc mẹ và bé tại nhà uy tín hàng đầu Hà Nội. Trực tiếp thực hiện bởi Điều dưỡng chuyên khoa với phương châm: <em>&ldquo;Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương&rdquo;</em>.
+            <p className="text-gray-400 leading-relaxed text-xs whitespace-pre-line">
+              {description}
             </p>
 
             <div className="pt-2 flex items-center gap-3">
@@ -169,7 +180,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Bảo chứng chuyên môn: ĐD. Nguyễn Thúy Ngân</span>
+                <span>{disclaimer}</span>
               </div>
             </div>
           </div>
@@ -179,14 +190,14 @@ export default function Footer() {
         {/* Disclaimer & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 text-center sm:text-left">
           <p>
-            © {new Date().getFullYear()} <strong>Ngân Care (ngancare.com)</strong>. Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân.
+            © {new Date().getFullYear()} <strong>Ngân Care (ngancare.com)</strong>. {copyright}
           </p>
           <div className="flex items-center gap-4">
             <Link href="/admin/login" className="hover:text-gold-400 transition-colors">
               Khu Vực Quản Trị (Admin)
             </Link>
             <span>•</span>
-            <span>An Toàn & Tận Tâm</span>
+            <span>{badgeTrust}</span>
           </div>
         </div>
 

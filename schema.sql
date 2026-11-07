@@ -93,7 +93,7 @@ VALUES
  '/images/banner.jpg', 1),
 
 ('srv-02', 'Tắm và chăm sóc trẻ sơ sinh', 'tam-be-so-sinh-an-toan', 'tam_be', 180000, 45,
- 'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn sạch sẽ và theo dõi thể trạng sơ sinh.',
+ 'Tắm bé theo quy trình an toàn chuyên nghiệp, Massage vận động phát triển cơ xương theo đúng tháng tuổi, chăm sóc rốn và theo dõi thể trạng bé sơ sinh',
  '["Điều dưỡng chính quy trực tiếp tắm bé","Dụng cụ vệ sinh sạch sẽ, tiệt trùng","Theo dõi chu đáo và chăm sóc thể trạng bé sơ sinh trong suốt quá trình tắm"]',
  '/images/banner.jpg', 1),
 

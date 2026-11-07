@@ -53,6 +53,35 @@ const DEFAULT_HOMEPAGE_CONFIG = {
   commit_item2_desc: 'Mỗi sản phẩm sử dụng trong quá trình chăm sóc đều có rõ nguồn gốc xuất xứ và được công khai với khách hàng. Cam kết không sử dụng sản phẩm không rõ chất lượng.',
   commit_item3_title: 'Không tự ý phát sinh thêm chi phí, phụ phí ngoài lề',
   commit_item3_desc: 'Giá dịch vụ được công bố rõ ràng từ đầu, không tự ý thu bất kỳ phụ phí hay chi phí ngoài lề nào trong quá trình chăm sóc. Các mẹ biết rõ mình sẽ chi bao nhiêu, không lo bị động khi thanh toán.',
+
+  // 5. Header & Footer
+  header_announcement: 'Dịch vụ chăm sóc mẹ và bé tại nhà — ĐD. Nguyễn Thúy Ngân tận tâm đồng hành!',
+  footer_description: 'Dịch vụ chăm sóc mẹ và bé tại nhà uy tín hàng đầu Hà Nội. Trực tiếp thực hiện bởi Điều dưỡng chuyên khoa với phương châm: “Chăm sóc bằng kiến thức — Nuôi dưỡng bằng yêu thương”.',
+  footer_copyright: 'Bản quyền thuộc về Điều Dưỡng Nguyễn Thúy Ngân.',
+  footer_disclaimer: 'Bảo chứng chuyên môn: ĐD. Nguyễn Thúy Ngân',
+  footer_address: 'Trụ sở: Thượng Thanh, Q. Long Biên, Hà Nội',
+  footer_badge_trust: 'An Toàn & Tận Tâm',
+
+  // 6. 4 Trụ Cột Niềm Tin (Dưới Hero Banner)
+  pillar1_title: 'Chuyên Môn Đào Tạo Chính Quy',
+  pillar1_desc: 'Tốt nghiệp Cao Đẳng Y Tế Hà Nội, kinh nghiệm và tận tâm',
+  pillar2_title: 'Chăm Sóc Nhẹ Nhàng, Tận Tâm',
+  pillar2_desc: 'Thương bé như con, thấu hiểu mọi âu lo của mẹ bỉm',
+  pillar3_title: 'Tích hợp dẫn lưu hệ bạch huyết trong quy trình chăm sóc',
+  pillar3_desc: 'Chăm sóc bầu ngực và tuyến sữa bằng kỹ thuật dẫn lưu hệ bạch huyết — phương pháp nhẹ nhàng giúp thông tắc và giải tỏa căng tức vú',
+  pillar4_title: 'Đồng hành trọn đời',
+  pillar4_desc: 'Hỗ trợ giải đáp thắc mắc chăm sóc mẹ và bé trọn đời',
+
+  // 7. Tiêu Đề Section Dịch Vụ & Sản Phẩm
+  services_badge: 'Dịch Vụ Trọng Tâm',
+  services_title: 'Dịch Vụ Chăm Sóc Mẹ Và Bé Tại Nhà',
+  services_title_highlight: 'Mẹ Và Bé Tại Nhà',
+  services_subtitle: 'Bảng giá niêm yết công khai, minh bạch rõ ràng — Cam kết không phát sinh bất kỳ phụ phí nào.',
+
+  products_badge: 'Thảo Mộc Cung Đình & Tự Nhiên',
+  products_title: 'Sản Phẩm Thiên Nhiên Lành Tính Cho Mẹ & Bé',
+  products_title_highlight: 'Lành Tính Cho Mẹ & Bé',
+  products_subtitle: 'Nguồn gốc xuất xứ rõ ràng, chưng cất thủ công truyền thống, không phụ gia và hóa chất bảo quản.',
 };
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
@@ -93,7 +122,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Cache-Control': 'public, max-age=15, stale-while-revalidate=60',
+          'Cache-Control': 'no-store, no-cache, must-revalidate',
         },
       }
     );
@@ -113,4 +142,3 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     );
   }
 };
-
